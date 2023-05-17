@@ -10,19 +10,33 @@ import config
 if __name__ == '__main__':
 	# This is a non-blocking call that only loads the environment.
 	channel = EngineConfigurationChannel()
-	channel.set_configuration_parameters(time_scale=50.0)
+	channel.set_configuration_parameters(time_scale=1.0)
 	unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env)
 	env.reset()
 	print("sample action: ", env.action_space.sample())
 	print("observation space shape: ", env.observation_space.shape)
-	env = Monitor(env, config.log_dir)
+	# env = Monitor(env, config.log_dir)
 	# Start interacting with the environment.
 
 	model = PPO('MlpPolicy', env, verbose=1)
 	#begin learning
 	print("Training model...")
-	model.learn(total_timesteps=50000)
+
+	for _ in range(1000):
+		action = env.action_space.sample()
+		observation, reward, done, info = env.step(action)	
+		print("observation: ", observation)
+		print("reward: ", reward)
+		if done:
+			print("done!")
+			observation = env.reset()
+			break
+		sleep(0.1)
+
+	env.close()
+
+
 	print("Training complete.")
 
 	#save to disk
