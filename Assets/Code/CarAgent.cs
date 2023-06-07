@@ -44,11 +44,11 @@ public class CarAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        float maxDistance = 50f;
         float distanceToFinish = Vector3.Dot(this.transform.forward, finishLine.localPosition - this.transform.localPosition);
-        sensor.AddObservation((maxDistance - distanceToFinish)/maxDistance);
-        sensor.AddObservation(rb.velocity.z);
+        // sensor.AddObservation((maxDistance - distanceToFinish)/maxDistance);
+        // sensor.AddObservation(rb.velocity.z);
     }
+    
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
@@ -68,7 +68,10 @@ public class CarAgent : Agent
         Debug.Log(distanceToFinish);
 
         if (distanceToFinish < -10f){
-            SetReward(-0.2f);
+            SetReward(-1f);
+        }
+        if(distanceToFinish < -20f){
+            SetReward(-1f);
             EndEpisode();
         }
         else if (distanceToFinish < 0f && rb.velocity.z < 0.5f){
@@ -76,7 +79,8 @@ public class CarAgent : Agent
             // EndEpisode();
         }
         else {
-            SetReward(((maxDistance - distanceToFinish)/maxDistance)*0.1f);
+            //grow reward exponentially with distance to finish and normalize to 1
+            SetReward(1f - Mathf.Pow(distanceToFinish/maxDistance, 2f));
         }
     }
 

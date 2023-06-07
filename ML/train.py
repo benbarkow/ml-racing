@@ -1,42 +1,45 @@
-from mlagents_envs.environment import UnityEnvironment
-from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
-from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
-
-from stable_baselines3.common.monitor import Monitor
-from stable_baselines3 import PPO
-
 import config
+import numpy as np
+import torch
+from FeatureExtractionWrapper import FeatureExtractionWrapper
+from mlagents_envs.environment import UnityEnvironment
+from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
+from mlagents_envs.side_channel.engine_configuration_channel import \
+    EngineConfigurationChannel
+
+from common import make_unity_env, SaveOnBestTrainingRewardCallback, linear_schedule
+
+from PIL import Image
+from stable_baselines3 import PPO
+from stable_baselines3.common.monitor import Monitor
+from tensorboard import program
 
 if __name__ == '__main__':
 	# This is a non-blocking call that only loads the environment.
 	channel = EngineConfigurationChannel()
-	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
-	env = UnityToGymWrapper(unity_env)
-	env.reset()
-	print("sample action: ", env.action_space.sample())
-	print("observation space shape: ", env.observation_space.shape)
+	channel.set_configuration_parameters(time_scale=5.0)
+	# unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
+	# env = UnityToGymWrapper(unity_env)
+	# env = FeatureExtractionWrapper(env)
+	# env.reset()
+	# print("sample action: ", env.action_space.sample())
+	# print("observation space shape: ", env.observation_space.shape)
 	# env = Monitor(env, config.log_dir)
 	# Start interacting with the environment.
+	print(torch.cuda.is_available())
 
-	model = PPO('MlpPolicy', env, verbose=1)
-	#begin learning
-	print("Training model...")
+	#tensorboard
+	tb = program.TensorBoard()
+	tb.configure(argv=[None, '--logdir', config.tb_logs])
+	url = tb.launch()
+	print(f"Tensorflow listening on {url}")
 
-	for _ in range(1000):
-		action = env.action_space.sample()
-		observation, reward, done, info = env.step(action)	
-		print("observation: ", observation)
-		print("reward: ", reward)
-		if done:
-			print("done!")
-			observation = env.reset()
-			break
-		sleep(0.1)
+	# model = PPO('MlpPolicy', env, verbose=1)
+	env = make_unity_env("build/ml-racing-project", 2, render=True, sim_timescale=1.0, log_dir=config.log_dir)
+	model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda")
 
-	env.close()
-
-
+	callback = SaveOnBestTrainingRewardCallback(check_freq=(config.n_steps*2)+5, log_dir=config.log_dir, save_path=config.models_dir)
+	model.learn(total_timesteps=40000, callback=callback)
 	print("Training complete.")
 
 	#save to disk
