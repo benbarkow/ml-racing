@@ -1,5 +1,5 @@
 import gym
-from gym.spaces import Box, Dict
+from gym.spaces import Box, Tuple
 import numpy as np
 from torchvision.models import resnet18, ResNet18_Weights
 from torchvision import transforms
@@ -12,12 +12,11 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
 		self.model.eval()
 		self.layer = self.model._modules.get('avgpool')
-		self.observation_space = Box(shape=(512,), low=0, high=1, dtype=np.float64)
+		self.observation_space = Box(shape=(514,), low=0, high=1, dtype=np.float64)
+		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
-		print(obs)
-		return obs
 		# rescale the image from 0-1 to 0-255 and convert to uint8
-		image = obs * 255
+		image = obs[0] * 255
 		image = image.astype(np.uint8)
 		image = Image.fromarray(image, 'RGB')
 
@@ -37,5 +36,6 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model(t_image)
 		h.remove()
 
-		return vector
+		tensor = np.concatenate((vector, obs[1]), dtype=np.float64)
+		return tensor
 

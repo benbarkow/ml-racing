@@ -19,6 +19,7 @@ if __name__ == '__main__':
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=5.0)
 
+
 	print(torch.cuda.is_available())
 
 	#tensorboard
@@ -28,11 +29,12 @@ if __name__ == '__main__':
 	print(f"Tensorflow listening on {url}")
 
 	# model = PPO('MlpPolicy', env, verbose=1)
-	env = make_unity_env("build/ml-racing-project", 2, render=True, sim_timescale=1.0, log_dir=config.log_dir)
+	env = make_unity_env("build/ml-racing-project", 2, render=True, sim_timescale=2.0, log_dir=config.log_dir)
 	model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda")
+	model = model.load(config.models_dir + "image_racing_best", env=env, device="cuda")
 
 	callback = SaveOnBestTrainingRewardCallback(check_freq=(config.n_steps*2)+5, log_dir=config.log_dir, save_path=config.models_dir)
-	model.learn(total_timesteps=40000, callback=callback)
+	model.learn(total_timesteps=300000, callback=callback)
 	print("Training complete.")
 
 	#save to disk

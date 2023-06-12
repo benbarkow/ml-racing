@@ -95,7 +95,7 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
     def make_env(rank, use_visual=True): # pylint: disable=C0111
         def _thunk():
             unity_env = UnityEnvironment(env_directory, worker_id=rank, no_graphics=(not render), side_channels=[channel])
-            env = UnityToGymWrapper(unity_env, rank)
+            env = UnityToGymWrapper(unity_env, rank, allow_multiple_obs=True)
             env = FeatureExtractionWrapper(env)
             env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env

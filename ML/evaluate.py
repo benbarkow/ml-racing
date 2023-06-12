@@ -12,20 +12,40 @@ from FeatureExtractionWrapper import FeatureExtractionWrapper
 
 import config
 
+from time import sleep
+
 if __name__ == '__main__':
 
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
 	unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
-	env = UnityToGymWrapper(unity_env)
+	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	env = FeatureExtractionWrapper(env)
 	env = Monitor(env, config.log_dir)
-	env.reset()
 
-	model = PPO.load("models/my_trained_model.zip", env)
+	reward_list = []
 
-	reward, _ = evaluate_policy(model, env, n_eval_episodes=5)
-	print(f"Reward: {reward}")
+	model = PPO.load(config.models_dir + "image_racing_best_01.zip", env, device="cuda")
+	commulative_reward = 0
+	
+	observation = env.reset()
+	for i in range(5):
+		for _ in range(1000):
+			action, _states = model.predict(observation)
+			# print("action: ", action)
+			observation, reward, done, info = env.step(action)	
+			commulative_reward += reward
+			# print("observation: ", observation)
+			# print("reward: ", reward)
+			if done:
+				print("Episode {} reward: ".format(i), commulative_reward)
+				observation = env.reset()
+				reward_list.append(commulative_reward)
+				commulative_reward = 0
+				break
+
+	env.close()
+	print("Average reward: ", sum(reward_list)/len(reward_list))
 
 

@@ -23,7 +23,9 @@ public class RaceAgent : Agent
     private float prevDistanceCovered;
     private float lastRewardVisualizedAtStep;
     private Canvas rewardCanvasPrefab;
+    private Canvas distanceCoveredCanvas;
     private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
+    private float PreviousSteerDirection;
 
     public float SteerSpeedDegPerSec = 100f;
     public PathCreator pathCreator;
@@ -37,9 +39,13 @@ public class RaceAgent : Agent
         VPbase = GetComponent<VehiclePhysics.VehicleBase>();
         rb = GetComponent<Rigidbody>();
         imu = GetComponentInChildren<IntertialMeasurementUnit>();
+        distanceCoveredCanvas = GameObject.Find("DistanceCoveredCanvas").GetComponent<Canvas>();
+        distanceCoveredCanvas.transform.rotation = cam.transform.rotation;
         rewardCanvasPrefab = GameObject.Find("RewardCanvas").GetComponent<Canvas>();
         rewardCanvasPrefab.transform.rotation = cam.transform.rotation;
         prevDistanceCovered = 0.0f;
+        VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
+        Random.InitState(System.DateTime.Now.Millisecond);
     }
 
     public override void OnEpisodeBegin()
@@ -159,6 +165,13 @@ public class RaceAgent : Agent
             return;
         }
 
+        //calculate steer delta 
+        float maxSteerDelta = 0.044444f;
+        float steerDelta = Mathf.Min(Mathf.Abs(CurrentSteerDirection - PreviousSteerDirection)/maxSteerDelta, 1.0f);
+        float steerDeltaPenalty = Mathf.Pow(steerDelta, 4) * -0.7f;
+
+        PreviousSteerDirection = CurrentSteerDirection;
+
         //calculate distance to center of the road
         Vector3 closestPointOnPath = pathCreator.path.GetPointAtDistance(distanceOnPath);
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
@@ -177,11 +190,20 @@ public class RaceAgent : Agent
         float reward = (distReward * 7 + angleReward) / 8;
         //add negative reward for running off the road
         reward += centerDistRewardNegative;
+        reward += steerDeltaPenalty;
         SetReward(reward);
         //log reward this step
         // Debug.Log("reward: " + reward.ToString());
         // Debug.Log("total reward: " + GetCumulativeReward().ToString());
-        rewardEvent(angleReward, pathDirection);
+        // rewardEvent(angleReward, pathDirection);
+        rewardEvent(reward, pathDirection);
+        distanceCoveredUpdate(pathDirection == 1 ? distanceCovered : pathCreator.path.length - distanceCovered);
+    }
+
+    private void distanceCoveredUpdate(float distanceCovered){
+        TMPro.TextMeshProUGUI totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        totalDistanceText.text = Math.Round(distanceCovered).ToString();
+
     }
 
     private void rewardEvent(float reward, int direction) {
@@ -236,6 +258,7 @@ public class RaceAgent : Agent
         if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
         if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = 0f;
     }
+
 	private float SmoothSteering(float steerInput) {
         steerInput *= VPcontrol.steering.maxSteerAngle;
 		float steer = CurrentSteerDirection * VPcontrol.steering.maxSteerAngle;
