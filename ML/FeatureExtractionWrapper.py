@@ -12,8 +12,10 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
 		self.model.eval()
 		self.layer = self.model._modules.get('avgpool')
-		self.observation_space = Box(shape=(512,), low=0, high=1, dtype=np.float32)
+		self.observation_space = Box(shape=(512,), low=0, high=1, dtype=np.float64)
 	def observation(self, obs):
+		print(obs)
+		return obs
 		# rescale the image from 0-1 to 0-255 and convert to uint8
 		image = obs * 255
 		image = image.astype(np.uint8)

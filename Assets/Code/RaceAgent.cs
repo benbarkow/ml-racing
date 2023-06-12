@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
@@ -6,6 +5,10 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using VehiclePhysics;
 using PathCreation;
+using TMPro;
+using System;
+using Random=UnityEngine.Random;
+
 
 public class RaceAgent : Agent
 {
@@ -14,13 +17,17 @@ public class RaceAgent : Agent
     private VehiclePhysics.VPVehicleController VPcontrol;
     private VehiclePhysics.VehicleBase VPbase;
     private IntertialMeasurementUnit imu;
-    public float SteerSpeedDegPerSec = 100f;
     private Transform startTransform;
     private float startDistanceOnPath;
     private float CurrentSteerDirection;
     private float prevDistanceCovered;
+    private float lastRewardVisualizedAtStep;
+    private Canvas rewardCanvasPrefab;
+    private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
 
+    public float SteerSpeedDegPerSec = 100f;
     public PathCreator pathCreator;
+    public Camera cam;
 
     void Start()
     {
@@ -30,6 +37,8 @@ public class RaceAgent : Agent
         VPbase = GetComponent<VehiclePhysics.VehicleBase>();
         rb = GetComponent<Rigidbody>();
         imu = GetComponentInChildren<IntertialMeasurementUnit>();
+        rewardCanvasPrefab = GameObject.Find("RewardCanvas").GetComponent<Canvas>();
+        rewardCanvasPrefab.transform.rotation = cam.transform.rotation;
         prevDistanceCovered = 0.0f;
     }
 
@@ -37,16 +46,18 @@ public class RaceAgent : Agent
     {
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
-        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0.5f, true);
+        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
 
         float maxPathLength = pathCreator.path.length;
         //compute a random distance along the path
         startDistanceOnPath = Random.Range(0.0f, maxPathLength);
 
-        this.transform.position = pathCreator.path.GetPointAtDistance(startDistanceOnPath);
+        //initPos 
+        Vector3 initPos = pathCreator.path.GetPointAtDistance(startDistanceOnPath);
+        this.transform.position = new Vector3(initPos.x, initPos.y + 0.2f, initPos.z);
         //increase y position to avoid clipping into the ground
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
-        this.transform.rotation = pathCreator.path.GetRotationAtDistance(startDistanceOnPath);
+        Quaternion initRotation = pathCreator.path.GetRotationAtDistance(startDistanceOnPath);
+        this.transform.rotation = initRotation;
         this.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
         //random direction 0 or 1
         int direction = Random.Range(0, 2);
@@ -66,6 +77,17 @@ public class RaceAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        //add imu velocity as observation
+        Vector3 localVel = imu.LocalVelocity;
+        Vector2 localVelXZ = new Vector2(localVel.x, localVel.z);
+        //get magnitude of local velocity
+        float localVelMag = localVelXZ.magnitude;
+        float velValue = Mathf.Min(localVelMag / 15f, 1f);
+        sensor.AddObservation(velValue);
+
+        //steering angle as observation between 0 and 1
+        float steeringValue = (VPinput.externalSteer + 1f) / 2f;
+        sensor.AddObservation(steeringValue);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -80,9 +102,10 @@ public class RaceAgent : Agent
         VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
 
         //calculate reward
-        float reward = 0.0f;
+        int pathDirection = 1;
+        float distReward = 0.0f;
         float maxStepDistance = 0.2f;
-        float maxAngle = 45.0f;
+        float maxAngle = 60.0f;
         //calculate distance traveled along the path from the start transform
         float distanceCovered = 0.0f;
         float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
@@ -93,10 +116,16 @@ public class RaceAgent : Agent
         else{
             distanceCovered = distanceOnPath - startDistanceOnPath;
         }
-        float stepDistanceCovered = distanceCovered - prevDistanceCovered;
+        if(distanceCovered < prevDistanceCovered){
+            pathDirection = -1;
+        }
+        float stepDistanceCovered = (Mathf.Abs(distanceCovered - prevDistanceCovered));
+
+
         prevDistanceCovered = distanceCovered;
         //set reward and norm with maxStepDistance with max reward of 1
-        reward = Mathf.Min(stepDistanceCovered / maxStepDistance, 1.0f);
+        distReward = Mathf.Min(stepDistanceCovered / maxStepDistance, 1.0f);
+        // Debug.Log("distance reward: " + distReward.ToString());
 
         //get direction of travel
         Vector3 direction = rb.velocity.normalized;
@@ -116,14 +145,18 @@ public class RaceAgent : Agent
             angle = 180.0f - angle;
         }
 
-        //set negative reward proportional to angle
-        reward -= Mathf.Min(angle / maxAngle, 1.0f);
-        if(angle > maxAngle){
-            SetReward(-1.0f);
+        float b = -1/8;
+        float a = (1 - 4*b) / 16;
+        float velocityReward = Mathf.Min(a * Mathf.Pow(velocityValue, 2) + b * velocityValue, 1.0f);
+
+        //set negative reward proportional to angle and scale with velocity value
+        float angleReward = Mathf.Max(1-(angle / maxAngle), 0.0f);
+        angleReward = angleReward * velocityReward;
+        // Debug.Log("angle reward: " + angleReward.ToString());
+        if(angle > maxAngle && StepCount > 20){
+            rewardEvent(-1.0f, pathDirection);
             EndEpisode();
-        }
-        else{
-            SetReward(reward);
+            return;
         }
 
         //calculate distance to center of the road
@@ -131,15 +164,62 @@ public class RaceAgent : Agent
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
         // Debug.Log("distance to road center: " + distanceToCenter.ToString());
         //if car runs off the road
-        if(distanceToCenter > 2.5){
-            SetReward(-0.1f);
-        }
-        if(distanceToCenter > 3.0){
+        float centerDistRewardNegative = Mathf.Max((1-Mathf.Pow(distanceToCenter/3, 8))-1, -1.0f);
+        // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
+        if(distanceToCenter > 3.0 && StepCount > 20){
+            rewardEvent(-1.0f, pathDirection);
             SetReward(-1.0f);
             EndEpisode();
+            return;
         }
+
+        //weight rewards with distance as 7/8 and angle as 1/8
+        float reward = (distReward * 7 + angleReward) / 8;
+        //add negative reward for running off the road
+        reward += centerDistRewardNegative;
+        SetReward(reward);
         //log reward this step
         // Debug.Log("reward: " + reward.ToString());
+        // Debug.Log("total reward: " + GetCumulativeReward().ToString());
+        rewardEvent(angleReward, pathDirection);
+    }
+
+    private void rewardEvent(float reward, int direction) {
+        int maxStepsVisible = 100;
+        for(int i = 0; i < rewardCanvasList.Count; i++){
+            Tuple<int, Canvas> rewardCanvasTuple = rewardCanvasList[i];
+            int stepsLeft = rewardCanvasTuple.Item1;
+            Canvas canvas = rewardCanvasTuple.Item2;
+            TMPro.TextMeshProUGUI text = canvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            text.color = new Color(text.color.r, text.color.g, text.color.b, (float)stepsLeft / maxStepsVisible);
+            if(stepsLeft == 1){
+                Destroy(canvas.gameObject);
+                rewardCanvasList.RemoveAt(i);
+                i--;
+            }
+            else{
+                rewardCanvasList[i] = Tuple.Create(stepsLeft-1, canvas);
+            }
+        }
+        if(StepCount % 50 != 0 && reward != -1.0f){
+            return;
+        }
+        //max of 2 digits after decimal point
+        float backOffset = direction * 6.0f;
+        Vector3 targetPosition = pathCreator.path.GetPointAtDistance(pathCreator.path.GetClosestDistanceAlongPath(this.transform.position)-backOffset);
+        targetPosition.y = targetPosition.y + 0.5f;
+
+        Canvas rewardCanvas = Instantiate(rewardCanvasPrefab);
+        rewardCanvas.transform.position = targetPosition;
+        TMPro.TextMeshProUGUI rewardText = rewardCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        rewardText.text = Math.Round(reward, 2).ToString();
+        if(reward > 0.0f){
+            rewardText.color = Color.green;
+        }
+        else{
+            rewardText.color = Color.red;
+        }
+        rewardCanvasList.Add(new Tuple<int, Canvas>(maxStepsVisible, rewardCanvas));
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
