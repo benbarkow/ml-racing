@@ -92,7 +92,7 @@ public class RaceAgent : Agent
         sensor.AddObservation(velValue);
 
         //steering angle as observation between 0 and 1
-        float steeringValue = (VPinput.externalSteer + 1f) / 2f;
+        float steeringValue = (CurrentSteerDirection + 1f) / 2f;
         sensor.AddObservation(steeringValue);
     }
 
@@ -168,7 +168,7 @@ public class RaceAgent : Agent
         //calculate steer delta 
         float maxSteerDelta = 0.044444f;
         float steerDelta = Mathf.Min(Mathf.Abs(CurrentSteerDirection - PreviousSteerDirection)/maxSteerDelta, 1.0f);
-        float steerDeltaPenalty = Mathf.Pow(steerDelta, 4) * -0.7f;
+        float steerDeltaPenalty = Mathf.Pow(steerDelta, 4) * -0.3f;
 
         PreviousSteerDirection = CurrentSteerDirection;
 
