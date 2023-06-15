@@ -26,12 +26,12 @@ if __name__ == '__main__':
 
 	reward_list = []
 
-	model = PPO.load(config.models_dir + "image_racing_02", env, device="cuda")
+	model = PPO.load(config.models_dir + "image_racing_03.zip", env, device="cuda")
 	commulative_reward = 0
 	
 	observation = env.reset()
 	for i in range(5):
-		for _ in range(1000):
+		while True:
 			action, _states = model.predict(observation)
 			# print("action: ", action)
 			observation, reward, done, info = env.step(action)	
