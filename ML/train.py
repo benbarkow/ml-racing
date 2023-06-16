@@ -45,7 +45,7 @@ if __name__ == '__main__':
 		print(f"Tensorflow listening on {url}")
 
 	# model = PPO('MlpPolicy', env, verbose=1)
-	env = make_unity_env("build/ml-racing-project", argus.num_envs, render=argus.visualize, sim_timescale=argus.sim_timescale, log_dir=config.log_dir)
+	env = make_unity_env(argus.executable, argus.num_envs, render=argus.visualize, sim_timescale=argus.sim_timescale, log_dir=config.log_dir)
 	model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 	# model = PPO.load(config.models_dir + "image_racing_02.zip", env=env, device="cuda")
 
