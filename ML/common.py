@@ -100,7 +100,7 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
             env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env
         return _thunk
-    if visual:
+    if render:
         return SubprocVecEnv([make_env(i + start_index) for i in range(num_env)])
     else:
         rank = MPI.COMM_WORLD.Get_rank() if MPI else 0
