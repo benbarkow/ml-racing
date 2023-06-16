@@ -22,6 +22,7 @@ parser.add_argument('-tb', '--tensorboard', action='store_true', help='Whether t
 parser.add_argument('-c', '--cuda', action='store_true', help='Whether to start use Cuda or cpu')
 parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of parallel environments to use for training (max. ~number of CPU cores)')
 parser.add_argument('-st', '--sim_timescale', type=float, default=1.0, help='Timescale of the simulation')
+parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
 argus = parser.parse_args()
 
 if __name__ == '__main__':
