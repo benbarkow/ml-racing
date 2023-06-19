@@ -35,8 +35,6 @@ if __name__ == '__main__':
 	channel.set_configuration_parameters(time_scale=5.0)
 
 
-	print(torch.cuda.is_available())
-
 	#tensorboard
 	if argus.tensorboard:
 		tb = program.TensorBoard()

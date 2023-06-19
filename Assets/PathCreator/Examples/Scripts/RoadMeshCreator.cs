@@ -139,7 +139,7 @@ namespace PathCreation.Examples {
             meshRenderer = meshHolder.GetComponent<MeshRenderer> ();
             meshFilter = meshHolder.GetComponent<MeshFilter> ();
             if (mesh == null) {
-                mesh = new Mesh ();
+                mesh = new Mesh();
             }
             meshFilter.sharedMesh = mesh;
         }

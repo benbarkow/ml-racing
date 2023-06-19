@@ -7,7 +7,7 @@ Library: lib_burst_generated
 --float-precision=Low
 --float-mode=Fast
 --disable-warnings=BC1370
---compilation-defines=UNITY_2021_3_23
+--compilation-defines=UNITY_2021_3_27
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -50,8 +50,6 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_UNITYWEBREQUEST
 --compilation-defines=ENABLE_WWW
 --compilation-defines=ENABLE_CLOUD_SERVICES
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
 --compilation-defines=ENABLE_CLOUD_SERVICES_ADS
 --compilation-defines=ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
 --compilation-defines=ENABLE_CLOUD_SERVICES_CRASH_REPORTING
@@ -127,8 +125,8 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.ML-Agents.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.ONNX.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
@@ -195,7 +193,7 @@ Library: lib_burst_generated
 --float-precision=Low
 --float-mode=Fast
 --disable-warnings=BC1370
---compilation-defines=UNITY_2021_3_23
+--compilation-defines=UNITY_2021_3_27
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -238,8 +236,6 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_UNITYWEBREQUEST
 --compilation-defines=ENABLE_WWW
 --compilation-defines=ENABLE_CLOUD_SERVICES
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
 --compilation-defines=ENABLE_CLOUD_SERVICES_ADS
 --compilation-defines=ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
 --compilation-defines=ENABLE_CLOUD_SERVICES_CRASH_REPORTING
@@ -315,8 +311,8 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.ML-Agents.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.ONNX.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
@@ -382,7 +378,7 @@ Library: lib_burst_generated
 --dump=Function
 --float-precision=Standard
 --disable-warnings=BC1370
---compilation-defines=UNITY_2021_3_23
+--compilation-defines=UNITY_2021_3_27
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -425,8 +421,6 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_UNITYWEBREQUEST
 --compilation-defines=ENABLE_WWW
 --compilation-defines=ENABLE_CLOUD_SERVICES
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
 --compilation-defines=ENABLE_CLOUD_SERVICES_ADS
 --compilation-defines=ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
 --compilation-defines=ENABLE_CLOUD_SERVICES_CRASH_REPORTING
@@ -502,8 +496,8 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.ML-Agents.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.ONNX.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
@@ -559,7 +553,7 @@ Library: lib_burst_generated
 --dump=Function
 --float-precision=Standard
 --disable-warnings=BC1370
---compilation-defines=UNITY_2021_3_23
+--compilation-defines=UNITY_2021_3_27
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -602,8 +596,6 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_UNITYWEBREQUEST
 --compilation-defines=ENABLE_WWW
 --compilation-defines=ENABLE_CLOUD_SERVICES
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB
---compilation-defines=ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
 --compilation-defines=ENABLE_CLOUD_SERVICES_ADS
 --compilation-defines=ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
 --compilation-defines=ENABLE_CLOUD_SERVICES_CRASH_REPORTING
@@ -679,8 +671,8 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.ML-Agents.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.Barracuda.ONNX.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing\ml-racing-project\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll

@@ -26,10 +26,20 @@ public class RaceAgent : Agent
     private Canvas distanceCoveredCanvas;
     private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
     private float PreviousSteerDirection;
+    private List<GameObject> curveSpheres = new List<GameObject>();
+
+    private int carDirection = 1;
+    //reward parameters
+    public float maxVelAngle = 60.0f;
+    public float maxSpeed = 0.2f;
+    public float curveAngleDriftThreshold = 40.0f;
+    public float targetDriftAngle = 45.0f;
+
 
     public float SteerSpeedDegPerSec = 100f;
     public PathCreator pathCreator;
     public Camera cam;
+    public RacetrackGenerator racetrackGenerator;
 
     void Start()
     {
@@ -46,10 +56,12 @@ public class RaceAgent : Agent
         prevDistanceCovered = 0.0f;
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
         Random.InitState(System.DateTime.Now.Millisecond);
+
     }
 
     public override void OnEpisodeBegin()
     {
+        racetrackGenerator.generateNew();
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
@@ -69,6 +81,9 @@ public class RaceAgent : Agent
         int direction = Random.Range(0, 2);
         if (direction == 0){
             this.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            carDirection = -1;
+        }else {
+            carDirection = 1;
         }
 
         startTransform = this.transform;
@@ -96,8 +111,7 @@ public class RaceAgent : Agent
         sensor.AddObservation(steeringValue);
     }
 
-    public override void OnActionReceived(ActionBuffers actionBuffers)
-    {
+    private void HandleHeuristics(ActionBuffers actionBuffers) {
         if (actionBuffers.ContinuousActions[0] == 0f){
             //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
             VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
@@ -106,42 +120,20 @@ public class RaceAgent : Agent
             VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
         }
         VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+    }
 
-        //calculate reward
-        int pathDirection = 1;
-        float distReward = 0.0f;
-        float maxStepDistance = 0.2f;
-        float maxAngle = 60.0f;
-        //calculate distance traveled along the path from the start transform
-        float distanceCovered = 0.0f;
-        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
-        if(distanceOnPath < startDistanceOnPath){
-            // Debug.Log("distance covered is negative: "a + distanceOnPath.ToString() + " < " + startDistanceOnPath.ToString());
-            distanceCovered = pathCreator.path.length - startDistanceOnPath + distanceOnPath;
-        }
-        else{
-            distanceCovered = distanceOnPath - startDistanceOnPath;
-        }
-        if(distanceCovered < prevDistanceCovered){
-            pathDirection = -1;
-        }
-        float stepDistanceCovered = (Mathf.Abs(distanceCovered - prevDistanceCovered));
+    
 
-
-        prevDistanceCovered = distanceCovered;
-        //set reward and norm with maxStepDistance with max reward of 1
-        distReward = Mathf.Min(stepDistanceCovered / maxStepDistance, 1.0f);
-        // Debug.Log("distance reward: " + distReward.ToString());
-
-        //get direction of travel
+    private float VelAngleReward(){
+         //get direction of travel
         Vector3 direction = rb.velocity.normalized;
         Vector2 direction2D = new Vector2(direction.x, direction.z);
         // Debug.Log("direction: " + direction2D.ToString());
         //get angle between direction and path tangent
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
         Vector3 tangent = pathCreator.path.GetDirectionAtDistance(distanceOnPath);
         Vector2 tangent2D = new Vector2(tangent.x, tangent.z);
         //angle as value between 0 and 90
-
         float velocityValue = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
         float angle = Vector2.Angle(direction2D, tangent2D);
         if(velocityValue < 1.0f){
@@ -156,23 +148,39 @@ public class RaceAgent : Agent
         float velocityReward = Mathf.Min(a * Mathf.Pow(velocityValue, 2) + b * velocityValue, 1.0f);
 
         //set negative reward proportional to angle and scale with velocity value
-        float angleReward = Mathf.Max(1-(angle / maxAngle), 0.0f);
+        float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
         angleReward = angleReward * velocityReward;
         // Debug.Log("angle reward: " + angleReward.ToString());
-        if(angle > maxAngle && StepCount > 20){
-            rewardEvent(-1.0f, pathDirection);
+        if(angle > maxVelAngle && StepCount > 20){
+            rewardEvent(-1.0f, carDirection);
             EndEpisode();
-            return;
+            return -1.0f;
         }
+        return angleReward;
+    }
 
-        //calculate steer delta 
-        float maxSteerDelta = 0.044444f;
-        float steerDelta = Mathf.Min(Mathf.Abs(CurrentSteerDirection - PreviousSteerDirection)/maxSteerDelta, 1.0f);
-        float steerDeltaPenalty = Mathf.Pow(steerDelta, 4) * -0.3f;
+    private float SpeedReward(){
+        float distanceCovered = 0.0f;
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+        if(distanceOnPath < startDistanceOnPath){
+            // Debug.Log("distance covered is negative: "a + distanceOnPath.ToString() + " < " + startDistanceOnPath.ToString());
+            distanceCovered = pathCreator.path.length - startDistanceOnPath + distanceOnPath;
+        }
+        else{
+            distanceCovered = distanceOnPath - startDistanceOnPath;
+        }
+        float speed = (Mathf.Abs(distanceCovered - prevDistanceCovered));
 
-        PreviousSteerDirection = CurrentSteerDirection;
 
+        prevDistanceCovered = distanceCovered;
+        //set reward and norm with maxStepDistance with max reward of 1
+        float distReward = Mathf.Min(speed / maxSpeed, 1.0f);
+        return distReward;
+    }
+
+    private float RunofPenalty(){
         //calculate distance to center of the road
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
         Vector3 closestPointOnPath = pathCreator.path.GetPointAtDistance(distanceOnPath);
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
         // Debug.Log("distance to road center: " + distanceToCenter.ToString());
@@ -180,27 +188,117 @@ public class RaceAgent : Agent
         float centerDistRewardNegative = Mathf.Max((1-Mathf.Pow(distanceToCenter/3, 8))-1, -1.0f);
         // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
         if(distanceToCenter > 3.0 && StepCount > 20){
-            rewardEvent(-1.0f, pathDirection);
+            rewardEvent(-1.0f, carDirection);
             SetReward(-1.0f);
             EndEpisode();
+            return -1.0f;
+        }
+        return centerDistRewardNegative;
+    }
+
+    private float DriftReward() {
+        //check if the agent is on a curve
+
+        float trackLength = pathCreator.path.length;
+        int trackPointsCount = pathCreator.path.NumPoints;
+        float targetPointDistance = 5f;
+        int targetPointCount = Mathf.FloorToInt(trackLength / targetPointDistance);
+
+        //choose points on the track to get target point count
+        List<Vector3> trackPoints = new List<Vector3>();
+
+        for(int i = 0; i< targetPointCount; i++){
+            float distance = i * targetPointDistance;
+            Vector3 point = pathCreator.path.GetPointAtDistance(distance);
+            trackPoints.Add(point);
+        }
+
+        //get 10 trackPoints ahead of the agent
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+        int currentPointIndex = Mathf.FloorToInt(distanceOnPath / targetPointDistance) - 1*carDirection;
+        if(currentPointIndex < 0){
+            currentPointIndex = trackPoints.Count + currentPointIndex;
+        }
+        // foreach(GameObject curveSphere in curveSpheres){
+        //     Destroy(curveSphere);
+        // }
+        curveSpheres = new List<GameObject>();
+        Vector3[] curvePoints = new Vector3[5];
+        for(int i = 0; i < 5; i ++){
+            int index = currentPointIndex + i*carDirection;
+            if(index >= trackPoints.Count){
+                index = index - trackPoints.Count;
+            }
+            else if(index < 0){
+                index = trackPoints.Count + index;
+            }
+            curvePoints[i] = trackPoints[index];
+            // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // //disable sphere collider
+            // sphere.GetComponent<SphereCollider>().enabled = false;
+            // sphere.transform.position = trackPoints[index];
+            // curveSpheres.Add(sphere);
+        }
+        //get the commulative angle between the 5 points
+        float angle = 0.0f;
+        for(int i = 0; i < 3; i++){
+            Vector3 v1 = curvePoints[i+1] - curvePoints[i];
+            Vector3 v2 = curvePoints[i+2] - curvePoints[i+1];
+            angle += Vector3.Angle(v1, v2);
+        }
+        // Debug.Log("Angle: " + angle);
+
+        if(angle < curveAngleDriftThreshold){
+            return 1.0f;
+        }
+        Vector3 closestPathTangent = pathCreator.path.GetDirectionAtDistance(distanceOnPath);
+
+        //get curve direction from the curve points (-1 for right, 1 for left)
+        int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[2] - curvePoints[0], curvePoints[4] - curvePoints[2]).y);
+        float carAngleSign = (int)Math.Sign(imu.SideSlip);
+
+        //convert to -1 or 1
+        if(carAngleSign != curveAngleSign){
+            return -0.01f;
+        }
+        float rew = (1f / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip) - 45f) / 25f),(2f*4f))));
+        // float desiredAngleSign 
+        return rew;
+    }
+
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+        //calculate steer delta 
+        // float maxSteerDelta = 0.044444f;
+        // float steerDelta = Mathf.Min(Mathf.Abs(CurrentSteerDirection - PreviousSteerDirection)/maxSteerDelta, 1.0f);
+        // float steerDeltaPenalty = Mathf.Pow(steerDelta, 4) * -0.3f;
+
+        HandleHeuristics(actionBuffers);
+       
+        float speedReward = SpeedReward();
+
+        float runofPenalty = RunofPenalty();
+        if(runofPenalty == -1.0f){
             return;
         }
 
-        //weight rewards with distance as 7/8 and angle as 1/8
-        float reward = (distReward * 7 + angleReward) / 8;
-        //add negative reward for running off the road
-        reward += centerDistRewardNegative;
-        reward += steerDeltaPenalty;
+        float angleReward = VelAngleReward();
+        if(angleReward == -1.0f){
+            return;
+        }
+
+        float driftReward = DriftReward();
+
+        //calculate total reward
+        float reward = driftReward*((speedReward * 7 + angleReward) / 8) + runofPenalty;
         SetReward(reward);
-        //log reward this step
-        // Debug.Log("reward: " + reward.ToString());
-        // Debug.Log("total reward: " + GetCumulativeReward().ToString());
-        // rewardEvent(angleReward, pathDirection);
-        rewardEvent(reward, pathDirection);
-        distanceCoveredUpdate(pathDirection == 1 ? distanceCovered : pathCreator.path.length - distanceCovered);
+
+        // rewardEvent(reward, carDirection);
+        rewardEvent(reward, carDirection);
+        cumulativeRewardEvent(GetCumulativeReward());
     }
 
-    private void distanceCoveredUpdate(float distanceCovered){
+    private void cumulativeRewardEvent(float distanceCovered){
         TMPro.TextMeshProUGUI totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
         totalDistanceText.text = Math.Round(distanceCovered).ToString();
 
