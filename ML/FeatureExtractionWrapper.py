@@ -1,4 +1,5 @@
 import gym
+import os
 from gym.spaces import Box, Tuple
 import numpy as np
 from torchvision.models import resnet18, ResNet18_Weights
@@ -13,12 +14,20 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model.eval()
 		self.layer = self.model._modules.get('avgpool')
 		self.observation_space = Box(shape=(514,), low=0, high=1, dtype=np.float64)
+		self.image_saved = False
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
 		# rescale the image from 0-1 to 0-255 and convert to uint8
 		image = obs[0] * 255
 		image = image.astype(np.uint8)
 		image = Image.fromarray(image, 'RGB')
+
+		#save image in test_images folder and increment counter based on number of images in folder
+		if not self.image_saved:
+			print('saving image')
+			image.save('test_images/' + str(len(os.listdir('test_images'))) + '.png')
+			self.image_saved = True
+		
 
 		transform = transforms.Compose([
 			transforms.Resize(256),
