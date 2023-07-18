@@ -12,6 +12,7 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		super().__init__(env)
 		self.model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
 		self.model.eval()
+		self.model.cuda()
 		self.layer = self.model._modules.get('avgpool')
 		self.observation_space = Box(shape=(514,), low=0, high=1, dtype=np.float64)
 		self.image_saved = False
@@ -28,7 +29,6 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 			image.save('test_images/' + str(len(os.listdir('test_images'))) + '.png')
 			self.image_saved = True
 		
-
 		transform = transforms.Compose([
 			transforms.Resize(256),
 			transforms.CenterCrop(224),
@@ -36,7 +36,7 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 			transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 		])
 
-		t_image = transform(image).unsqueeze(0)
+		t_image = transform(image).unsqueeze(0).cuda()
 
 		vector = torch.zeros(512)
 		def copy_data(m, i, o):

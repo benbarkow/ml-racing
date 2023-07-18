@@ -52,6 +52,6 @@ if __name__ == '__main__':
 	print("Training complete.")
 
 	#save to disk
-	model.save(config.models_dir + "my_trained_model")
+	model.save(config.models_dir + "")
 	print("Model saved to " + config.models_dir + "my_trained_model.")
 
