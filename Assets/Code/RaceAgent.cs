@@ -27,13 +27,14 @@ public class RaceAgent : Agent
     private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
     private float PreviousSteerDirection;
     private List<GameObject> curveSpheres = new List<GameObject>();
-
+    private List<Vector3> trackPoints;
     private int carDirection = 1;
     //reward parameters
     public float maxVelAngle = 60.0f;
     public float maxSpeed = 0.2f;
     public float curveAngleDriftThreshold = 40.0f;
     public float targetDriftAngle = 45.0f;
+    public List<float[]> curves = new List<float[]>();
 
 
     public float SteerSpeedDegPerSec = 100f;
@@ -56,12 +57,88 @@ public class RaceAgent : Agent
         prevDistanceCovered = 0.0f;
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
         Random.InitState(System.DateTime.Now.Millisecond);
+        trackPoints = new List<Vector3>();
+    }
 
+    private void InitCurves(){
+        float trackLength = pathCreator.path.length;
+        float pointDistance = 0.5f;
+
+        // List<float[]> distanceRangesCurve = new List<float[]>();
+
+        // for(int i = 0; i < trackLength/pointDistance; i++){
+        //     Vector3 point = pathCreator.path.GetPointAtDistance(i*pointDistance);
+        // }
+
+        //remove curve spheres from previous episode
+        for(int i = 0; i < curveSpheres.Count; i++){
+            Destroy(curveSpheres[i]);
+        }
+        curveSpheres = new List<GameObject>();
+
+        int pointCount = Mathf.FloorToInt(trackLength / pointDistance);
+        float threshAngle = 2.5f;
+        curves = new List<float[]>();
+        List<float> tempCurve = new List<float>();
+        for(int i = 0; i < pointCount; i++){
+            Vector3 point = pathCreator.path.GetPointAtDistance(i*pointDistance);
+            //disable sphere collider
+            int prev_index = i-1;
+            if(prev_index < 0){
+                prev_index = pointCount - 1;
+            }
+            int next_index = i+1;
+            if(next_index >= pointCount){
+                next_index = 0;
+            }
+            Vector3 self_tangent = pathCreator.path.GetDirectionAtDistance(i*pointDistance);
+            Vector3 prev_tangent = pathCreator.path.GetDirectionAtDistance(prev_index*pointDistance);
+            Vector3 next_tangent = pathCreator.path.GetDirectionAtDistance(next_index*pointDistance);
+            //angle between prev and next tangent
+            float angle = Vector3.Angle(prev_tangent, next_tangent);
+            if(angle > threshAngle){
+                tempCurve.Add(i*pointDistance);
+            }
+            else{
+                if(tempCurve.Count > 10){
+                    curves.Add(tempCurve.ToArray());
+                    tempCurve = new List<float>();
+                }
+                tempCurve = new List<float>();
+            }
+            angle = 0.0f;
+        }
+
+        //place spheres on every curve
+        foreach(float[] curve in curves){
+            foreach(float distance in curve){
+                Vector3 point = pathCreator.path.GetPointAtDistance(distance);
+                // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                // //disable sphere collider
+                // sphere.GetComponent<SphereCollider>().enabled = false;
+                // sphere.transform.position = point;
+                // sphere.GetComponent<MeshRenderer>().material.color = Color.green;
+                // curveSpheres.Add(sphere);
+            }
+        }
+
+        //print out curve arrays
+        // for(int i = 0; i < curves.Count; i++){
+        //     String line = "";
+        //     foreach(float distance in curves[i]){
+        //         line += distance.ToString() + ", ";
+        //     }
+        //     Debug.Log("curve " + i.ToString() + ": " + line);
+        // }
     }
 
     public override void OnEpisodeBegin()
     {
         racetrackGenerator.generateNew();
+        
+        //find cuvepoints with         
+        // InitCurves();
+
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
@@ -197,72 +274,72 @@ public class RaceAgent : Agent
     }
 
     private float DriftReward() {
-        //check if the agent is on a curve
 
-        float trackLength = pathCreator.path.length;
-        int trackPointsCount = pathCreator.path.NumPoints;
-        float targetPointDistance = 5f;
-        int targetPointCount = Mathf.FloorToInt(trackLength / targetPointDistance);
+        float agentDistance = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
 
-        //choose points on the track to get target point count
-        List<Vector3> trackPoints = new List<Vector3>();
+        float driftScale = 1f;
+        float curveExpandEntry = 4.0f;
+        float curveExpandExit = -4.0f;
+        float smoothingDistance = 4.0f;
 
-        for(int i = 0; i< targetPointCount; i++){
-            float distance = i * targetPointDistance;
-            Vector3 point = pathCreator.path.GetPointAtDistance(distance);
-            trackPoints.Add(point);
-        }
+        bool inCurve = false;
 
-        //get 10 trackPoints ahead of the agent
-        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
-        int currentPointIndex = Mathf.FloorToInt(distanceOnPath / targetPointDistance) - 1*carDirection;
-        if(currentPointIndex < 0){
-            currentPointIndex = trackPoints.Count + currentPointIndex;
-        }
-        // foreach(GameObject curveSphere in curveSpheres){
-        //     Destroy(curveSphere);
-        // }
-        curveSpheres = new List<GameObject>();
-        Vector3[] curvePoints = new Vector3[5];
-        for(int i = 0; i < 5; i ++){
-            int index = currentPointIndex + i*carDirection;
-            if(index >= trackPoints.Count){
-                index = index - trackPoints.Count;
+        //curve points
+        Vector3[] curvePoints = new Vector3[3];
+
+        for(int i = 0; i < curves.Count; i++){
+            if(
+                carDirection == 1 &&
+                agentDistance > curves[i][0] - curveExpandEntry &&
+                agentDistance < curves[i][curves[i].Length-1] + curveExpandExit
+            ){
+                inCurve = true;
+                curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][0]);
+                curvePoints[1] = pathCreator.path.GetPointAtDistance(curves[i][Mathf.FloorToInt(curves[i].Length/2)]);
+                curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][curves[i].Length-1]);
+                //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
+                if(agentDistance > curves[i][0] - curveExpandEntry && agentDistance < curves[i][0] - curveExpandEntry + smoothingDistance){
+                    driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandEntry)) / smoothingDistance);
+                }
+                else if(agentDistance < curves[i][curves[i].Length-1] + curveExpandExit && agentDistance > curves[i][curves[i].Length-1] + curveExpandExit - smoothingDistance){
+                    driftScale = Mathf.Min(1.0f, ((curves[i][curves[i].Length-1] + curveExpandExit) - agentDistance) / smoothingDistance);
+                }
             }
-            else if(index < 0){
-                index = trackPoints.Count + index;
+            else if(
+                carDirection == -1 &&
+                agentDistance < curves[i][curves[i].Length-1] + curveExpandEntry &&
+                agentDistance > curves[i][0] - curveExpandExit
+            ){
+                inCurve = true;
+                curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][curves[i].Length-1]);
+                curvePoints[1] = pathCreator.path.GetPointAtDistance(curves[i][Mathf.FloorToInt(curves[i].Length/2)]);
+                curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][0]);
+                //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
+                if(agentDistance < curves[i][curves[i].Length-1] + curveExpandEntry && agentDistance > curves[i][curves[i].Length-1] + curveExpandEntry - smoothingDistance){
+                    driftScale = Mathf.Min(1.0f, ((curves[i][curves[i].Length-1] + curveExpandEntry) - agentDistance) / smoothingDistance);
+                }
+                else if(agentDistance > curves[i][0] - curveExpandExit && agentDistance < curves[i][0] - curveExpandExit + smoothingDistance){
+                    driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandExit)) / smoothingDistance);
+                }
             }
-            curvePoints[i] = trackPoints[index];
-            // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            // //disable sphere collider
-            // sphere.GetComponent<SphereCollider>().enabled = false;
-            // sphere.transform.position = trackPoints[index];
-            // curveSpheres.Add(sphere);
         }
-        //get the commulative angle between the 5 points
-        float angle = 0.0f;
-        for(int i = 0; i < 3; i++){
-            Vector3 v1 = curvePoints[i+1] - curvePoints[i];
-            Vector3 v2 = curvePoints[i+2] - curvePoints[i+1];
-            angle += Vector3.Angle(v1, v2);
-        }
-        // Debug.Log("Angle: " + angle);
 
-        if(angle < curveAngleDriftThreshold){
+
+        if(!inCurve){
             return 1.0f;
         }
-        Vector3 closestPathTangent = pathCreator.path.GetDirectionAtDistance(distanceOnPath);
 
-        //get curve direction from the curve points (-1 for right, 1 for left)
-        int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[2] - curvePoints[0], curvePoints[4] - curvePoints[2]).y);
+        // //get curve direction from the curve points (-1 for right, 1 for left)
+        int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[1] - curvePoints[0], curvePoints[2] - curvePoints[1]).y);
         float carAngleSign = (int)Math.Sign(imu.SideSlip);
 
-        //convert to -1 or 1
+        // //convert to -1 or 1
         if(carAngleSign != curveAngleSign){
             return -0.01f;
         }
-        float rew = (1f / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip) - 45f) / 25f),(2f*4f))));
-        // float desiredAngleSign 
+        float rew = Math.Min(1f, (((110f)*(1-driftScale) + 1) / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip)-45f) / 25f),(2f*4f)))));
+
+
         return rew;
     }
 
@@ -287,10 +364,10 @@ public class RaceAgent : Agent
             return;
         }
 
-        float driftReward = DriftReward();
+        // float driftReward = DriftReward();
 
         //calculate total reward
-        float reward = driftReward*((speedReward * 7 + angleReward) / 8) + runofPenalty;
+        float reward = 1*((speedReward * 7 + angleReward) / 8) + runofPenalty;
         SetReward(reward);
 
         // rewardEvent(reward, carDirection);
