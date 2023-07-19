@@ -48,7 +48,7 @@ if __name__ == '__main__':
 	# model = PPO.load(config.models_dir + "image_racing_02.zip", env=env, device="cuda")
 
 	callback = SaveOnBestTrainingRewardCallback(check_freq=(config.n_steps*2)+5, log_dir=config.log_dir, save_path=config.models_dir)
-	model.learn(total_timesteps=1000000, callback=callback)
+	model.learn(total_timesteps=5000000, callback=callback)
 	print("Training complete.")
 
 	#save to disk

@@ -24,6 +24,7 @@ public class RaceAgent : Agent
     private float lastRewardVisualizedAtStep;
     private Canvas rewardCanvasPrefab;
     private Canvas distanceCoveredCanvas;
+    TMPro.TextMeshProUGUI totalDistanceText;
     private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
     private float PreviousSteerDirection;
     private List<GameObject> curveSpheres = new List<GameObject>();
@@ -58,6 +59,7 @@ public class RaceAgent : Agent
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
         Random.InitState(System.DateTime.Now.Millisecond);
         trackPoints = new List<Vector3>();
+        totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
     private void InitCurves(){
@@ -228,11 +230,11 @@ public class RaceAgent : Agent
         float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
         angleReward = angleReward * velocityReward;
         // Debug.Log("angle reward: " + angleReward.ToString());
-        if(angle > maxVelAngle && StepCount > 20){
-            rewardEvent(-1.0f, carDirection);
-            EndEpisode();
-            return -1.0f;
-        }
+        // if(angle > maxVelAngle && StepCount > 20){
+        //     rewardEvent(-0.01f, carDirection);
+        //     EndEpisode();
+        //     return -1.0f;
+        // }
         return angleReward;
     }
 
@@ -262,11 +264,9 @@ public class RaceAgent : Agent
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
         // Debug.Log("distance to road center: " + distanceToCenter.ToString());
         //if car runs off the road
-        float centerDistRewardNegative = Mathf.Max((1-Mathf.Pow(distanceToCenter/3, 8))-1, -1.0f);
+        float centerDistRewardNegative = (1-Mathf.Pow(distanceToCenter/3, 4));
         // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
         if(distanceToCenter > 3.0 && StepCount > 20){
-            rewardEvent(-1.0f, carDirection);
-            SetReward(-1.0f);
             EndEpisode();
             return -1.0f;
         }
@@ -355,19 +355,13 @@ public class RaceAgent : Agent
         float speedReward = SpeedReward();
 
         float runofPenalty = RunofPenalty();
-        if(runofPenalty == -1.0f){
-            return;
-        }
 
         float angleReward = VelAngleReward();
-        if(angleReward == -1.0f){
-            return;
-        }
 
         // float driftReward = DriftReward();
 
         //calculate total reward
-        float reward = 1*((speedReward * 7 + angleReward) / 8) + runofPenalty;
+        float reward = runofPenalty*((speedReward * 7 + angleReward) / 8);
         SetReward(reward);
 
         // rewardEvent(reward, carDirection);
@@ -375,10 +369,8 @@ public class RaceAgent : Agent
         cumulativeRewardEvent(GetCumulativeReward());
     }
 
-    private void cumulativeRewardEvent(float distanceCovered){
-        TMPro.TextMeshProUGUI totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        totalDistanceText.text = Math.Round(distanceCovered).ToString();
-
+    private void cumulativeRewardEvent(float reward){
+        totalDistanceText.text = Math.Round(reward).ToString();
     }
 
     private void rewardEvent(float reward, int direction) {
