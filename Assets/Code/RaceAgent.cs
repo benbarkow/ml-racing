@@ -354,7 +354,7 @@ public class RaceAgent : Agent
        
         float speedReward = SpeedReward() * 1.25f - 0.25f;
 
-        // float runofPenalty = RunofPenalty();
+        float runofPenalty = RunofPenalty();
 
         // float angleReward = VelAngleReward();
 
