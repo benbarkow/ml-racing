@@ -352,16 +352,18 @@ public class RaceAgent : Agent
 
         HandleHeuristics(actionBuffers);
        
-        float speedReward = SpeedReward();
+        float speedReward = SpeedReward() * 1.25f - 0.25f;
 
-        float runofPenalty = RunofPenalty();
+        // float runofPenalty = RunofPenalty();
 
-        float angleReward = VelAngleReward();
+        // float angleReward = VelAngleReward();
 
         // float driftReward = DriftReward();
 
         //calculate total reward
-        float reward = runofPenalty*((speedReward * 7 + angleReward) / 8);
+        // float reward = runofPenalty*((speedReward * 7 + angleReward) / 8);
+        float reward = speedReward; 
+
         SetReward(reward);
 
         // rewardEvent(reward, carDirection);
