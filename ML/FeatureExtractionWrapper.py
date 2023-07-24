@@ -6,6 +6,7 @@ from torchvision.models import resnet18, ResNet18_Weights
 from torchvision import transforms
 import torch
 from PIL import Image
+import time 
 
 class FeatureExtractionWrapper(gym.ObservationWrapper):
 	def __init__(self, env):

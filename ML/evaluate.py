@@ -19,7 +19,7 @@ if __name__ == '__main__':
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="linux_build/ml-racing", seed=1, side_channels=[channel])
+	unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	env = FeatureExtractionWrapper(env)
 	env = Monitor(env, config.log_dir)
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 	for i in range(5):
 		while True:
 			action, _states = model.predict(observation)
-			# print("action: ", action)
+			print("action: ", action)
 			observation, reward, done, info = env.step(action)	
 			commulative_reward += reward
 			# print("observation: ", observation)
