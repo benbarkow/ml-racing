@@ -7,8 +7,6 @@ from torchvision import transforms
 import torch
 from PIL import Image
 import time 
-import cv2
-
 
 class ImageWrapper(gym.ObservationWrapper):
 	def __init__(self, env):
