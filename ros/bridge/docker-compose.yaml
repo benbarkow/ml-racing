@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  ros1:
+    build:
+      context: ./
+      dockerfile: ros1_vrpn/Dockerfile
+    network_mode: "host"
+
+
+  bridge:
+    image: ros:foxy-ros1-bridge
+    command: ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+    volumes:
+      - /dev/shm:/dev/shm
+    network_mode: "host"

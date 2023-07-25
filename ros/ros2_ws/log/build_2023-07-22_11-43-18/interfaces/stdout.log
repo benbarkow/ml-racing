@@ -1,0 +1,6 @@
+[  3%] Built target interfaces__cpp
+[  6%] [32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o[0m
+[  9%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o[0m
+[  9%] Built target ament_cmake_python_copy_interfaces
+[ 12%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o[0m

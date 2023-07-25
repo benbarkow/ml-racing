@@ -1,0 +1,7 @@
+[0.091s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=/ros2_ws/install/tracking_sub:/opt/ros/humble /usr/bin/cmake /ros2_ws/src/interfaces -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces
+[0.454s] [0mCMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.[0m
+[0.455s] [0mCMake Error: CMAKE_C_COMPILER not set, after EnableLanguage[0m
+[0.455s] [0mCMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage[0m
+[0.456s] -- Configuring incomplete, errors occurred!
+[0.456s] See also "/ros2_ws/build/interfaces/CMakeFiles/CMakeOutput.log".
+[1.035s] Invoked command in '/ros2_ws/build/interfaces' returned '1': CMAKE_PREFIX_PATH=/ros2_ws/install/tracking_sub:/opt/ros/humble /usr/bin/cmake /ros2_ws/src/interfaces -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces

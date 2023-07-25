@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from interfaces/srv/TrackingData.srv
+// generated code does not contain a copyright notice
+
+
+module interfaces {
+  module srv {
+    struct TrackingData_Request {
+      string x;
+    };
+    struct TrackingData_Response {
+      float speedx;
+
+      float speedy;
+
+      sequence<float> positioncar;
+    };
+  };
+};

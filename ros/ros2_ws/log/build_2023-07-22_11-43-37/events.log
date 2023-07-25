@@ -1,0 +1,73 @@
+[0.000000] (-) TimerEvent: {}
+[0.001825] (interfaces) JobQueued: {'identifier': 'interfaces', 'dependencies': OrderedDict()}
+[0.002618] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.004502] (interfaces) JobStarted: {'identifier': 'interfaces'}
+[0.046472] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.100573] (-) TimerEvent: {}
+[0.102477] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'cmake'}
+[0.105023] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'build'}
+[0.107969] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/interfaces', '--', '-j4', '-l4'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/ros2_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[0.200746] (-) TimerEvent: {}
+[0.301475] (-) TimerEvent: {}
+[0.302480] (interfaces) StdoutLine: {'line': b'[  3%] Built target interfaces__cpp\n'}
+[0.306066] (interfaces) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o\x1b[0m\n'}
+[0.360081] (interfaces) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_interfaces\n'}
+[0.388515] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.h:19\x1b[m\x1b[K,\n'}
+[0.389215] (interfaces) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c:4\x1b[m\x1b[K:\n'}
+[0.389689] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__struct.h:22:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.h: No such file or directory\n'}
+[0.390169] (interfaces) StderrLine: {'line': b'   22 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.h"\x1b[m\x1b[K\n'}
+[0.390937] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.391415] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[0.399193] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_generator_c.dir/build.make:105: CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o] Error 1\n'}
+[0.402745] (-) TimerEvent: {}
+[0.408512] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/interfaces__rosidl_generator_c.dir/all] Error 2\n'}
+[0.409124] (interfaces) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[0.415507] (interfaces) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[0.416197] (interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[0.482745] (interfaces) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[0.502933] (-) TimerEvent: {}
+[0.605084] (-) TimerEvent: {}
+[0.666356] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp:7\x1b[m\x1b[K:\n'}
+[0.667252] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[0.667744] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[0.668126] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.668526] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[0.669221] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp:11\x1b[m\x1b[K,\n'}
+[0.669882] (interfaces) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp:4\x1b[m\x1b[K:\n'}
+[0.670601] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[0.671338] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[0.671841] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.672300] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[0.677016] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/build.make:86: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o] Error 1\n'}
+[0.678567] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/all] Error 2\n'}
+[0.679065] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o] Error 1\n'}
+[0.679443] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/all] Error 2\n'}
+[0.705244] (-) TimerEvent: {}
+[0.789601] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp:12\x1b[m\x1b[K:\n'}
+[0.790178] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[0.790743] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[0.791228] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.791626] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[0.797445] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o] Error 1\n'}
+[0.798108] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/all] Error 2\n'}
+[0.798802] (interfaces) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[0.805386] (-) TimerEvent: {}
+[0.906042] (-) TimerEvent: {}
+[1.006774] (-) TimerEvent: {}
+[1.107458] (-) TimerEvent: {}
+[1.169146] (interfaces) CommandEnded: {'returncode': 2}
+[1.207609] (-) TimerEvent: {}
+[1.308973] (-) TimerEvent: {}
+[1.404627] (interfaces) JobEnded: {'identifier': 'interfaces', 'rc': 2}
+[1.409131] (-) TimerEvent: {}
+[1.509777] (-) TimerEvent: {}
+[1.610678] (-) TimerEvent: {}
+[1.711301] (-) TimerEvent: {}
+[1.812014] (-) TimerEvent: {}
+[1.912631] (-) TimerEvent: {}
+[2.013275] (-) TimerEvent: {}
+[2.113954] (-) TimerEvent: {}
+[2.214653] (-) TimerEvent: {}
+[2.315296] (-) TimerEvent: {}
+[2.389522] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 'SIGINT'}
+[2.401276] (-) EventReactorShutdown: {}

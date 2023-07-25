@@ -1,0 +1,7 @@
+[2.467s] Invoking command in '/ros2_ws/build/tracking_sub': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /ros2_ws/build/tracking_sub/build
+[3.443s] running develop
+[3.447s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[3.447s]   warnings.warn(
+[3.453s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.454s]   warnings.warn(
+[3.912s] Removing /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)

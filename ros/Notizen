@@ -1,0 +1,33 @@
+Geschwindigkeit
+/vesc/commands/motor/unsmoothed_speed
+ 
+
+Lenkung
+/vesc/commands/servo/unsmoothed_position
+Type: std_msgs/Float64
+
+0. sudo docker run -it -v /dev:/dev --net=host --pid=host --device-cgroup-rule='c 166:* rmw' --device-cgroup-rule='c 13:* rmw' ros1-melodic-f1tenth:latest
+startet container für den ganzen auto kram
+Dann noch roslaunch racecar teleop.launch
+
+1. Bridge und dann sudo docker compose up
+2.docker container machen indem dann ros2 läuft und dann in diesen code ordner auf der sd karte die sachen schreiben 
+In den ros2 ordner und dann sudo docker compose run --rm code
+3. dann kann man in dem container ros2 topic list machen und die tracking topics sollten angezeigt werden
+4. Die topics von den kameras
+/vrpn_client_node/BaCar/accel
+/vrpn_client_node/BaCar/pose
+ -> position: x, y, z (point)
+ -> orientation: x,y,z,w (quaternion)
+/vrpn_client_node/BaCar/twist
+
+
+x: ist hier von links nach recht 
+y: ist von hinten nach vorne (unity wäre das z)
+z: ist oben nach unten (unity y)
+
+ben@xps:~$ ssh lukas@192.168.0.104
+
+
+
+

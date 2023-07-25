@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  
+
+  code:
+    build: .
+    volumes:
+      - /dev/shm:/dev/shm
+      - ~/ml-racing/ros/ros2_ws:/ros2_ws
+    network_mode: "host"
+    stdin_open: true
+    tty: true
