@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'camera = car_camera.camera:main',
+            'camera_pub = car_camera.camera:main',
+            'camera_rcv = car_camera.receiver:main',
         ],
     },
 )

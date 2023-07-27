@@ -10,15 +10,13 @@ RUN pip install setuptools==58.2.0
 RUN rosdep init
 RUN rosdep update
 
-COPY ./install /ros2_ws/install
-COPY ./src /ros2_ws/src
-COPY ./log /ros2_ws/log
-COPY ./build /ros2_ws/build
 WORKDIR /ros2_ws
+COPY ./install install
+COPY ./src src
+COPY ./log log
 
 RUN apt-get update
 RUN rosdep install -y --from-paths src
-RUN colcon build --symlink-install
 
 RUN echo "source /ros2_ws/install/setup.bash" >> /root/.bashrc
 
