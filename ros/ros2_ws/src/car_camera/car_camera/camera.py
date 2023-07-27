@@ -8,7 +8,7 @@ class CarCameraPublisher(Node):
 	def __init__(self):
 		super().__init__('car_camera_pub')
 		self.publisher_ = self.create_publisher(Image, 'car_video_frames', 10)
-		timer_period = 0.03  # seconds
+		timer_period = 0.01  # seconds
 		self.timer = self.create_timer(timer_period, self.timer_callback)
 		self.cap = cv2.VideoCapture(0)
 		self.br = CvBridge()

@@ -18,9 +18,9 @@ class CarCameraReciever(Node):
 	def listener_callback(self, data):
 		current_frame = self.br.imgmsg_to_cv2(data)
 		#log image as array
-		self.get_logger().info(str(current_frame))
-		# cv2.imshow("car_camera", current_frame)
-		# cv2.waitKey(1)
+		# self.get_logger().info(str(current_frame))
+		cv2.imshow("car_camera", current_frame)
+		cv2.waitKey(1)
   
 def main(args=None):
   rclpy.init(args=args)
