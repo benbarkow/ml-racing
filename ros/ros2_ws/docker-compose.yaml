@@ -7,7 +7,7 @@ services:
     build: .
     volumes:
       - /dev/shm:/dev/shm
-      - /home/ben/ml-racing/ros/ros2_ws:/ros2_ws
+      - ./ml-racing/ros/ros2_ws:/ros2_ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     environment:
       - DISPLAY=:0
