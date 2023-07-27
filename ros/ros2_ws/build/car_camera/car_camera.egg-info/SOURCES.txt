@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+car_camera/__init__.py
+car_camera/camera.py
+car_camera.egg-info/PKG-INFO
+car_camera.egg-info/SOURCES.txt
+car_camera.egg-info/dependency_links.txt
+car_camera.egg-info/entry_points.txt
+car_camera.egg-info/requires.txt
+car_camera.egg-info/top_level.txt
+car_camera.egg-info/zip-safe
+resource/car_camera

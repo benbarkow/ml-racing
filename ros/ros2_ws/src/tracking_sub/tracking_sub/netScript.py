@@ -12,17 +12,17 @@ from rclpy.node import Node
 
 class Connection(Node):
 
-    def __init__(self):
-        super().__init__('connection')
-        self.clientTracking = self.create_client(TrackingData, 'tracking')
-        while not self.clientTracking.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
-        self.reqTracking = TrackingData.Request()
+	def __init__(self):
+		super().__init__('connection')
+		self.clientTracking = self.create_client(TrackingData, 'tracking')
+		while not self.clientTracking.wait_for_service(timeout_sec=1.0):
+			self.get_logger().info('service not available, waiting again...')
+		self.reqTracking = TrackingData.Request()
 
 		self.clientActions = self.create_client(Action, 'action')
 		while not self.clientActions.wait_for_service(timeout_sec=1.0):
-        	self.get_logger().info('service not available, waiting again...')
-        self.reqActions = Action.Request()
+			self.get_logger().info('service not available, waiting again...')
+		self.reqActions = Action.Request()
 
 		self.onnx_path = "rightNormalized.onnx"
 		self.net = onnx.load(onnx_path)
@@ -33,18 +33,18 @@ class Connection(Node):
 		self.session = ort.InferenceSession(self.net.SerializeToString())
 
 	
-    def get_observations(self):
-        self.future = self.clientTracking.call_async(self.reqTracking)
-        rclpy.spin_until_future_complete(self, self.future)
-        return self.future.result()
+	def get_observations(self):
+		self.future = self.clientTracking.call_async(self.reqTracking)
+		rclpy.spin_until_future_complete(self, self.future)
+		return self.future.result()
 
 	def send_actions(self, steer, speed):
 		self.reqActions.steer = steer
 		self.reqActions.speed = speed
 
 		self.future = self.clientActions.call_async(self.reqTracking)
-        rclpy.spin_until_future_complete(self, self.future)
-        return self.future.result()
+		rclpy.spin_until_future_complete(self, self.future)
+		return self.future.result()
 
 	def run(self):
 		data = self.data_transform() # 	
@@ -57,15 +57,15 @@ class Connection(Node):
 		#Todo get_observations aufrufen und transformieren		
 		pass
 def main(args=None):
-    rclpy.init(args=args)
+	rclpy.init(args=args)
 
-    connection_node = Connection()
+	connection_node = Connection()
 	
 	while(True):
 		connection_node.run()
-    connection_node.destroy_node()
-    rclpy.shutdown()
+	connection_node.destroy_node()
+	rclpy.shutdown()
 
 
 if __name__ == '__main__':
-    main()
+	main()

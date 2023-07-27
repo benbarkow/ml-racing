@@ -1,1 +1,1 @@
-/ros2_ws/install/tracking_sub:/opt/ros/humble
+/ros2_ws/src/install/tracking_sub:/ros2_ws/src/install/interfaces:/ros2_ws/src/install/car_camera:/opt/ros/humble

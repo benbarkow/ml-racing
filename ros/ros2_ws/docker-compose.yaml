@@ -7,7 +7,12 @@ services:
     build: .
     volumes:
       - /dev/shm:/dev/shm
-      - ~/ml-racing/ros/ros2_ws:/ros2_ws
+      - /home/ben/ml-racing/ros/ros2_ws:/ros2_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=:0
     network_mode: "host"
+    devices:
+      - /dev/video0:/dev/video0
     stdin_open: true
     tty: true

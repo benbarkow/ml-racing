@@ -92,7 +92,7 @@ interfaces__rosidl_generator_py_EXTERNAL_OBJECTS =
 
 rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: CMakeFiles/interfaces__rosidl_generator_py.dir/rosidl_generator_py/interfaces/srv/_tracking_data_s.c.o
 rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: CMakeFiles/interfaces__rosidl_generator_py.dir/build.make
-rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: libinterfaces__rosidl_typesupport_c.so
 rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: libinterfaces__rosidl_generator_c.so
 rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so: /opt/ros/humble/lib/librosidl_runtime_c.so

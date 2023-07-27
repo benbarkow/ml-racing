@@ -1,4 +1,1 @@
-srv/TrackingData.idl
-srv/TrackingData.srv
-srv/TrackingData_Request.msg
-srv/TrackingData_Response.msg
+/ros2_ws/build/interfaces/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/interfaces
