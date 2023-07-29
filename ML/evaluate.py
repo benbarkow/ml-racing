@@ -7,6 +7,7 @@ from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
+from ImageWrapper import ImageWrapper
 
 from FeatureExtractionWrapper import FeatureExtractionWrapper
 from ImageWrapper import ImageWrapper
