@@ -9,6 +9,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 
 from FeatureExtractionWrapper import FeatureExtractionWrapper
+from ImageWrapper import ImageWrapper
 
 import config
 
@@ -19,21 +20,20 @@ if __name__ == '__main__':
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="build/ml-racing-project", seed=1, side_channels=[channel])
+	unity_env = UnityEnvironment(file_name="evaluate_win/ml-racing-project", seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
-	env = FeatureExtractionWrapper(env)
+	env = ImageWrapper(env)
 	env = Monitor(env, config.log_dir)
 
 	reward_list = []
 
-	model = PPO.load(config.models_dir + "best_model.zip", env, device="cuda")
+	model = PPO.load(config.models_dir + "archive/image_only_11.zip", env, device="cuda")
 	commulative_reward = 0
 	
 	observation = env.reset()
 	for i in range(5):
 		while True:
 			action, _states = model.predict(observation)
-			print("action: ", action)
 			observation, reward, done, info = env.step(action)	
 			commulative_reward += reward
 			# print("observation: ", observation)
