@@ -12,11 +12,28 @@ public class RacetrackGenerator : MonoBehaviour
 
     private VertexPath path;
     private float lastTime;
+    private Mesh pathMesh;
+    private MeshFilter roadMeshFilter;
+    private MeshCollider pathCollider;
 
+    void Start(){
+        roadMeshFilter = roadMeshHolder.GetComponent<MeshFilter>();
+        pathCollider = roadMeshHolder.GetComponent<MeshCollider>();
+    }
 
     // Start is called before the first frame update
     public void generateNew()
     {
+        //clear shared mesh and mesh filter from mem
+        if (pathCollider.sharedMesh != null)
+        {
+            Destroy(pathCollider.sharedMesh);
+        }
+        if (roadMeshFilter.mesh != null)
+        {
+            Destroy(roadMeshFilter.mesh);
+        }
+
         Random.InitState(System.DateTime.Now.Millisecond);
         List<Vector2> racetrack = GenerateTrack(70.0f, 50.0f, 20, 70.0f, 360.0f, 5.0f);
 
@@ -27,20 +44,15 @@ public class RacetrackGenerator : MonoBehaviour
             racetrack3d.Add(new Vector3(racetrack[i].x, 0.0f, racetrack[i].y));
         }
 
-
         BezierPath bezierPath = new BezierPath(racetrack3d, true, PathSpace.xyz);
         pathCreator.bezierPath = bezierPath;
         pathCreator.TriggerPathUpdate();
 
-        Mesh PathMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
-
         //get mesh collider
-        MeshCollider meshCollider = roadMeshHolder.GetComponent<MeshCollider>();
-        meshCollider.sharedMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
+        pathCollider.sharedMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
 
         //get mesh filter
-        MeshFilter meshFilter = roadMeshHolder.GetComponent<MeshFilter>();
-        meshFilter.mesh = meshCollider.sharedMesh;
+        roadMeshFilter.mesh = pathCollider.sharedMesh;
     }
 
     public List<Vector2> GenerateTrack(float width, float height, int numPoints, float minAngle, float maxAngle, float minDistance)
@@ -284,7 +296,7 @@ public class RacetrackGenerator : MonoBehaviour
             }
 
             Mesh mesh = new Mesh ();
-            mesh.Clear ();
+            mesh.Clear();
             mesh.vertices = verts;
             mesh.uv = uvs;
             mesh.normals = normals;
