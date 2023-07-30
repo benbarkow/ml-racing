@@ -9,6 +9,7 @@ public class RacetrackGenerator : MonoBehaviour
     public PathCreator pathCreator;
     public GameObject roadMeshHolder;
     public PathCreation.Examples.RoadMeshCreator roadMeshCreator;
+    public PathCreator[] racetracks;
 
     private VertexPath path;
     private float lastTime;
@@ -19,6 +20,20 @@ public class RacetrackGenerator : MonoBehaviour
     void Start(){
         roadMeshFilter = roadMeshHolder.GetComponent<MeshFilter>();
         pathCollider = roadMeshHolder.GetComponent<MeshCollider>();
+    }
+
+    public void pickRandom(){
+        int index = Random.Range(0, racetracks.Length);
+
+        BezierPath bezierPath = racetracks[index].bezierPath;
+        pathCreator.bezierPath = bezierPath;
+        pathCreator.TriggerPathUpdate();
+
+        //get mesh collider
+        pathCollider.sharedMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
+
+        //get mesh filter
+        roadMeshFilter.mesh = pathCollider.sharedMesh;
     }
 
     // Start is called before the first frame update

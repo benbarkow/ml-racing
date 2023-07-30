@@ -67,7 +67,7 @@ public class RaceAgent : Agent
         racetrackGenerator.generateNew();
 
         //init curves
-        InitCurves();
+        // InitCurves();
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
@@ -100,6 +100,29 @@ public class RaceAgent : Agent
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
     }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+    }
+
+    private void HandleHeuristics(ActionBuffers actionBuffers) {
+        if (actionBuffers.ContinuousActions[0] == 0f){
+            //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
+            VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
+        }
+        else{
+            VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
+        }
+        if(actionBuffers.ContinuousActions[1] >= 0f){
+            VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+            VPinput.externalBrake = 0f;
+        }
+        else{
+            VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, -1f, 0f, 1f);
+            VPinput.externalThrottle = 0f;
+        }
+    }
+
+    
 
     private float getMostStraightDistOnPath()
     {
@@ -180,7 +203,7 @@ public class RaceAgent : Agent
                 tempCurve.Add(i*pointDistance);
             }
             else{
-                if(tempCurve.Count > 10){
+                if(tempCurve.Count > 20){
                     curves.Add(tempCurve.ToArray());
                     tempCurve = new List<float>();
                 }
@@ -210,21 +233,6 @@ public class RaceAgent : Agent
         //     }
         //     Debug.Log("curve " + i.ToString() + ": " + line);
         // }
-    }
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-    }
-
-    private void HandleHeuristics(ActionBuffers actionBuffers) {
-        if (actionBuffers.ContinuousActions[0] == 0f){
-            //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
-            VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
-        }
-        else{
-            VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
-        }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
     }
 
     
@@ -314,10 +322,10 @@ public class RaceAgent : Agent
         }
 
         //drift reward
-        float driftReward = DriftReward();
+        // float driftReward = DriftReward();
 
         //calculate total reward
-        float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
+        float reward = 1*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
 
         SetReward(reward);
 
@@ -332,7 +340,7 @@ public class RaceAgent : Agent
 
         float driftScale = 1f;
         float curveExpandEntry = 4.0f;
-        float curveExpandExit = -4.0f;
+        float curveExpandExit = -2.0f;
         float smoothingDistance = 4.0f;
 
         bool inCurve = false;
@@ -450,7 +458,7 @@ public class RaceAgent : Agent
         //throttle
         continuousActionsOut[1] = 0;
         if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
-        if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = 0f;
+        if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = -1f;
     }
 
 	private float SmoothSteering(float steerInput) {
