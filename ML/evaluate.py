@@ -21,14 +21,14 @@ if __name__ == '__main__':
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="evaluate_win/ml-racing-project", seed=1, side_channels=[channel])
+	unity_env = UnityEnvironment(file_name="eval_win_breaks/ml-racing-project", seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	env = ImageWrapper(env)
 	env = Monitor(env, config.log_dir)
 
 	reward_list = []
 
-	model = PPO.load(config.models_dir + "archive/image_only_12.zip", env, device="cuda")
+	model = PPO.load(config.models_dir + "best_model.zip", env, device="cuda")
 	commulative_reward = 0
 	
 	observation = env.reset()

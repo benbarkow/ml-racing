@@ -117,8 +117,8 @@ public class RaceAgent : Agent
             VPinput.externalBrake = 0f;
         }
         else{
-            VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, -1f, 0f, 1f);
-            VPinput.externalThrottle = 0f;
+            // VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, -1f, 0f, 1f);
+            // VPinput.externalThrottle = 0f;
         }
     }
 

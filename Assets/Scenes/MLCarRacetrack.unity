@@ -1349,7 +1349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_ObservationStacks
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767865, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: cam
@@ -1357,7 +1357,7 @@ PrefabInstance:
       objectReference: {fileID: 1603832078}
     - target: {fileID: 8201320299388767865, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: MaxStep
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767865, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: pathCreator
