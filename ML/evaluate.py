@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 	reward_list = []
 
-	model = PPO.load(config.models_dir + "archive/image_only_11.zip", env, device="cuda")
+	model = PPO.load(config.models_dir + "archive/image_only_12.zip", env, device="cuda")
 	commulative_reward = 0
 	
 	observation = env.reset()
