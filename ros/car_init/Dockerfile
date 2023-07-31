@@ -11,6 +11,7 @@ RUN sed -i '8,15d' /f1tenth_ws/src/racecar/racecar/launch/includes/racecar-v2/ve
 RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd f1tenth_ws; catkin_make; source devel/setup.bash'
 
 RUN echo "source /f1tenth_ws/devel/setup.bash" >> /root/.bashrc
+RUN export ROS_MASTER_URI=http://192.168.0.104:11311/
 
 WORKDIR /f1tenth_ws
 

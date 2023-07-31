@@ -29,5 +29,23 @@ z: ist oben nach unten (unity y)
 ben@xps:~$ ssh lukas@192.168.0.104
 
 
+Tests:
+
+Bridge auf Pc + Auto topics an:
+	+ auto topics sind ros1 auf dem auto vorhanden
+	- kommt nichts ros1 beim pc an
+	- kommt nichts bei der bridge an
+	-> kommt nichts beim pc an (ros2)
+	
+	-> config:
+		/etc/hosts + 192.168.0.104	JetsonNano					On PC
+		docker-compose.yml		ROS_MASTER_URI=http://JetsonNano:11311		Bridge on PC
+		
+	
+
+
+	
+
+
 
 
