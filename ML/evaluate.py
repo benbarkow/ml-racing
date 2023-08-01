@@ -21,7 +21,7 @@ if __name__ == '__main__':
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="eval_win_breaks/ml-racing-project", seed=1, side_channels=[channel])
+	unity_env = UnityEnvironment(file_name="stack_build/ml-racing-project", seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	env = ImageWrapper(env)
 	env = Monitor(env, config.log_dir)
