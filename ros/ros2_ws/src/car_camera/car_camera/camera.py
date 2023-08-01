@@ -16,7 +16,7 @@ class CarCameraPublisher(Node):
 	def timer_callback(self):
 		ret, frame = self.cap.read()
 		#resize image to 320x240
-		frame = cv2.resize(frame, (320, 240))
+		frame = cv2.resize(frame, (80, 60))
 		if ret == True:
 			self.publisher_.publish(self.br.cv2_to_imgmsg(frame))
 		else:

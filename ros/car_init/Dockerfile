@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install ros-melodic-driver-base ros-melodic-tf lib
 
 RUN git clone -b melodic https://github.com/f1tenth/f1tenth_system f1tenth_ws/src && cd f1tenth_ws && find . -name “*.py” -exec chmod +x {} \;
 
-RUN sed -i 's/servo_min: 0.15/servo_min: 0.05/g' /f1tenth_ws/src/racecar/racecar/config/racecar-v2/vesc.yaml && sed -i 's/servo_max: 0.85/servo_max: 0.75/g' /f1tenth_ws/src/racecar/racecar/config/racecar-v2/vesc.yaml
+RUN sed -i 's/servo_min: 0.15/servo_min: 0.2/g' /f1tenth_ws/src/racecar/racecar/config/racecar-v2/vesc.yaml && sed -i 's/servo_max: 0.85/servo_max: 0.7/g' /f1tenth_ws/src/racecar/racecar/config/racecar-v2/vesc.yaml
 
 RUN sed -i '8,15d' /f1tenth_ws/src/racecar/racecar/launch/includes/racecar-v2/vesc.launch.xml
 
@@ -12,6 +12,7 @@ RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd f1tenth_ws; catkin_make; sou
 
 RUN echo "source /f1tenth_ws/devel/setup.bash" >> /root/.bashrc
 RUN echo "ROS_MASTER_URI=http://192.168.0.104:11311/" >> /root/.bashrc
+RUN echo "ROS_IP=192.168.0.104" >> /root/.bashrc
 
 WORKDIR /f1tenth_ws
 
