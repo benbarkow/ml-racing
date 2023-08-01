@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
 		'listener=tracking_sub.subscriber:main',
 		'speed_pub=tracking_sub.publisher:main',
+        'servo_test=tracking_sub.test_servo:main',
         ],
     },
 )
