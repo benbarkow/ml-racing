@@ -47,10 +47,10 @@ if __name__ == '__main__':
 	model = PPO('MultiInputPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 	#model = PPO(config.models_dir + "archive/only_speed.zip", env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
-	# model = PPO.load(config.models_dir + "archive/only_speed.zip", env=env, device="cuda")
+	#model = PPO.load(config.models_dir + "archive/stack.zip", env=env, device="cuda")
 
 	callback = SaveOnBestTrainingRewardCallback(check_freq=(config.n_steps*2)+5, log_dir=config.log_dir, save_path=config.models_dir)
-	model.learn(total_timesteps=20000000, callback=callback)
+	model.learn(total_timesteps=50000000, callback=callback)
 	print("Training complete.")
 
 	#save to disk
