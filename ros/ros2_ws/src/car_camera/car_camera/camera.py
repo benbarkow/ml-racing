@@ -20,11 +20,12 @@ class CarCameraPublisher(Node):
 		#resize image to 320x240
 		frame = cv2.resize(frame, (80, 60))
 		if ret == True:
-			image = cv2.GaussianBlur(frame, (5,5), 0)
+			image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+			# image = cv2.GaussianBlur(frame, (5,5), 0)
 			#apply threshold
-			_, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
+			# _, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
 			#convert to grayscale
-			image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+			# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 			#resize
 			image = cv2.resize(image, (80,60))
 			#convert to float32
