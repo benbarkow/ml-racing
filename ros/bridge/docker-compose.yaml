@@ -5,6 +5,9 @@ services:
     build:
       context: ./
       dockerfile: ros1_vrpn/Dockerfile
+    environment:
+      - ROS_MASTER_URI=http://192.168.0.104:11311/
+      - ROS_IP=192.168.0.102
     network_mode: "host"
 
 
@@ -13,6 +16,7 @@ services:
     command: ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
     environment:
       - ROS_MASTER_URI=http://192.168.0.104:11311/
+      - ROS_IP=192.168.0.102
     volumes:
       - /dev/shm:/dev/shm
     network_mode: "host"
