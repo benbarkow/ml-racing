@@ -365,6 +365,12 @@ public class RaceAgent : Agent
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         HandleHeuristics(actionBuffers);
+
+        if(Mathf.Abs(imu.SideSlip)-45f > 40f){
+            SetReward(-1.0f);
+            EndEpisode();
+            return;
+        }
        
         float speedReward = SpeedReward();
 
@@ -386,7 +392,8 @@ public class RaceAgent : Agent
         float driftReward = DriftReward();
 
         //calculate total reward
-        float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
+        // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
+        float reward = (7*driftReward + 3*speedReward)/10;
 
         SetReward(reward);
 
