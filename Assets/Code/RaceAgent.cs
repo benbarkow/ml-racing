@@ -126,7 +126,7 @@ public class RaceAgent : Agent
         else{
             VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], -1f, 1f, 0f, 1f);
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
     }
 
     
@@ -531,7 +531,7 @@ public class RaceAgent : Agent
         if( Input.GetKey(KeyCode.A) ) continuousActionsOut[0] = -1f;
         
         //throttle
-        continuousActionsOut[1] = -1.0f;
+        continuousActionsOut[1] = 0.0f;
         if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
         // if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = -1f;
     }
