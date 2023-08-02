@@ -409,57 +409,59 @@ public class RaceAgent : Agent
         //curve points
         Vector3[] curvePoints = new Vector3[3];
 
-        for(int i = 0; i < curves.Count; i++){
-            if(
-                carDirection == 1 &&
-                agentDistance > curves[i][0] - curveExpandEntry &&
-                agentDistance < curves[i][1] + curveExpandExit
-            ){
-                inCurve = true;
-                curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][0]);
-                float inBetweenDist = curves[i][0] + (curves[i][1] - curves[i][0]) / 2;
-                if(curves[i][0] > curves[i][1]){
-                    inBetweenDist = curves[i][0] + pathCreator.path.length - curves[i][1] + (curves[i][1] - curves[i][0]) / 2;
-                }
-                if(inBetweenDist > pathCreator.path.length){
-                    inBetweenDist = inBetweenDist - pathCreator.path.length;
-                }
-                curvePoints[1] = pathCreator.path.GetPointAtDistance(inBetweenDist);
-                curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][1]);
-                //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
-                if(agentDistance > curves[i][0] - curveExpandEntry && agentDistance < curves[i][0] - curveExpandEntry + smoothingDistance){
-                    driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandEntry)) / smoothingDistance);
-                }
-                else if(agentDistance < curves[i][1] + curveExpandExit && agentDistance > curves[i][1] + curveExpandExit - smoothingDistance){
-                    driftScale = Mathf.Min(1.0f, ((curves[i][1] + curveExpandExit) - agentDistance) / smoothingDistance);
-                }
-            }
-            else if(
-                carDirection == -1 &&
-                agentDistance < curves[i][1] + curveExpandEntry &&
-                agentDistance > curves[i][0] - curveExpandExit
-            ){
-                inCurve = true;
-                curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][1]);
-                float inBetweenDist = curves[i][0] + (curves[i][1] - curves[i][0]) / 2;
-                if(curves[i][0] > curves[i][1]){
-                    inBetweenDist = curves[i][0] + pathCreator.path.length - curves[i][1] + (curves[i][1] - curves[i][0]) / 2;
-                }
-                if(inBetweenDist > pathCreator.path.length){
-                    inBetweenDist = inBetweenDist - pathCreator.path.length;
-                }
-                curvePoints[1] = pathCreator.path.GetPointAtDistance(inBetweenDist);
-                curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][0]);
-                //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
-                if(agentDistance < curves[i][1] + curveExpandEntry && agentDistance > curves[i][1] + curveExpandEntry - smoothingDistance){
-                    driftScale = Mathf.Min(1.0f, ((curves[i][1] + curveExpandEntry) - agentDistance) / smoothingDistance);
-                }
-                else if(agentDistance > curves[i][0] - curveExpandExit && agentDistance < curves[i][0] - curveExpandExit + smoothingDistance){
-                    driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandExit)) / smoothingDistance);
-                }
-            }
-        }
 
+        // for(int i = 0; i < curves.Count; i++){
+        //     if(
+        //         carDirection == 1 &&
+        //         agentDistance > curves[i][0] - curveExpandEntry &&
+        //         agentDistance < curves[i][1] + curveExpandExit
+        //     ){
+        //         inCurve = true;
+        //         curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][0]);
+        //         float inBetweenDist = curves[i][0] + (curves[i][1] - curves[i][0]) / 2;
+        //         if(curves[i][0] > curves[i][1]){
+        //             inBetweenDist = curves[i][0] + pathCreator.path.length - curves[i][1] + (curves[i][1] - curves[i][0]) / 2;
+        //         }
+        //         if(inBetweenDist > pathCreator.path.length){
+        //             inBetweenDist = inBetweenDist - pathCreator.path.length;
+        //         }
+        //         curvePoints[1] = pathCreator.path.GetPointAtDistance(inBetweenDist);
+        //         curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][1]);
+        //         //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
+        //         if(agentDistance > curves[i][0] - curveExpandEntry && agentDistance < curves[i][0] - curveExpandEntry + smoothingDistance){
+        //             driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandEntry)) / smoothingDistance);
+        //         }
+        //         else if(agentDistance < curves[i][1] + curveExpandExit && agentDistance > curves[i][1] + curveExpandExit - smoothingDistance){
+        //             driftScale = Mathf.Min(1.0f, ((curves[i][1] + curveExpandExit) - agentDistance) / smoothingDistance);
+        //         }
+        //     }
+        //     else if(
+        //         carDirection == -1 &&
+        //         agentDistance < curves[i][1] + curveExpandEntry &&
+        //         agentDistance > curves[i][0] - curveExpandExit
+        //     ){
+        //         inCurve = true;
+        //         curvePoints[0] = pathCreator.path.GetPointAtDistance(curves[i][1]);
+        //         float inBetweenDist = curves[i][0] + (curves[i][1] - curves[i][0]) / 2;
+        //         if(curves[i][0] > curves[i][1]){
+        //             inBetweenDist = curves[i][0] + pathCreator.path.length - curves[i][1] + (curves[i][1] - curves[i][0]) / 2;
+        //         }
+        //         if(inBetweenDist > pathCreator.path.length){
+        //             inBetweenDist = inBetweenDist - pathCreator.path.length;
+        //         }
+        //         curvePoints[1] = pathCreator.path.GetPointAtDistance(inBetweenDist);
+        //         curvePoints[2] = pathCreator.path.GetPointAtDistance(curves[i][0]);
+        //         //complute drift scale between 0 and 1 and increases with viewer distance to curve center in smooting distance
+        //         if(agentDistance < curves[i][1] + curveExpandEntry && agentDistance > curves[i][1] + curveExpandEntry - smoothingDistance){
+        //             driftScale = Mathf.Min(1.0f, ((curves[i][1] + curveExpandEntry) - agentDistance) / smoothingDistance);
+        //         }
+        //         else if(agentDistance > curves[i][0] - curveExpandExit && agentDistance < curves[i][0] - curveExpandExit + smoothingDistance){
+        //             driftScale = Mathf.Min(1.0f, (agentDistance - (curves[i][0] - curveExpandExit)) / smoothingDistance);
+        //         }
+        //     }
+        // }
+        inCurve = true;
+        driftScale = 0.8f;
 
         if(!inCurve){
             return 1.0f;
@@ -467,6 +469,7 @@ public class RaceAgent : Agent
 
         // //get curve direction from the curve points (-1 for right, 1 for left)
         int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[1] - curvePoints[0], curvePoints[2] - curvePoints[1]).y);
+        curveAngleSign = carDirection;
         float carAngleSign = (int)Math.Sign(imu.SideSlip);
 
         // //convert to -1 or 1
