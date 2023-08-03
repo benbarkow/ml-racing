@@ -108,14 +108,14 @@ public class RaceAgent : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(imu.LocalVelocity.x / 300f);
-        sensor.AddObservation(imu.LocalVelocity.z / 300f);
+        // sensor.AddObservation(imu.LocalVelocity.x / 300f);
+        // sensor.AddObservation(imu.LocalVelocity.z / 300f);
 
-        sensor.AddObservation(-rb.angularVelocity.y / 10f);
+        // sensor.AddObservation(-rb.angularVelocity.y / 10f);
 
-        sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
+        // sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
 
-        sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
+        // sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
