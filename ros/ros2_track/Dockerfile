@@ -15,6 +15,12 @@ RUN git clone https://github.com/toshi67026/vrpn_client_ros.git && \
       sed -i 's/172.19.9.139/192.168.0.100/g' config/sample.params.yaml
 RUN colcon build && \
       source install/setup.bash
+      
+RUN apt-get update
+RUN apt-get install build-essentials -y
+RUN apt-get install ros-foxy-tf2-tools -y
+RUN apt-get install ros-foxy-tf2-kdl -y
+RUN apt-get install ros-foxy-tf2-geometry-msgs -y
 
 #RUN ./ros_entrypoint.sh
 

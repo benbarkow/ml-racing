@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  ros1:
+  ros2_tracking:
     build:
       context: ./
       dockerfile: ros1_vrpn/Dockerfile
