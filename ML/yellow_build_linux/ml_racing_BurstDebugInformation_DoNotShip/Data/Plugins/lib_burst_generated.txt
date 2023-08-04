@@ -136,6 +136,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.ML-Agents.CommunicatorObjects.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\PathCreator.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.MemoryProfiler.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Barracuda.BurstBLAS.dll
 --assembly-folder=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -322,6 +323,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.ML-Agents.CommunicatorObjects.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\PathCreator.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.MemoryProfiler.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Barracuda.BurstBLAS.dll
 --assembly-folder=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -507,6 +509,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.ML-Agents.CommunicatorObjects.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\PathCreator.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.MemoryProfiler.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Barracuda.BurstBLAS.dll
 --assembly-folder=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -682,6 +685,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.ML-Agents.CommunicatorObjects.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\PathCreator.dll
+--root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.MemoryProfiler.dll
 --root-assembly=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\Unity.Barracuda.BurstBLAS.dll
 --assembly-folder=C:\Users\benba\Documents\uni\ba\ml-racing-2021\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
