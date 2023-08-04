@@ -1,0 +1,27 @@
+[2.352s] Invoking command in '/ros2_ws/src/tracking_sub': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracking_sub build --build-base /ros2_ws/build/tracking_sub/build install --record /ros2_ws/build/tracking_sub/install.log --single-version-externally-managed
+[3.221s] running egg_info
+[3.224s] writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO
+[3.225s] writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt
+[3.225s] writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt
+[3.226s] writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt
+[3.226s] writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt
+[3.233s] reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+[3.237s] writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+[3.237s] running build
+[3.238s] running build_py
+[3.238s] copying tracking_sub/publisher.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+[3.239s] running install
+[3.240s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.240s]   warnings.warn(
+[3.241s] running install_lib
+[3.245s] copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/publisher.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+[3.255s] byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py to publisher.cpython-310.pyc
+[3.255s] running install_data
+[3.256s] running install_egg_info
+[3.259s] removing '/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info' (and everything under it)
+[3.260s] Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info
+[3.264s] running install_scripts
+[3.355s] Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.356s] Installing talker script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.356s] writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'
+[3.477s] Invoked command in '/ros2_ws/src/tracking_sub' returned '0': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracking_sub build --build-base /ros2_ws/build/tracking_sub/build install --record /ros2_ws/build/tracking_sub/install.log --single-version-externally-managed

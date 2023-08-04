@@ -1,0 +1,65 @@
+[0.000000] (-) TimerEvent: {}
+[0.000548] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.002143] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.098938] (-) TimerEvent: {}
+[0.199584] (-) TimerEvent: {}
+[0.300191] (-) TimerEvent: {}
+[0.400866] (-) TimerEvent: {}
+[0.501508] (-) TimerEvent: {}
+[0.602119] (-) TimerEvent: {}
+[0.702763] (-) TimerEvent: {}
+[0.803350] (-) TimerEvent: {}
+[0.903976] (-) TimerEvent: {}
+[1.004698] (-) TimerEvent: {}
+[1.106445] (-) TimerEvent: {}
+[1.207082] (-) TimerEvent: {}
+[1.307713] (-) TimerEvent: {}
+[1.408303] (-) TimerEvent: {}
+[1.508905] (-) TimerEvent: {}
+[1.609687] (-) TimerEvent: {}
+[1.710373] (-) TimerEvent: {}
+[1.811071] (-) TimerEvent: {}
+[1.911737] (-) TimerEvent: {}
+[2.012393] (-) TimerEvent: {}
+[2.113043] (-) TimerEvent: {}
+[2.209750] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/tracking_sub', 'build', '--build-base', '/ros2_ws/build/tracking_sub/build', 'install', '--record', '/ros2_ws/build/tracking_sub/install.log', '--single-version-externally-managed'], 'cwd': '/ros2_ws/src/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.213240] (-) TimerEvent: {}
+[2.313890] (-) TimerEvent: {}
+[2.414625] (-) TimerEvent: {}
+[2.515212] (-) TimerEvent: {}
+[2.615816] (-) TimerEvent: {}
+[2.716498] (-) TimerEvent: {}
+[2.817154] (-) TimerEvent: {}
+[2.918566] (-) TimerEvent: {}
+[3.019224] (-) TimerEvent: {}
+[3.067312] (tracking_sub) StdoutLine: {'line': b'running egg_info\n'}
+[3.070280] (tracking_sub) StdoutLine: {'line': b'writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO\n'}
+[3.071923] (tracking_sub) StdoutLine: {'line': b'writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt\n'}
+[3.072590] (tracking_sub) StdoutLine: {'line': b'writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt\n'}
+[3.073083] (tracking_sub) StdoutLine: {'line': b'writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt\n'}
+[3.073698] (tracking_sub) StdoutLine: {'line': b'writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt\n'}
+[3.079056] (tracking_sub) StdoutLine: {'line': b"reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[3.082630] (tracking_sub) StdoutLine: {'line': b"writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[3.083214] (tracking_sub) StdoutLine: {'line': b'running build\n'}
+[3.083570] (tracking_sub) StdoutLine: {'line': b'running build_py\n'}
+[3.083985] (tracking_sub) StdoutLine: {'line': b'copying tracking_sub/publisher.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub\n'}
+[3.085016] (tracking_sub) StdoutLine: {'line': b'running install\n'}
+[3.085665] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.086154] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.086841] (tracking_sub) StdoutLine: {'line': b'running install_lib\n'}
+[3.089593] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/publisher.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[3.092544] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py to publisher.cpython-310.pyc\n'}
+[3.094684] (tracking_sub) StdoutLine: {'line': b'running install_data\n'}
+[3.096355] (tracking_sub) StdoutLine: {'line': b'running install_egg_info\n'}
+[3.102660] (tracking_sub) StdoutLine: {'line': b"removing '/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[3.103613] (tracking_sub) StdoutLine: {'line': b'Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info\n'}
+[3.107049] (tracking_sub) StdoutLine: {'line': b'running install_scripts\n'}
+[3.119440] (-) TimerEvent: {}
+[3.193297] (tracking_sub) StdoutLine: {'line': b'Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[3.195210] (tracking_sub) StdoutLine: {'line': b'Installing talker script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[3.195670] (tracking_sub) StdoutLine: {'line': b"writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'\n"}
+[3.219610] (-) TimerEvent: {}
+[3.314598] (tracking_sub) CommandEnded: {'returncode': 0}
+[3.321056] (-) TimerEvent: {}
+[3.380280] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 0}
+[3.384304] (-) EventReactorShutdown: {}

@@ -1,0 +1,92 @@
+[0.000000] (-) TimerEvent: {}
+[0.000444] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.000602] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.095218] (-) TimerEvent: {}
+[0.195851] (-) TimerEvent: {}
+[0.296470] (-) TimerEvent: {}
+[0.398547] (-) TimerEvent: {}
+[0.499169] (-) TimerEvent: {}
+[0.599823] (-) TimerEvent: {}
+[0.700474] (-) TimerEvent: {}
+[0.801176] (-) TimerEvent: {}
+[0.901794] (-) TimerEvent: {}
+[1.003629] (-) TimerEvent: {}
+[1.104861] (-) TimerEvent: {}
+[1.205522] (-) TimerEvent: {}
+[1.306184] (-) TimerEvent: {}
+[1.406862] (-) TimerEvent: {}
+[1.507467] (-) TimerEvent: {}
+[1.608139] (-) TimerEvent: {}
+[1.708858] (-) TimerEvent: {}
+[1.809447] (-) TimerEvent: {}
+[1.910066] (-) TimerEvent: {}
+[2.010739] (-) TimerEvent: {}
+[2.111449] (-) TimerEvent: {}
+[2.191221] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--uninstall', '--editable', '--build-directory', '/ros2_ws/build/tracking_sub/build'], 'cwd': '/ros2_ws/build/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.211715] (-) TimerEvent: {}
+[2.312336] (-) TimerEvent: {}
+[2.413061] (-) TimerEvent: {}
+[2.513716] (-) TimerEvent: {}
+[2.614352] (-) TimerEvent: {}
+[2.714957] (-) TimerEvent: {}
+[2.815568] (-) TimerEvent: {}
+[2.916185] (-) TimerEvent: {}
+[3.016912] (-) TimerEvent: {}
+[3.117517] (-) TimerEvent: {}
+[3.125659] (tracking_sub) StdoutLine: {'line': b'running develop\n'}
+[3.126814] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.127291] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.132711] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.133305] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.217731] (-) TimerEvent: {}
+[3.318432] (-) TimerEvent: {}
+[3.419099] (-) TimerEvent: {}
+[3.519751] (-) TimerEvent: {}
+[3.620375] (-) TimerEvent: {}
+[3.670090] (tracking_sub) CommandEnded: {'returncode': 0}
+[3.673386] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/tracking_sub', 'build', '--build-base', '/ros2_ws/build/tracking_sub/build', 'install', '--record', '/ros2_ws/build/tracking_sub/install.log', '--single-version-externally-managed'], 'cwd': '/ros2_ws/src/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[3.720616] (-) TimerEvent: {}
+[3.821333] (-) TimerEvent: {}
+[3.921999] (-) TimerEvent: {}
+[4.022656] (-) TimerEvent: {}
+[4.123303] (-) TimerEvent: {}
+[4.223902] (-) TimerEvent: {}
+[4.324498] (-) TimerEvent: {}
+[4.425273] (-) TimerEvent: {}
+[4.481201] (tracking_sub) StdoutLine: {'line': b'running egg_info\n'}
+[4.483945] (tracking_sub) StdoutLine: {'line': b'writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO\n'}
+[4.484858] (tracking_sub) StdoutLine: {'line': b'writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt\n'}
+[4.485530] (tracking_sub) StdoutLine: {'line': b'writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt\n'}
+[4.486103] (tracking_sub) StdoutLine: {'line': b'writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt\n'}
+[4.486687] (tracking_sub) StdoutLine: {'line': b'writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt\n'}
+[4.493013] (tracking_sub) StdoutLine: {'line': b"reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[4.496833] (tracking_sub) StdoutLine: {'line': b"writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[4.497453] (tracking_sub) StdoutLine: {'line': b'running build\n'}
+[4.497806] (tracking_sub) StdoutLine: {'line': b'running build_py\n'}
+[4.498240] (tracking_sub) StdoutLine: {'line': b'copying tracking_sub/subscriber.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub\n'}
+[4.499082] (tracking_sub) StdoutLine: {'line': b'running install\n'}
+[4.499805] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[4.500214] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[4.500945] (tracking_sub) StdoutLine: {'line': b'running install_lib\n'}
+[4.504084] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/subscriber.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[4.506867] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py to publisher.cpython-310.pyc\n'}
+[4.507678] (tracking_sub) StderrLine: {'line': b'  File "/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py", line 13\n'}
+[4.508092] (tracking_sub) StderrLine: {'line': b'    \tdef send(self,value)\n'}
+[4.508447] (tracking_sub) StderrLine: {'line': b'    \t                    ^\n'}
+[4.508879] (tracking_sub) StderrLine: {'line': b"SyntaxError: expected ':'\n"}
+[4.509275] (tracking_sub) StderrLine: {'line': b'\n'}
+[4.509673] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py to subscriber.cpython-310.pyc\n'}
+[4.510131] (tracking_sub) StdoutLine: {'line': b'running install_data\n'}
+[4.511415] (tracking_sub) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.517725] (tracking_sub) StdoutLine: {'line': b"removing '/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[4.518703] (tracking_sub) StdoutLine: {'line': b'Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info\n'}
+[4.522225] (tracking_sub) StdoutLine: {'line': b'running install_scripts\n'}
+[4.525421] (-) TimerEvent: {}
+[4.607650] (tracking_sub) StdoutLine: {'line': b'Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[4.609201] (tracking_sub) StdoutLine: {'line': b'Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[4.609837] (tracking_sub) StdoutLine: {'line': b"writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'\n"}
+[4.625601] (-) TimerEvent: {}
+[4.726282] (-) TimerEvent: {}
+[4.730148] (tracking_sub) CommandEnded: {'returncode': 0}
+[4.799571] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 0}
+[4.801909] (-) EventReactorShutdown: {}

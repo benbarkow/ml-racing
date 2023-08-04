@@ -1,0 +1,23 @@
+[1.148s] Invoking command in '/ros2_ws/build/cv_basics': PYTHONPATH=/ros2_ws/build/cv_basics/prefix_override:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/cv_basics/build --no-deps install_data
+[1.370s] running develop
+[1.370s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[1.370s]   warnings.warn(
+[1.372s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.372s]   warnings.warn(
+[1.465s] running egg_info
+[1.465s] writing cv_basics.egg-info/PKG-INFO
+[1.465s] writing dependency_links to cv_basics.egg-info/dependency_links.txt
+[1.477s] writing entry points to cv_basics.egg-info/entry_points.txt
+[1.477s] writing requirements to cv_basics.egg-info/requires.txt
+[1.480s] writing top-level names to cv_basics.egg-info/top_level.txt
+[1.486s] reading manifest file 'cv_basics.egg-info/SOURCES.txt'
+[1.487s] writing manifest file 'cv_basics.egg-info/SOURCES.txt'
+[1.491s] running build_ext
+[1.491s] Creating /ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv-basics.egg-link (link to .)
+[1.495s] Installing receiver script to /ros2_ws/install/cv_basics/lib/cv_basics
+[1.496s] Installing webcam script to /ros2_ws/install/cv_basics/lib/cv_basics
+[1.496s] 
+[1.496s] Installed /ros2_ws/build/cv_basics
+[1.496s] running install_data
+[1.496s] copying package.xml -> /ros2_ws/install/cv_basics/share/cv_basics
+[1.529s] Invoked command in '/ros2_ws/build/cv_basics' returned '0': PYTHONPATH=/ros2_ws/build/cv_basics/prefix_override:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/cv_basics/build --no-deps install_data

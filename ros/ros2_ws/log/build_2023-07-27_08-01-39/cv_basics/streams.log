@@ -1,0 +1,18 @@
+[1.192s] Invoking command in '/ros2_ws/build/cv_basics': PYTHONPATH=/ros2_ws/build/cv_basics/prefix_override:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/cv_basics/build --no-deps install_data
+[1.431s] running develop
+[1.533s] running egg_info
+[1.533s] writing cv_basics.egg-info/PKG-INFO
+[1.534s] writing dependency_links to cv_basics.egg-info/dependency_links.txt
+[1.537s] writing entry points to cv_basics.egg-info/entry_points.txt
+[1.538s] writing requirements to cv_basics.egg-info/requires.txt
+[1.539s] writing top-level names to cv_basics.egg-info/top_level.txt
+[1.542s] reading manifest file 'cv_basics.egg-info/SOURCES.txt'
+[1.543s] writing manifest file 'cv_basics.egg-info/SOURCES.txt'
+[1.544s] running build_ext
+[1.545s] Creating /ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv-basics.egg-link (link to .)
+[1.556s] Installing receiver script to /ros2_ws/install/cv_basics/lib/cv_basics
+[1.557s] Installing webcam script to /ros2_ws/install/cv_basics/lib/cv_basics
+[1.557s] 
+[1.557s] Installed /ros2_ws/build/cv_basics
+[1.557s] running install_data
+[1.597s] Invoked command in '/ros2_ws/build/cv_basics' returned '0': PYTHONPATH=/ros2_ws/build/cv_basics/prefix_override:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/cv_basics/build --no-deps install_data

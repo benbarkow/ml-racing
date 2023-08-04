@@ -1,0 +1,6 @@
+[console_scripts]
+pub = cv_basics.pub:main
+receiver = cv_basics.receiver:main
+sub = cv_basics.sub:main
+webcam = cv_basics.webcam:main
+

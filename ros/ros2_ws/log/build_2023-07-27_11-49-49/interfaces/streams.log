@@ -1,0 +1,120 @@
+[0.483s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_camera:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j12 -l12
+[0.923s] [  0%] Built target ament_cmake_python_symlink_interfaces
+[0.924s] [  3%] Built target interfaces__cpp
+[1.014s] [ 12%] Built target interfaces__rosidl_generator_c
+[1.088s] [ 22%] Built target interfaces__rosidl_typesupport_introspection_c
+[1.101s] [ 32%] Built target interfaces__rosidl_typesupport_c
+[1.126s] [ 41%] Built target interfaces__rosidl_typesupport_cpp
+[1.128s] [ 51%] Built target interfaces__rosidl_typesupport_introspection_cpp
+[1.140s] [ 61%] Built target interfaces__rosidl_typesupport_fastrtps_cpp
+[1.141s] [ 70%] Built target interfaces__rosidl_typesupport_fastrtps_c
+[1.144s] running egg_info
+[1.144s] writing interfaces.egg-info/PKG-INFO
+[1.146s] writing dependency_links to interfaces.egg-info/dependency_links.txt
+[1.146s] writing top-level names to interfaces.egg-info/top_level.txt
+[1.163s] reading manifest file 'interfaces.egg-info/SOURCES.txt'
+[1.163s] writing manifest file 'interfaces.egg-info/SOURCES.txt'
+[1.182s] [ 70%] Built target interfaces
+[1.182s] [ 70%] Built target ament_cmake_python_build_interfaces_egg
+[1.242s] [ 74%] Built target interfaces__py
+[1.325s] [ 80%] Built target interfaces__rosidl_generator_py
+[1.397s] [ 87%] Built target interfaces__rosidl_typesupport_fastrtps_c__pyext
+[1.400s] [ 93%] Built target interfaces__rosidl_typesupport_c__pyext
+[1.402s] [100%] Built target interfaces__rosidl_typesupport_introspection_c__pyext
+[1.412s] Invoked command in '/ros2_ws/build/interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_camera:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j12 -l12
+[1.457s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_camera:/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/interfaces
+[1.484s] -- Install configuration: ""
+[1.490s] -- Execute custom install script
+[1.490s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/rosidl_interfaces/interfaces
+[1.490s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_generator_c__visibility_control.h
+[1.490s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__functions.h
+[1.490s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.h
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__type_support.h
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.h
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.sh
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.dsv
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.491s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_c.h
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_c.h
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__builder.hpp
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.hpp
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__traits.hpp
+[1.492s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.hpp
+[1.493s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.493s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp
+[1.493s] -- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_cpp.hpp
+[1.493s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.sh
+[1.494s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.dsv
+[1.494s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[1.494s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.494s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.494s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/__init__.py
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_c.c
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/libinterfaces__rosidl_generator_py.so
+[1.495s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/__init__.py
+[1.496s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data.py
+[1.496s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data_s.c
+[1.497s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.498s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.499s] -- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.499s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.idl
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.srv
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Request.msg
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Response.msg
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/package_run_dependencies/interfaces
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/parent_prefix_path/interfaces
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.sh
+[1.500s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.dsv
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/path.sh
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/path.dsv
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.bash
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.sh
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.zsh
+[1.501s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.dsv
+[1.501s] -- Symlinking: /ros2_ws/install/interfaces/share/interfaces/package.dsv
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/packages/interfaces
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake-extras.cmake
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[1.508s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.509s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.509s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.509s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig.cmake
+[1.509s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig-version.cmake
+[1.509s] -- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/package.xml
+[1.509s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_c.so
+[1.509s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_c.so
+[1.510s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_c.so
+[1.510s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_c.so
+[1.510s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_cpp.so
+[1.510s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_cpp.so
+[1.510s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_cpp.so
+[1.555s] Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces'...
+[1.555s] Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv'...
+[1.559s] -- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_py.so
+[1.560s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport.cmake
+[1.561s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport-noconfig.cmake
+[1.561s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[1.562s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.562s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport.cmake
+[1.563s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.563s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport.cmake
+[1.563s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[1.564s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cppExport.cmake
+[1.565s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.565s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.566s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[1.566s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.567s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport.cmake
+[1.567s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[1.568s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport.cmake
+[1.569s] -- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[1.571s] Invoked command in '/ros2_ws/build/interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_camera:/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/interfaces

@@ -1,0 +1,22 @@
+[2.269s] Invoking command in '/ros2_ws/build/tracking_sub': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/tracking_sub/build --no-deps install_data
+[3.193s] running develop
+[3.194s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[3.195s]   warnings.warn(
+[3.200s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.201s]   warnings.warn(
+[3.630s] running egg_info
+[3.631s] writing tracking_sub.egg-info/PKG-INFO
+[3.631s] writing dependency_links to tracking_sub.egg-info/dependency_links.txt
+[3.632s] writing entry points to tracking_sub.egg-info/entry_points.txt
+[3.632s] writing requirements to tracking_sub.egg-info/requires.txt
+[3.633s] writing top-level names to tracking_sub.egg-info/top_level.txt
+[3.639s] reading manifest file 'tracking_sub.egg-info/SOURCES.txt'
+[3.643s] writing manifest file 'tracking_sub.egg-info/SOURCES.txt'
+[3.649s] running build_ext
+[3.650s] Creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)
+[3.654s] Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.655s] Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.656s] 
+[3.656s] Installed /ros2_ws/build/tracking_sub
+[3.656s] running install_data
+[3.790s] Invoked command in '/ros2_ws/build/tracking_sub' returned '0': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/tracking_sub/build --no-deps install_data

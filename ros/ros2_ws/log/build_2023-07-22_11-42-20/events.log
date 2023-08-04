@@ -1,0 +1,212 @@
+[0.000000] (-) TimerEvent: {}
+[0.000810] (interfaces) JobQueued: {'identifier': 'interfaces', 'dependencies': OrderedDict()}
+[0.001036] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.001191] (interfaces) JobStarted: {'identifier': 'interfaces'}
+[0.047067] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.097756] (-) TimerEvent: {}
+[0.099144] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'cmake'}
+[0.101780] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/interfaces', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/ros2_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[0.159897] (interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.197982] (-) TimerEvent: {}
+[0.298657] (-) TimerEvent: {}
+[0.399359] (-) TimerEvent: {}
+[0.500054] (-) TimerEvent: {}
+[0.600851] (-) TimerEvent: {}
+[0.701583] (-) TimerEvent: {}
+[0.781950] (interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.788805] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.800807] (interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.801794] (-) TimerEvent: {}
+[0.902370] (-) TimerEvent: {}
+[0.922880] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.002634] (-) TimerEvent: {}
+[1.107417] (-) TimerEvent: {}
+[1.210498] (-) TimerEvent: {}
+[1.311187] (-) TimerEvent: {}
+[1.411965] (-) TimerEvent: {}
+[1.512665] (-) TimerEvent: {}
+[1.613444] (-) TimerEvent: {}
+[1.714127] (-) TimerEvent: {}
+[1.814824] (-) TimerEvent: {}
+[1.915496] (-) TimerEvent: {}
+[2.016170] (-) TimerEvent: {}
+[2.115311] (interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.116284] (-) TimerEvent: {}
+[2.216881] (-) TimerEvent: {}
+[2.317611] (-) TimerEvent: {}
+[2.408003] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--uninstall', '--editable', '--build-directory', '/ros2_ws/build/tracking_sub/build'], 'cwd': '/ros2_ws/build/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/ros2_ws/src', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.417777] (-) TimerEvent: {}
+[2.518497] (-) TimerEvent: {}
+[2.619146] (-) TimerEvent: {}
+[2.719867] (-) TimerEvent: {}
+[2.820539] (-) TimerEvent: {}
+[2.872050] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.920757] (-) TimerEvent: {}
+[3.021608] (-) TimerEvent: {}
+[3.122329] (-) TimerEvent: {}
+[3.223013] (-) TimerEvent: {}
+[3.325953] (-) TimerEvent: {}
+[3.426660] (-) TimerEvent: {}
+[3.447305] (tracking_sub) StdoutLine: {'line': b'running develop\n'}
+[3.448492] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.449091] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.454312] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.457420] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.526838] (-) TimerEvent: {}
+[3.627632] (-) TimerEvent: {}
+[3.728359] (-) TimerEvent: {}
+[3.775161] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.828523] (-) TimerEvent: {}
+[3.848831] (interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.6", minimum required is "3.6") \n'}
+[3.862941] (interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.928718] (-) TimerEvent: {}
+[3.959491] (interfaces) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.6", minimum required is "3.5") \n'}
+[3.960543] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.961157] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.961817] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[4.028956] (-) TimerEvent: {}
+[4.033307] (tracking_sub) CommandEnded: {'returncode': 0}
+[4.035540] (interfaces) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[4.038346] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/tracking_sub', 'build', '--build-base', '/ros2_ws/build/tracking_sub/build', 'install', '--record', '/ros2_ws/build/tracking_sub/install.log', '--single-version-externally-managed'], 'cwd': '/ros2_ws/src/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/ros2_ws/src', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[4.129196] (-) TimerEvent: {}
+[4.167789] (interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.6 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.229349] (-) TimerEvent: {}
+[4.292506] (interfaces) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[4.304314] (interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.310700] (interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.324910] (interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.329493] (-) TimerEvent: {}
+[4.430119] (-) TimerEvent: {}
+[4.445642] (interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[4.455097] (interfaces) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/interfaces\n'}
+[4.476015] (interfaces) CommandEnded: {'returncode': 0}
+[4.482964] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'build'}
+[4.483200] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/interfaces', '--', '-j4', '-l4'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/ros2_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[4.530332] (-) TimerEvent: {}
+[4.629221] (interfaces) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[4.630472] (-) TimerEvent: {}
+[4.666940] (interfaces) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[4.691180] (interfaces) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_interfaces\n'}
+[4.730668] (-) TimerEvent: {}
+[4.831539] (-) TimerEvent: {}
+[4.933261] (-) TimerEvent: {}
+[5.000512] (tracking_sub) StdoutLine: {'line': b'running egg_info\n'}
+[5.004911] (tracking_sub) StdoutLine: {'line': b'writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO\n'}
+[5.006927] (tracking_sub) StdoutLine: {'line': b'writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt\n'}
+[5.008586] (tracking_sub) StdoutLine: {'line': b'writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt\n'}
+[5.010117] (tracking_sub) StdoutLine: {'line': b'writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt\n'}
+[5.011239] (tracking_sub) StdoutLine: {'line': b'writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt\n'}
+[5.020558] (tracking_sub) StdoutLine: {'line': b"reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[5.026543] (tracking_sub) StdoutLine: {'line': b"writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[5.027806] (tracking_sub) StdoutLine: {'line': b'running build\n'}
+[5.028667] (tracking_sub) StdoutLine: {'line': b'running build_py\n'}
+[5.032159] (tracking_sub) StdoutLine: {'line': b'copying tracking_sub/netScript.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub\n'}
+[5.033394] (-) TimerEvent: {}
+[5.035597] (tracking_sub) StdoutLine: {'line': b'copying tracking_sub/subscriber.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub\n'}
+[5.037659] (tracking_sub) StdoutLine: {'line': b'running install\n'}
+[5.038962] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[5.039473] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[5.040454] (tracking_sub) StdoutLine: {'line': b'running install_lib\n'}
+[5.044134] (tracking_sub) StdoutLine: {'line': b'creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[5.045477] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/publisher.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[5.049356] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/__init__.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[5.050780] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/netScript.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[5.052155] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/subscriber.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[5.056002] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py to publisher.cpython-310.pyc\n'}
+[5.059142] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/__init__.py to __init__.cpython-310.pyc\n'}
+[5.060881] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/netScript.py to netScript.cpython-310.pyc\n'}
+[5.063458] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py to subscriber.cpython-310.pyc\n'}
+[5.066253] (tracking_sub) StderrLine: {'line': b'Sorry: IndentationError: expected an indented block after function definition on line 37 (subscriber.py, line 40)\n'}
+[5.067270] (tracking_sub) StdoutLine: {'line': b'running install_data\n'}
+[5.075836] (tracking_sub) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.085462] (tracking_sub) StdoutLine: {'line': b'Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info\n'}
+[5.093391] (tracking_sub) StdoutLine: {'line': b'running install_scripts\n'}
+[5.133572] (-) TimerEvent: {}
+[5.213681] (tracking_sub) StdoutLine: {'line': b'Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[5.217347] (tracking_sub) StdoutLine: {'line': b'Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[5.218962] (tracking_sub) StdoutLine: {'line': b"writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'\n"}
+[5.233739] (-) TimerEvent: {}
+[5.335951] (-) TimerEvent: {}
+[5.374972] (tracking_sub) CommandEnded: {'returncode': 0}
+[5.436793] (-) TimerEvent: {}
+[5.461968] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 0}
+[5.537076] (-) TimerEvent: {}
+[5.638662] (-) TimerEvent: {}
+[5.739397] (-) TimerEvent: {}
+[5.742387] (interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[5.745329] (interfaces) StdoutLine: {'line': b'creating interfaces.egg-info\n'}
+[5.748124] (interfaces) StdoutLine: {'line': b'writing interfaces.egg-info/PKG-INFO\n'}
+[5.748936] (interfaces) StdoutLine: {'line': b'writing dependency_links to interfaces.egg-info/dependency_links.txt\n'}
+[5.749413] (interfaces) StdoutLine: {'line': b'writing top-level names to interfaces.egg-info/top_level.txt\n'}
+[5.749820] (interfaces) StdoutLine: {'line': b"writing manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[5.755958] (interfaces) StdoutLine: {'line': b"reading manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[5.758354] (interfaces) StdoutLine: {'line': b"writing manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[5.839639] (-) TimerEvent: {}
+[5.895253] (interfaces) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_build_interfaces_egg\n'}
+[5.939809] (-) TimerEvent: {}
+[6.040443] (-) TimerEvent: {}
+[6.141134] (-) TimerEvent: {}
+[6.241981] (-) TimerEvent: {}
+[6.270872] (interfaces) StdoutLine: {'line': b'[  6%] Built target interfaces__cpp\n'}
+[6.305282] (interfaces) StdoutLine: {'line': b'[  9%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.306734] (interfaces) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.308796] (interfaces) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[6.342159] (-) TimerEvent: {}
+[6.443585] (-) TimerEvent: {}
+[6.528001] (interfaces) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o\x1b[0m\n'}
+[6.543764] (-) TimerEvent: {}
+[6.645122] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.h:19\x1b[m\x1b[K,\n'}
+[6.645757] (-) TimerEvent: {}
+[6.647628] (interfaces) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c:4\x1b[m\x1b[K:\n'}
+[6.648212] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__struct.h:22:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.h: No such file or directory\n'}
+[6.648682] (interfaces) StderrLine: {'line': b'   22 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.h"\x1b[m\x1b[K\n'}
+[6.649187] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.649648] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[6.651957] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_generator_c.dir/build.make:105: CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o] Error 1\n'}
+[6.652553] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/interfaces__rosidl_generator_c.dir/all] Error 2\n'}
+[6.653166] (interfaces) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[6.745932] (-) TimerEvent: {}
+[6.847792] (-) TimerEvent: {}
+[6.949820] (-) TimerEvent: {}
+[7.051664] (-) TimerEvent: {}
+[7.152717] (-) TimerEvent: {}
+[7.253718] (-) TimerEvent: {}
+[7.356007] (-) TimerEvent: {}
+[7.457962] (-) TimerEvent: {}
+[7.562110] (-) TimerEvent: {}
+[7.599118] (interfaces) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.662313] (-) TimerEvent: {}
+[7.730085] (interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.762489] (-) TimerEvent: {}
+[7.780409] (interfaces) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.862718] (-) TimerEvent: {}
+[7.903322] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp:7\x1b[m\x1b[K:\n'}
+[7.903941] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[7.904416] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[7.905275] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.905707] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[7.910849] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/build.make:86: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o] Error 1\n'}
+[7.911608] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/all] Error 2\n'}
+[7.962886] (-) TimerEvent: {}
+[7.995515] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp:12\x1b[m\x1b[K:\n'}
+[7.996202] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[7.996708] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[7.997283] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.998859] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[8.001273] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o] Error 1\n'}
+[8.002083] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/all] Error 2\n'}
+[8.046633] (interfaces) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp:11\x1b[m\x1b[K,\n'}
+[8.047258] (interfaces) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp:4\x1b[m\x1b[K:\n'}
+[8.047651] (interfaces) StderrLine: {'line': b'\x1b[01m\x1b[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory\n'}
+[8.048022] (interfaces) StderrLine: {'line': b'   20 | #include \x1b[01;31m\x1b[K"interfaces/msg/detail/string__struct.hpp"\x1b[m\x1b[K\n'}
+[8.048385] (interfaces) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.048730] (interfaces) StderrLine: {'line': b'compilation terminated.\n'}
+[8.054856] (interfaces) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o] Error 1\n'}
+[8.055623] (interfaces) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/all] Error 2\n'}
+[8.056154] (interfaces) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[8.062441] (interfaces) CommandEnded: {'returncode': 2}
+[8.063598] (-) TimerEvent: {}
+[8.164239] (-) TimerEvent: {}
+[8.258974] (interfaces) JobEnded: {'identifier': 'interfaces', 'rc': 2}
+[8.264354] (-) TimerEvent: {}
+[8.270500] (-) EventReactorShutdown: {}
