@@ -25,13 +25,13 @@ class ImageWrapper(gym.ObservationWrapper):
 		image = obs[0] * 255
 		image = image.astype(np.uint8)
 
-		image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-		#gaussian blur
-		image = cv2.GaussianBlur(image, (5,5), 0)
-		#apply threshold
-		_, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
-		#convert to grayscale
-		image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+		# image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+		# #gaussian blur
+		# image = cv2.GaussianBlur(image, (5,5), 0)
+		# #apply threshold
+		# _, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
+		# #convert to grayscale
+		# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		#resize
 		image = cv2.resize(image, (80,60))
 
