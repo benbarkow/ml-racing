@@ -1,0 +1,418 @@
+[0.000000] (-) TimerEvent: {}
+[0.000443] (interfaces) JobQueued: {'identifier': 'interfaces', 'dependencies': OrderedDict()}
+[0.000601] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.000746] (interfaces) JobStarted: {'identifier': 'interfaces'}
+[0.040044] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.086460] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'cmake'}
+[0.089254] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'build'}
+[0.093064] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/interfaces', '--', '-j4', '-l4'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[0.097502] (-) TimerEvent: {}
+[0.198061] (interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.198794] (-) TimerEvent: {}
+[0.299912] (-) TimerEvent: {}
+[0.400643] (-) TimerEvent: {}
+[0.501485] (-) TimerEvent: {}
+[0.602733] (-) TimerEvent: {}
+[0.703378] (-) TimerEvent: {}
+[0.777673] (interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.784701] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.796819] (interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.803515] (-) TimerEvent: {}
+[0.904145] (-) TimerEvent: {}
+[0.915721] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.004341] (-) TimerEvent: {}
+[1.106381] (-) TimerEvent: {}
+[1.207240] (-) TimerEvent: {}
+[1.307985] (-) TimerEvent: {}
+[1.408690] (-) TimerEvent: {}
+[1.509360] (-) TimerEvent: {}
+[1.610117] (-) TimerEvent: {}
+[1.710871] (-) TimerEvent: {}
+[1.811550] (-) TimerEvent: {}
+[1.912447] (-) TimerEvent: {}
+[2.013256] (-) TimerEvent: {}
+[2.054889] (interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.113427] (-) TimerEvent: {}
+[2.214177] (-) TimerEvent: {}
+[2.314905] (-) TimerEvent: {}
+[2.372339] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--uninstall', '--editable', '--build-directory', '/ros2_ws/build/tracking_sub/build'], 'cwd': '/ros2_ws/build/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.415073] (-) TimerEvent: {}
+[2.515724] (-) TimerEvent: {}
+[2.616436] (-) TimerEvent: {}
+[2.717158] (-) TimerEvent: {}
+[2.734804] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.817372] (-) TimerEvent: {}
+[2.918153] (-) TimerEvent: {}
+[3.018859] (-) TimerEvent: {}
+[3.119508] (-) TimerEvent: {}
+[3.220217] (-) TimerEvent: {}
+[3.321609] (-) TimerEvent: {}
+[3.334926] (tracking_sub) StdoutLine: {'line': b'running develop\n'}
+[3.336044] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.336748] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.342143] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.343120] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.421825] (-) TimerEvent: {}
+[3.522724] (-) TimerEvent: {}
+[3.592537] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.622885] (-) TimerEvent: {}
+[3.659762] (interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.723053] (-) TimerEvent: {}
+[3.726913] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.727457] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.727812] (interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[3.769981] (interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.6 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[3.813224] (interfaces) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[3.822765] (interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.823401] (-) TimerEvent: {}
+[3.828278] (interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.836859] (interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.908805] (tracking_sub) CommandEnded: {'returncode': 0}
+[3.912386] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/tracking_sub', 'build', '--build-base', '/ros2_ws/build/tracking_sub/build', 'install', '--record', '/ros2_ws/build/tracking_sub/install.log', '--single-version-externally-managed'], 'cwd': '/ros2_ws/src/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[3.923608] (-) TimerEvent: {}
+[3.964076] (interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[3.977260] (interfaces) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/interfaces\n'}
+[4.023829] (-) TimerEvent: {}
+[4.060615] (interfaces) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[4.092607] (interfaces) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[4.124016] (-) TimerEvent: {}
+[4.129445] (interfaces) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_interfaces\n'}
+[4.224207] (-) TimerEvent: {}
+[4.326318] (-) TimerEvent: {}
+[4.428542] (-) TimerEvent: {}
+[4.530620] (-) TimerEvent: {}
+[4.633212] (-) TimerEvent: {}
+[4.733956] (-) TimerEvent: {}
+[4.835752] (-) TimerEvent: {}
+[4.859168] (tracking_sub) StdoutLine: {'line': b'running egg_info\n'}
+[4.862725] (tracking_sub) StdoutLine: {'line': b'writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO\n'}
+[4.864523] (tracking_sub) StdoutLine: {'line': b'writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt\n'}
+[4.877653] (tracking_sub) StdoutLine: {'line': b'writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt\n'}
+[4.878596] (tracking_sub) StdoutLine: {'line': b'writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt\n'}
+[4.879836] (tracking_sub) StdoutLine: {'line': b'writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt\n'}
+[4.896416] (tracking_sub) StdoutLine: {'line': b"reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[4.900595] (tracking_sub) StdoutLine: {'line': b"writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'\n"}
+[4.909451] (tracking_sub) StdoutLine: {'line': b'running build\n'}
+[4.910105] (tracking_sub) StdoutLine: {'line': b'running build_py\n'}
+[4.911248] (tracking_sub) StdoutLine: {'line': b'copying tracking_sub/subscriber.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub\n'}
+[4.918431] (tracking_sub) StdoutLine: {'line': b'running install\n'}
+[4.919009] (tracking_sub) StdoutLine: {'line': b'running install_lib\n'}
+[4.919422] (tracking_sub) StdoutLine: {'line': b'copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/subscriber.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub\n'}
+[4.919850] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[4.920287] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[4.925131] (tracking_sub) StdoutLine: {'line': b'byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py to subscriber.cpython-310.pyc\n'}
+[4.926774] (tracking_sub) StdoutLine: {'line': b'running install_data\n'}
+[4.938870] (tracking_sub) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.939414] (-) TimerEvent: {}
+[4.939891] (tracking_sub) StdoutLine: {'line': b"removing '/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[4.940616] (tracking_sub) StdoutLine: {'line': b'Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info\n'}
+[4.954449] (tracking_sub) StdoutLine: {'line': b'running install_scripts\n'}
+[5.039616] (-) TimerEvent: {}
+[5.043224] (tracking_sub) StdoutLine: {'line': b'Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[5.045206] (tracking_sub) StdoutLine: {'line': b'Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[5.046987] (tracking_sub) StdoutLine: {'line': b"writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'\n"}
+[5.139805] (-) TimerEvent: {}
+[5.212443] (tracking_sub) CommandEnded: {'returncode': 0}
+[5.232212] (interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[5.234956] (interfaces) StdoutLine: {'line': b'writing interfaces.egg-info/PKG-INFO\n'}
+[5.236007] (interfaces) StdoutLine: {'line': b'writing dependency_links to interfaces.egg-info/dependency_links.txt\n'}
+[5.236852] (interfaces) StdoutLine: {'line': b'writing top-level names to interfaces.egg-info/top_level.txt\n'}
+[5.240146] (-) TimerEvent: {}
+[5.251553] (interfaces) StdoutLine: {'line': b"reading manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[5.253610] (interfaces) StdoutLine: {'line': b"writing manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[5.305342] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 0}
+[5.340367] (-) TimerEvent: {}
+[5.391246] (interfaces) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_build_interfaces_egg\n'}
+[5.440566] (-) TimerEvent: {}
+[5.541356] (-) TimerEvent: {}
+[5.642125] (-) TimerEvent: {}
+[5.647951] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_generator_c\x1b[0m\n'}
+[5.666255] (interfaces) StdoutLine: {'line': b'[  6%] Built target interfaces__cpp\n'}
+[5.684041] (interfaces) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o\x1b[0m\n'}
+[5.703891] (interfaces) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.721826] (interfaces) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[5.722793] (interfaces) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.742443] (-) TimerEvent: {}
+[5.843679] (-) TimerEvent: {}
+[5.944426] (-) TimerEvent: {}
+[6.042850] (interfaces) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libinterfaces__rosidl_generator_c.so\x1b[0m\n'}
+[6.044574] (-) TimerEvent: {}
+[6.145206] (-) TimerEvent: {}
+[6.186219] (interfaces) StdoutLine: {'line': b'[ 22%] Built target interfaces__rosidl_generator_c\n'}
+[6.219947] (interfaces) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.245388] (-) TimerEvent: {}
+[6.346084] (-) TimerEvent: {}
+[6.446757] (-) TimerEvent: {}
+[6.547413] (-) TimerEvent: {}
+[6.648951] (-) TimerEvent: {}
+[6.750154] (-) TimerEvent: {}
+[6.850831] (-) TimerEvent: {}
+[6.951576] (-) TimerEvent: {}
+[6.953944] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[7.007541] (interfaces) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.051741] (-) TimerEvent: {}
+[7.108329] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[7.152109] (-) TimerEvent: {}
+[7.157772] (interfaces) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.231662] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[7.252279] (-) TimerEvent: {}
+[7.281214] (interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[7.352455] (-) TimerEvent: {}
+[7.454724] (-) TimerEvent: {}
+[7.556815] (-) TimerEvent: {}
+[7.658986] (-) TimerEvent: {}
+[7.706884] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[7.757045] (interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/interfaces/srv/detail/tracking_data__type_support_c.cpp.o\x1b[0m\n'}
+[7.759159] (-) TimerEvent: {}
+[7.861402] (-) TimerEvent: {}
+[7.963639] (-) TimerEvent: {}
+[8.064387] (-) TimerEvent: {}
+[8.166073] (-) TimerEvent: {}
+[8.266846] (-) TimerEvent: {}
+[8.304827] (interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32m\x1b[1mLinking CXX shared library libinterfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[8.367046] (-) TimerEvent: {}
+[8.451504] (interfaces) StdoutLine: {'line': b'[ 41%] Built target interfaces__rosidl_typesupport_cpp\n'}
+[8.471465] (-) TimerEvent: {}
+[8.547458] (interfaces) StdoutLine: {'line': b'[ 45%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[8.572310] (-) TimerEvent: {}
+[8.673997] (-) TimerEvent: {}
+[8.774774] (-) TimerEvent: {}
+[8.875515] (-) TimerEvent: {}
+[8.976225] (-) TimerEvent: {}
+[9.078553] (-) TimerEvent: {}
+[9.180906] (-) TimerEvent: {}
+[9.283176] (-) TimerEvent: {}
+[9.352052] (interfaces) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libinterfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[9.383376] (-) TimerEvent: {}
+[9.484447] (-) TimerEvent: {}
+[9.586688] (-) TimerEvent: {}
+[9.656268] (interfaces) StdoutLine: {'line': b'[ 48%] Built target interfaces__rosidl_typesupport_introspection_cpp\n'}
+[9.675648] (interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library libinterfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[9.686912] (-) TimerEvent: {}
+[9.690504] (interfaces) StdoutLine: {'line': b'[ 54%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.787074] (-) TimerEvent: {}
+[9.806511] (interfaces) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library libinterfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[9.887322] (-) TimerEvent: {}
+[9.976019] (interfaces) StdoutLine: {'line': b'[ 58%] Built target interfaces__rosidl_typesupport_fastrtps_c\n'}
+[9.987516] (-) TimerEvent: {}
+[10.089153] (-) TimerEvent: {}
+[10.097394] (interfaces) StdoutLine: {'line': b'[ 58%] Built target interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[10.165177] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[10.189328] (-) TimerEvent: {}
+[10.200013] (interfaces) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/interfaces/srv/detail/tracking_data__type_support.c.o\x1b[0m\n'}
+[10.289496] (-) TimerEvent: {}
+[10.368460] (interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking C shared library libinterfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[10.389662] (-) TimerEvent: {}
+[10.463523] (interfaces) StdoutLine: {'line': b'[ 64%] Built target interfaces__rosidl_typesupport_introspection_c\n'}
+[10.489826] (-) TimerEvent: {}
+[10.590506] (-) TimerEvent: {}
+[10.691139] (-) TimerEvent: {}
+[10.791795] (-) TimerEvent: {}
+[10.870631] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[10.891973] (-) TimerEvent: {}
+[10.903699] (interfaces) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/interfaces/srv/tracking_data__type_support.cpp.o\x1b[0m\n'}
+[10.992142] (-) TimerEvent: {}
+[11.017534] (interfaces) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libinterfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[11.092369] (-) TimerEvent: {}
+[11.141012] (interfaces) StdoutLine: {'line': b'[ 70%] Built target interfaces__rosidl_typesupport_c\n'}
+[11.192537] (-) TimerEvent: {}
+[11.199609] (interfaces) StdoutLine: {'line': b'[ 70%] Built target interfaces\n'}
+[11.260715] (interfaces) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[11.292777] (-) TimerEvent: {}
+[11.393416] (-) TimerEvent: {}
+[11.494153] (-) TimerEvent: {}
+[11.594825] (-) TimerEvent: {}
+[11.695506] (-) TimerEvent: {}
+[11.796192] (-) TimerEvent: {}
+[11.896860] (-) TimerEvent: {}
+[11.997551] (-) TimerEvent: {}
+[12.098239] (-) TimerEvent: {}
+[12.198927] (-) TimerEvent: {}
+[12.299605] (-) TimerEvent: {}
+[12.400288] (-) TimerEvent: {}
+[12.500948] (-) TimerEvent: {}
+[12.601630] (-) TimerEvent: {}
+[12.702385] (-) TimerEvent: {}
+[12.803049] (-) TimerEvent: {}
+[12.903654] (-) TimerEvent: {}
+[13.004298] (-) TimerEvent: {}
+[13.074111] (interfaces) StdoutLine: {'line': b'[ 74%] Built target interfaces__py\n'}
+[13.104254] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_generator_py\x1b[0m\n'}
+[13.104802] (-) TimerEvent: {}
+[13.145495] (interfaces) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_generator_py.dir/rosidl_generator_py/interfaces/srv/_tracking_data_s.c.o\x1b[0m\n'}
+[13.205054] (-) TimerEvent: {}
+[13.305765] (-) TimerEvent: {}
+[13.406518] (-) TimerEvent: {}
+[13.507238] (-) TimerEvent: {}
+[13.607948] (-) TimerEvent: {}
+[13.648184] (interfaces) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/interfaces/libinterfaces__rosidl_generator_py.so\x1b[0m\n'}
+[13.708238] (-) TimerEvent: {}
+[13.778579] (interfaces) StdoutLine: {'line': b'[ 80%] Built target interfaces__rosidl_generator_py\n'}
+[13.808498] (-) TimerEvent: {}
+[13.810738] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[13.811652] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[13.812338] (interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[13.854114] (interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/interfaces/_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[13.854759] (interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/interfaces/_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[13.865228] (interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/interfaces/_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[13.908733] (-) TimerEvent: {}
+[14.009495] (-) TimerEvent: {}
+[14.111703] (-) TimerEvent: {}
+[14.214218] (-) TimerEvent: {}
+[14.268977] (interfaces) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[14.289680] (interfaces) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[14.292877] (interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[14.314443] (-) TimerEvent: {}
+[14.393014] (interfaces) StdoutLine: {'line': b'[100%] Built target interfaces__rosidl_typesupport_c__pyext\n'}
+[14.413066] (interfaces) StdoutLine: {'line': b'[100%] Built target interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[14.413772] (interfaces) StdoutLine: {'line': b'[100%] Built target interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[14.414456] (-) TimerEvent: {}
+[14.449499] (interfaces) CommandEnded: {'returncode': 0}
+[14.514630] (-) TimerEvent: {}
+[14.605092] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'install'}
+[14.614807] (-) TimerEvent: {}
+[14.633178] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/interfaces'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[14.657197] (interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.657965] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/ament_index/resource_index/rosidl_interfaces/interfaces\n'}
+[14.658454] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.658817] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.659174] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.h\n'}
+[14.659667] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.660236] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.h\n'}
+[14.660735] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__type_support.h\n'}
+[14.661323] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__functions.c\n'}
+[14.661893] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__functions.h\n'}
+[14.662355] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg\n'}
+[14.662722] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[14.663219] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.sh\n'}
+[14.663561] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.dsv\n'}
+[14.663883] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_c.so\n'}
+[14.664331] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_c.so" to ""\n'}
+[14.664979] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.665470] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.665945] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.666333] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_c.h\n'}
+[14.666805] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg\n'}
+[14.667144] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[14.667470] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[14.667964] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[14.668628] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.668996] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.669455] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.669850] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_c.h\n'}
+[14.670629] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__type_support.c\n'}
+[14.671165] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg\n'}
+[14.671519] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[14.671838] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_c.so\n'}
+[14.672315] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[14.672948] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_c.so\n'}
+[14.674212] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_c.so" to ""\n'}
+[14.674836] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.675247] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.675633] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.hpp\n'}
+[14.676055] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.676398] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.hpp\n'}
+[14.676820] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__traits.hpp\n'}
+[14.677219] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__builder.hpp\n'}
+[14.677736] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.678107] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.678603] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.678937] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.679326] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/dds_fastrtps\n'}
+[14.679668] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg\n'}
+[14.679996] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[14.680368] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[14.680806] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[14.681304] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces\n'}
+[14.681693] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv\n'}
+[14.682109] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail\n'}
+[14.682571] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.682915] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__type_support.cpp\n'}
+[14.683360] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[14.684793] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[14.685349] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_cpp.so\n'}
+[14.686646] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[14.687118] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.sh\n'}
+[14.687457] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.dsv\n'}
+[14.687902] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info\n'}
+[14.688237] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[14.688608] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[14.688982] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[14.689341] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[14.689804] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces\n'}
+[14.690266] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv\n'}
+[14.690699] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/__init__.py\n'}
+[14.691114] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data.py\n'}
+[14.691511] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data_s.c\n'}
+[14.692026] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/__init__.py\n'}
+[14.692470] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/libinterfaces__rosidl_generator_py.so\n'}
+[14.693005] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.693630] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[14.694168] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[14.694685] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[14.695232] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.695823] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.714996] (-) TimerEvent: {}
+[14.815620] (-) TimerEvent: {}
+[14.838128] (interfaces) StdoutLine: {'line': b"Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces'...\n"}
+[14.838797] (interfaces) StdoutLine: {'line': b"Compiling '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/__init__.py'...\n"}
+[14.839284] (interfaces) StdoutLine: {'line': b"Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv'...\n"}
+[14.839744] (interfaces) StdoutLine: {'line': b"Compiling '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/__init__.py'...\n"}
+[14.840186] (interfaces) StdoutLine: {'line': b"Compiling '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data.py'...\n"}
+[14.864479] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.865862] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.866753] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.868052] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.868820] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[14.870254] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[14.870939] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_py.so\n'}
+[14.872408] (interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_py.so" to ""\n'}
+[14.872919] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.idl\n'}
+[14.873386] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.srv\n'}
+[14.873805] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Request.msg\n'}
+[14.874326] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Response.msg\n'}
+[14.874787] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/ament_index/resource_index/package_run_dependencies/interfaces\n'}
+[14.875322] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/ament_index/resource_index/parent_prefix_path/interfaces\n'}
+[14.875765] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.sh\n'}
+[14.876408] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.dsv\n'}
+[14.876883] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/environment/path.sh\n'}
+[14.877333] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/environment/path.dsv\n'}
+[14.877677] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/local_setup.bash\n'}
+[14.878144] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/local_setup.sh\n'}
+[14.878612] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/local_setup.zsh\n'}
+[14.879074] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/local_setup.dsv\n'}
+[14.879446] (interfaces) StdoutLine: {'line': b'-- Installing: /ros2_ws/install/interfaces/share/interfaces/package.dsv\n'}
+[14.879828] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/ament_index/resource_index/packages/interfaces\n'}
+[14.880205] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport.cmake\n'}
+[14.880618] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[14.881082] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[14.881470] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[14.881870] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[14.882371] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[14.882867] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport.cmake\n'}
+[14.883297] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[14.883668] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cppExport.cmake\n'}
+[14.884086] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[14.884461] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[14.884874] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[14.885283] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[14.885912] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[14.886395] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[14.887030] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport.cmake\n'}
+[14.887434] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[14.887815] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[14.888180] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[14.888529] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[14.888886] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[14.889258] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[14.889615] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[14.890169] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[14.890846] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig.cmake\n'}
+[14.892127] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig-version.cmake\n'}
+[14.903030] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/package.xml\n'}
+[14.904547] (interfaces) CommandEnded: {'returncode': 0}
+[14.917972] (-) TimerEvent: {}
+[15.018719] (-) TimerEvent: {}
+[15.124487] (-) TimerEvent: {}
+[15.178295] (interfaces) JobEnded: {'identifier': 'interfaces', 'rc': 0}
+[15.180713] (-) EventReactorShutdown: {}

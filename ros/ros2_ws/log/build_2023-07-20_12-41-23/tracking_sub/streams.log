@@ -1,0 +1,38 @@
+[2.243s] Invoking command in '/ros2_ws/src/tracking_sub': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracking_sub build --build-base /ros2_ws/build/tracking_sub/build install --record /ros2_ws/build/tracking_sub/install.log --single-version-externally-managed
+[3.068s] running egg_info
+[3.071s] creating ../../build/tracking_sub/tracking_sub.egg-info
+[3.071s] writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO
+[3.072s] writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt
+[3.073s] writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt
+[3.073s] writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt
+[3.074s] writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt
+[3.074s] writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+[3.085s] reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+[3.088s] writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+[3.088s] running build
+[3.089s] running build_py
+[3.090s] creating /ros2_ws/build/tracking_sub/build
+[3.092s] creating /ros2_ws/build/tracking_sub/build/lib
+[3.093s] creating /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+[3.094s] copying tracking_sub/__init__.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+[3.094s] copying tracking_sub/subscriber.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+[3.094s] running install
+[3.095s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[3.095s]   warnings.warn(
+[3.096s] running install_lib
+[3.098s] creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+[3.098s] copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/__init__.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+[3.099s] copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/subscriber.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+[3.101s] byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/__init__.py to __init__.cpython-310.pyc
+[3.102s] byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py to subscriber.cpython-310.pyc
+[3.102s] running install_data
+[3.104s] creating /ros2_ws/install/tracking_sub/share/ament_index
+[3.104s] creating /ros2_ws/install/tracking_sub/share/ament_index/resource_index
+[3.105s] creating /ros2_ws/install/tracking_sub/share/ament_index/resource_index/packages
+[3.105s] copying resource/tracking_sub -> /ros2_ws/install/tracking_sub/share/ament_index/resource_index/packages
+[3.106s] copying package.xml -> /ros2_ws/install/tracking_sub/share/tracking_sub
+[3.106s] running install_egg_info
+[3.112s] Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info
+[3.115s] running install_scripts
+[3.217s] writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'
+[3.323s] Invoked command in '/ros2_ws/src/tracking_sub' returned '0': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tracking_sub build --build-base /ros2_ws/build/tracking_sub/build install --record /ros2_ws/build/tracking_sub/install.log --single-version-externally-managed

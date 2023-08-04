@@ -1,0 +1,16 @@
+/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py", line 13
+    	def send(self,value)
+    	                    ^
+SyntaxError: expected ':'
+
+  File "/ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py", line 10
+    	def quaternion_to_forward_vector(PoseStamped pose):
+    	                                             ^^^^
+SyntaxError: invalid syntax
+

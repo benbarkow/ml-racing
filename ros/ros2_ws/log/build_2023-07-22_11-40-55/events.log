@@ -1,0 +1,119 @@
+[0.000000] (-) TimerEvent: {}
+[0.004160] (interfaces) JobQueued: {'identifier': 'interfaces', 'dependencies': OrderedDict()}
+[0.004402] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.004715] (interfaces) JobStarted: {'identifier': 'interfaces'}
+[0.046514] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.099563] (-) TimerEvent: {}
+[0.100856] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'cmake'}
+[0.103345] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/interfaces', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'lukas-desktop'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/ros2_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/opt/ros/humble')]), 'shell': False}
+[0.199741] (-) TimerEvent: {}
+[0.300376] (-) TimerEvent: {}
+[0.401074] (-) TimerEvent: {}
+[0.502016] (-) TimerEvent: {}
+[0.530121] (interfaces) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.3.0\n'}
+[0.602529] (-) TimerEvent: {}
+[0.704040] (-) TimerEvent: {}
+[0.760725] (interfaces) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.797544] (interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.804205] (-) TimerEvent: {}
+[0.904860] (-) TimerEvent: {}
+[1.006122] (-) TimerEvent: {}
+[1.065345] (interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.102699] (interfaces) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.106366] (interfaces) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.107134] (-) TimerEvent: {}
+[1.109015] (interfaces) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.124844] (interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.207317] (-) TimerEvent: {}
+[1.308002] (-) TimerEvent: {}
+[1.408699] (-) TimerEvent: {}
+[1.415706] (interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.453223] (interfaces) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.454096] (interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.456563] (interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.499127] (interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.508856] (-) TimerEvent: {}
+[1.609508] (-) TimerEvent: {}
+[1.710997] (-) TimerEvent: {}
+[1.811699] (-) TimerEvent: {}
+[1.913862] (-) TimerEvent: {}
+[2.014565] (-) TimerEvent: {}
+[2.115495] (-) TimerEvent: {}
+[2.166922] (interfaces) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter \n'}
+[2.215744] (-) TimerEvent: {}
+[2.316630] (-) TimerEvent: {}
+[2.417383] (-) TimerEvent: {}
+[2.509390] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--uninstall', '--editable', '--build-directory', '/ros2_ws/build/tracking_sub/build'], 'cwd': '/ros2_ws/build/tracking_sub', 'env': {'HOSTNAME': 'lukas-desktop', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/ros2_ws/src', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.517580] (-) TimerEvent: {}
+[2.618446] (-) TimerEvent: {}
+[2.668701] (interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[2.693623] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.718602] (-) TimerEvent: {}
+[2.733471] (interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[2.818764] (-) TimerEvent: {}
+[2.919459] (-) TimerEvent: {}
+[2.964336] (interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.019617] (-) TimerEvent: {}
+[3.120305] (-) TimerEvent: {}
+[3.223080] (-) TimerEvent: {}
+[3.323746] (-) TimerEvent: {}
+[3.424463] (-) TimerEvent: {}
+[3.489410] (tracking_sub) StdoutLine: {'line': b'running develop\n'}
+[3.493759] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.494446] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.500256] (tracking_sub) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.500891] (tracking_sub) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.524631] (-) TimerEvent: {}
+[3.625292] (-) TimerEvent: {}
+[3.694378] (interfaces) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):\n'}
+[3.695139] (interfaces) StderrLine: {'line': b'  execute_process(/usr/bin/python3.10 -m rosidl_adapter --package-name\n'}
+[3.695540] (interfaces) StderrLine: {'line': b'  interfaces --arguments-file\n'}
+[3.696117] (interfaces) StderrLine: {'line': b'  /ros2_ws/build/interfaces/rosidl_adapter__arguments__interfaces.json\n'}
+[3.696510] (interfaces) StderrLine: {'line': b'  --output-dir /ros2_ws/build/interfaces/rosidl_adapter/interfaces\n'}
+[3.696876] (interfaces) StderrLine: {'line': b'  --output-file /ros2_ws/build/interfaces/rosidl_adapter/interfaces.idls)\n'}
+[3.697233] (interfaces) StderrLine: {'line': b'  returned error code 1:\n'}
+[3.697587] (interfaces) StderrLine: {'line': b'\n'}
+[3.698072] (interfaces) StderrLine: {'line': b"  Error processing 'float32 speedX' of 'interfaces/TrackingData_Response':\n"}
+[3.698545] (interfaces) StderrLine: {'line': b"  ''speedX' is an invalid field name.  It should have the pattern\n"}
+[3.698934] (interfaces) StderrLine: {'line': b"  '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$''\n"}
+[3.699295] (interfaces) StderrLine: {'line': b'\n'}
+[3.699658] (interfaces) StderrLine: {'line': b'  Traceback (most recent call last):\n'}
+[3.700021] (interfaces) StderrLine: {'line': b'\n'}
+[3.700378] (interfaces) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main\n'}
+[3.700940] (interfaces) StderrLine: {'line': b'      return _run_code(code, main_globals, None,\n'}
+[3.701369] (interfaces) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 86, in _run_code\n'}
+[3.701959] (interfaces) StderrLine: {'line': b'      exec(code, run_globals)\n'}
+[3.703054] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>\n'}
+[3.703512] (interfaces) StderrLine: {'line': b'      sys.exit(main())\n'}
+[3.703934] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main\n'}
+[3.704338] (interfaces) StderrLine: {'line': b'      abs_idl_file = convert_to_idl(\n'}
+[3.704731] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 24, in convert_to_idl\n'}
+[3.706238] (interfaces) StderrLine: {'line': b'      return convert_srv_to_idl(\n'}
+[3.706751] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/srv/__init__.py", line 28, in convert_srv_to_idl\n'}
+[3.707166] (interfaces) StderrLine: {'line': b'      srv = parse_service_string(package_name, input_file.stem, content)\n'}
+[3.707627] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 863, in parse_service_string\n'}
+[3.708064] (interfaces) StderrLine: {'line': b'      response_message = parse_message_string(\n'}
+[3.708469] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 519, in parse_message_string\n'}
+[3.708867] (interfaces) StderrLine: {'line': b'      fields.append(Field(\n'}
+[3.709246] (interfaces) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 354, in __init__\n'}
+[3.709611] (interfaces) StderrLine: {'line': b'      raise NameError(\n'}
+[3.710060] (interfaces) StderrLine: {'line': b'\n'}
+[3.710771] (interfaces) StderrLine: {'line': b"  NameError: 'speedX' is an invalid field name.  It should have the pattern\n"}
+[3.711357] (interfaces) StderrLine: {'line': b"  '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$'\n"}
+[3.711741] (interfaces) StderrLine: {'line': b'\n'}
+[3.712101] (interfaces) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.713190] (interfaces) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)\n'}
+[3.714063] (interfaces) StderrLine: {'line': b'  CMakeLists.txt:15 (rosidl_generate_interfaces)\n'}
+[3.714811] (interfaces) StderrLine: {'line': b'\n'}
+[3.715809] (interfaces) StderrLine: {'line': b'\x1b[0m\n'}
+[3.716763] (interfaces) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.717291] (interfaces) StdoutLine: {'line': b'See also "/ros2_ws/build/interfaces/CMakeFiles/CMakeOutput.log".\n'}
+[3.718345] (interfaces) CommandEnded: {'returncode': 1}
+[3.725572] (-) TimerEvent: {}
+[3.815957] (interfaces) JobEnded: {'identifier': 'interfaces', 'rc': 1}
+[3.825632] (-) TimerEvent: {}
+[3.926309] (-) TimerEvent: {}
+[3.958926] (tracking_sub) StdoutLine: {'line': b'Removing /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)\n'}
+[4.026573] (-) TimerEvent: {}
+[4.092861] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 'SIGINT'}
+[4.104611] (-) EventReactorShutdown: {}

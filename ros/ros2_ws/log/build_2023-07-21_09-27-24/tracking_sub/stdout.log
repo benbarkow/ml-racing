@@ -1,0 +1,30 @@
+running develop
+Removing /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)
+running egg_info
+writing ../../build/tracking_sub/tracking_sub.egg-info/PKG-INFO
+writing dependency_links to ../../build/tracking_sub/tracking_sub.egg-info/dependency_links.txt
+writing entry points to ../../build/tracking_sub/tracking_sub.egg-info/entry_points.txt
+writing requirements to ../../build/tracking_sub/tracking_sub.egg-info/requires.txt
+writing top-level names to ../../build/tracking_sub/tracking_sub.egg-info/top_level.txt
+reading manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+writing manifest file '../../build/tracking_sub/tracking_sub.egg-info/SOURCES.txt'
+running build
+running build_py
+copying tracking_sub/publisher.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+copying tracking_sub/subscriber.py -> /ros2_ws/build/tracking_sub/build/lib/tracking_sub
+running install
+running install_lib
+creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/publisher.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/__init__.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+copying /ros2_ws/build/tracking_sub/build/lib/tracking_sub/subscriber.py -> /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub
+byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/publisher.py to publisher.cpython-310.pyc
+byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/__init__.py to __init__.cpython-310.pyc
+byte-compiling /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub/subscriber.py to subscriber.cpython-310.pyc
+running install_data
+running install_egg_info
+Copying ../../build/tracking_sub/tracking_sub.egg-info to /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking_sub-0.0.0-py3.10.egg-info
+running install_scripts
+Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+writing list of installed files to '/ros2_ws/build/tracking_sub/install.log'

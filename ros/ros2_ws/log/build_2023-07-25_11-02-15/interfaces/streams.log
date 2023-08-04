@@ -1,0 +1,49 @@
+[0.533s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/src/install/tracking_sub:/ros2_ws/src/install/car_camera:/opt/ros/humble /usr/bin/cmake /ros2_ws/src/interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces
+[0.542s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.649s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.669s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.671s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.674s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.683s] [33mCMake Warning at /opt/ros/humble/share/rcutils/cmake/ament_cmake_export_libraries-extras.cmake:116 (message):
+[0.683s]   Package 'rcutils' exports library 'dl' which couldn't be found
+[0.683s] Call Stack (most recent call first):
+[0.683s]   /opt/ros/humble/share/rcutils/cmake/rcutilsConfig.cmake:41 (include)
+[0.683s]   /opt/ros/humble/share/rosidl_runtime_c/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.683s]   /opt/ros/humble/share/rosidl_runtime_c/cmake/rosidl_runtime_cConfig.cmake:41 (include)
+[0.684s]   /opt/ros/humble/share/rosidl_typesupport_fastrtps_c/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.684s]   /opt/ros/humble/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_cConfig.cmake:41 (include)
+[0.684s]   /opt/ros/humble/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.684s]   /opt/ros/humble/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.684s]   /opt/ros/humble/share/rosidl_default_generators/cmake/rosidl_default_generators-extras.cmake:21 (find_package)
+[0.684s]   /opt/ros/humble/share/rosidl_default_generators/cmake/rosidl_default_generatorsConfig.cmake:41 (include)
+[0.684s]   CMakeLists.txt:10 (find_package)
+[0.684s] 
+[0.684s] [0m
+[0.699s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.945s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.107s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.306s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.324s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.341s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.341s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.341s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+[1.425s] -- Found ament_lint_auto: 0.12.6 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.485s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.487s] -- Added test 'lint_cmake' to check CMake code style
+[1.487s] -- Added test 'xmllint' to check XML markup files
+[1.490s] -- Configuring done
+[1.808s] -- Generating done
+[1.831s] -- Build files have been written to: /ros2_ws/build/interfaces
+[1.836s] Invoked command in '/ros2_ws/build/interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/src/install/tracking_sub:/ros2_ws/src/install/car_camera:/opt/ros/humble /usr/bin/cmake /ros2_ws/src/interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/interfaces
+[1.837s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/src/install/tracking_sub:/ros2_ws/src/install/car_camera:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j12 -l12
+[1.864s] [35m[1mConsolidate compiler generated dependencies of target interfaces__rosidl_generator_c[0m
+[1.870s] failed to create symbolic link '/ros2_ws/build/interfaces/ament_cmake_python/interfaces/interfaces' because existing path cannot be removed: Is a directory
+[1.870s] gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_interfaces.dir/build.make:70: CMakeFiles/ament_cmake_python_symlink_interfaces] Error 1
+[1.870s] [  3%] Built target interfaces__cpp
+[1.871s] gmake[1]: *** [CMakeFiles/Makefile2:421: CMakeFiles/ament_cmake_python_symlink_interfaces.dir/all] Error 2
+[1.871s] gmake[1]: *** Waiting for unfinished jobs....
+[1.871s] [  6%] [32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o[0m
+[1.920s] [  9%] [32m[1mLinking C shared library libinterfaces__rosidl_generator_c.so[0m
+[1.950s] [ 12%] Built target interfaces__rosidl_generator_c
+[1.951s] gmake: *** [Makefile:146: all] Error 2
+[1.953s] Invoked command in '/ros2_ws/build/interfaces' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ros2_ws/src/install/tracking_sub:/ros2_ws/src/install/car_camera:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j12 -l12

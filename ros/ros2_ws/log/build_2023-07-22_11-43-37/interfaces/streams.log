@@ -1,0 +1,40 @@
+[0.106s] Invoking command in '/ros2_ws/build/interfaces': CMAKE_PREFIX_PATH=/ros2_ws/install/tracking_sub:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j4 -l4
+[0.299s] [  3%] Built target interfaces__cpp
+[0.302s] [  6%] [32mBuilding C object CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o[0m
+[0.356s] [  6%] Built target ament_cmake_python_copy_interfaces
+[0.384s] In file included from [01m[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.h:19[m[K,
+[0.385s]                  from [01m[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c:4[m[K:
+[0.385s] [01m[K/ros2_ws/build/interfaces/rosidl_generator_c/interfaces/srv/detail/tracking_data__struct.h:22:10:[m[K [01;31m[Kfatal error: [m[Kinterfaces/msg/detail/string__struct.h: No such file or directory
+[0.386s]    22 | #include [01;31m[K"interfaces/msg/detail/string__struct.h"[m[K
+[0.387s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.387s] compilation terminated.
+[0.398s] gmake[2]: *** [CMakeFiles/interfaces__rosidl_generator_c.dir/build.make:105: CMakeFiles/interfaces__rosidl_generator_c.dir/rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.c.o] Error 1
+[0.404s] gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/interfaces__rosidl_generator_c.dir/all] Error 2
+[0.405s] gmake[1]: *** Waiting for unfinished jobs....
+[0.411s] [  9%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o[0m
+[0.412s] [ 12%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o[0m
+[0.479s] [ 16%] [32mBuilding CXX object CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o[0m
+[0.662s] In file included from [01m[K/ros2_ws/build/interfaces/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp:7[m[K:
+[0.663s] [01m[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:[m[K [01;31m[Kfatal error: [m[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory
+[0.663s]    20 | #include [01;31m[K"interfaces/msg/detail/string__struct.hpp"[m[K
+[0.664s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.664s] compilation terminated.
+[0.665s] In file included from [01m[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp:11[m[K,
+[0.666s]                  from [01m[K/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp:4[m[K:
+[0.666s] [01m[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:[m[K [01;31m[Kfatal error: [m[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory
+[0.667s]    20 | #include [01;31m[K"interfaces/msg/detail/string__struct.hpp"[m[K
+[0.668s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.668s] compilation terminated.
+[0.673s] gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/build.make:86: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/interfaces/srv/tracking_data__type_support.cpp.o] Error 1
+[0.674s] gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/interfaces__rosidl_typesupport_cpp.dir/all] Error 2
+[0.675s] gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/dds_fastrtps/tracking_data__type_support.cpp.o] Error 1
+[0.675s] gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/interfaces__rosidl_typesupport_fastrtps_cpp.dir/all] Error 2
+[0.785s] In file included from [01m[K/ros2_ws/build/interfaces/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp:12[m[K:
+[0.786s] [01m[K/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp:20:10:[m[K [01;31m[Kfatal error: [m[Kinterfaces/msg/detail/string__struct.hpp: No such file or directory
+[0.786s]    20 | #include [01;31m[K"interfaces/msg/detail/string__struct.hpp"[m[K
+[0.787s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.787s] compilation terminated.
+[0.793s] gmake[2]: *** [CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/build.make:91: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/interfaces/srv/detail/tracking_data__type_support.cpp.o] Error 1
+[0.794s] gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/interfaces__rosidl_typesupport_introspection_cpp.dir/all] Error 2
+[0.794s] gmake: *** [Makefile:146: all] Error 2
+[1.165s] Invoked command in '/ros2_ws/build/interfaces' returned '2': CMAKE_PREFIX_PATH=/ros2_ws/install/tracking_sub:/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/interfaces -- -j4 -l4
