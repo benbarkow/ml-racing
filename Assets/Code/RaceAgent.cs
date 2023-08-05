@@ -389,11 +389,12 @@ public class RaceAgent : Agent
         }
 
         //drift reward
-        float driftReward = DriftReward();
+        // float driftReward = DriftReward();
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
-        float reward = (7*driftReward + 3*speedReward)/10;
+        // float reward = (7*driftReward + 3*speedReward)/10;
+        float reward = speedReward;
 
         SetReward(reward);
 
