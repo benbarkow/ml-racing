@@ -8,6 +8,7 @@ import torch
 from PIL import Image
 import time 
 import cv2
+from stable_baselines3.common.preprocessing import is_image_space, is_image_space_channels_first
 
 
 class ImageWrapper(gym.ObservationWrapper):
@@ -16,8 +17,7 @@ class ImageWrapper(gym.ObservationWrapper):
 		# self.observation_space = Box(shape=(60,80,), low=0, high=255, dtype=np.uint8)
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Dict({
-			"image": Box(shape=(60,80), low=0, high=255, dtype=np.uint8),
-			# "vector": Box(shape=(2,), low=-1, high=1, dtype=np.float32)
+			"image": Box(shape=(60,80, 1), low=0, high=255, dtype=np.uint8),
 		})
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
@@ -34,9 +34,10 @@ class ImageWrapper(gym.ObservationWrapper):
 		# #convert to grayscale
 		# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		#resize
-		image = cv2.resize(image, (80,60))
+		# image = cv2.resize(image, (80,60, 1))
 		# #display image
 		# cv2.imshow("image", image)
 		# cv2.waitKey(1)
+		# print(is_image_space(self.observation_space["image"], check_channels=False))
 
 		return {"image": image}
