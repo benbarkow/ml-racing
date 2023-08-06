@@ -8,6 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 from ImageWrapper import ImageWrapper
+import argparse
 
 from FeatureExtractionWrapper import FeatureExtractionWrapper
 from ImageWrapper import ImageWrapper
@@ -16,19 +17,24 @@ import config
 
 from time import sleep
 
+parser = argparse.ArgumentParser(description='Train an RL agent. Can be used to train a new agent or to continue training an existing one.')
+parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
+parser.add_argument('-m', '--model', type=str, default="best_model.zip", help='Model to use')
+argus = parser.parse_args()
+
 if __name__ == '__main__':
 
     #init and start simulation
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=1.0)
-	unity_env = UnityEnvironment(file_name="image_only_build/ml-racing-project", seed=1, side_channels=[channel])
+	unity_env = UnityEnvironment(file_name=argus.executable, seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	env = ImageWrapper(env)
 	env = Monitor(env, config.log_dir)
 
 	reward_list = []
 
-	model = PPO.load(config.models_dir + "archive/image_only_12.zip", env, device="cuda")
+	model = PPO.load(config.models_dir + argus.model, env, device="cuda")
 	commulative_reward = 0
 	
 	observation = env.reset()
