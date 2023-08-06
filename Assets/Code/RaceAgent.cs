@@ -381,12 +381,12 @@ public class RaceAgent : Agent
             return;
         }
 
-        float angleReward = VelAngleReward();
-        if(angleReward == -1.0f){
-            SetReward(-1.0f);
-            EndEpisode();
-            return;
-        }
+        // float angleReward = VelAngleReward();
+        // if(angleReward == -1.0f){
+        //     SetReward(0.0f);
+        //     EndEpisode();
+        //     return;
+        // }
 
         if(speedReward < 0.5f){
             speedReward = 0.0f;
