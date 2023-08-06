@@ -15,11 +15,12 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model.eval()
 		self.model.cuda()
 		self.layer = self.model._modules.get('avgpool')
-		self.observation_space = Box(shape=(514,), low=0, high=1, dtype=np.float64)
+		self.observation_space = Box(shape=(512,), low=0, high=1, dtype=np.float64)
 		self.image_saved = False
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
 		# rescale the image from 0-1 to 0-255 and convert to uint8
+		# obs[0] is grayscale image
 		image = obs[0] * 255
 		image = image.astype(np.uint8)
 		image = Image.fromarray(image, 'RGB')
@@ -46,6 +47,7 @@ class FeatureExtractionWrapper(gym.ObservationWrapper):
 		self.model(t_image)
 		h.remove()
 
-		tensor = np.concatenate((vector, obs[1]), dtype=np.float64)
+		tensor = vector
+		# tensor = np.concatenate((vector, obs[1]), dtype=np.float64)
 		return tensor
 

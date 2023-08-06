@@ -129,7 +129,7 @@ public class RaceAgent : Agent
         else{
             VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0.5f, 1f);
     }
 
     
@@ -176,7 +176,7 @@ public class RaceAgent : Agent
     private void InitCheckpoints(){
         checkpointDistances = new List<float>();
         float trackLength = pathCreator.path.length;
-        float pointDistance = 10.0f;
+        float pointDistance = 5.0f;
         
         for(float i = 0.0f; i < trackLength; i += pointDistance){
             checkpointDistances.Add(i);

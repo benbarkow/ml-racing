@@ -5,6 +5,7 @@ from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 from ImageWrapper import ImageWrapper
+from FeatureExtractionWrapper import FeatureExtractionWrapper
 
 from stable_baselines3.common.vec_env.subproc_vec_env import SubprocVecEnv
 from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
@@ -96,9 +97,9 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
         def _thunk():
             unity_env = UnityEnvironment(env_directory, worker_id=rank, no_graphics=(not render), side_channels=[channel])
             env = UnityToGymWrapper(unity_env, rank, allow_multiple_obs=True)
-            # env = FeatureExtractionWrapper(env)
+            env = FeatureExtractionWrapper(env)
             # env = FeatureExtractionWrapperOnnx(env)
-            env = ImageWrapper(env)
+            # env = ImageWrapper(env)
             env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env
         return _thunk

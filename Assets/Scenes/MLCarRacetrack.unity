@@ -1157,15 +1157,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Width
-      value: 80
+      value: 342
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Height
-      value: 60
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Grayscale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_ObservationStacks
