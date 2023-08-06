@@ -129,7 +129,7 @@ public class RaceAgent : Agent
         else{
             VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0.5f, 1f);
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
     }
 
     
