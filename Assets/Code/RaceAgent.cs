@@ -37,6 +37,7 @@ public class RaceAgent : Agent
     public float targetDriftAngle = 45.0f;
     public List<float[]> curves = new List<float[]>();
     public float curveThreashold = 150.0f;
+    private List<float> checkpointDistances = new List<float>();
 
 
     public float SteerSpeedDegPerSec = 100f;
@@ -73,7 +74,8 @@ public class RaceAgent : Agent
         racetrackGenerator.generateNew();
 
         //init curves
-        InitCurves();
+        // InitCurves();
+        InitCheckpoints();
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
@@ -168,6 +170,24 @@ public class RaceAgent : Agent
             }
         }
         return maxStraight.Item1;
+    }
+
+    private void InitCheckpoints(){
+        checkpointDistances = new List<float>();
+        float trackLength = pathCreator.path.length;
+        float pointDistance = 10.0f;
+        
+        for(float i = 0.0f; i < trackLength; i += pointDistance){
+            checkpointDistances.Add(i);
+            //add sphere at checkpoint
+            // Vector3 point = pathCreator.path.GetPointAtDistance(i);
+            // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // //disable sphere collider
+            // sphere.GetComponent<SphereCollider>().enabled = false;
+            // sphere.transform.position = point;
+            // sphere.GetComponent<MeshRenderer>().material.color = Color.red;
+            // curveSpheres.Add(sphere);
+        }
     }
 
     private void InitCurves(){
@@ -331,6 +351,32 @@ public class RaceAgent : Agent
         return angleReward;
     }
 
+    private float CheckpointReward(){
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+        float reward = 0.0f;
+        for(int i = 0; i < checkpointDistances.Count; i++){
+            if(distanceOnPath > prevDistanceOnPath){
+                if(distanceOnPath > checkpointDistances[i] && prevDistanceOnPath < checkpointDistances[i]){
+                    // Debug.Log("distance on path: " + distanceOnPath.ToString() + " prev distance on path: " + prevDistanceOnPath.ToString() + " checkpoint distance: " + checkpointDistances[i].ToString());
+                    // checkpointDistances.RemoveAt(i);
+                    reward = 1.0f;
+                    break;
+                }
+            }
+            else if(distanceOnPath < prevDistanceOnPath){
+                if(distanceOnPath < checkpointDistances[i] && prevDistanceOnPath > checkpointDistances[i]){
+                    // Debug.Log("distance on path: " + distanceOnPath.ToString() + " prev distance on path: " + prevDistanceOnPath.ToString() + " checkpoint distance: " + checkpointDistances[i].ToString());
+                    // checkpointDistances.RemoveAt(i);
+                    reward = 1.0f;
+                    break;
+                }
+            }
+
+        }
+        prevDistanceOnPath = distanceOnPath;
+        return reward;
+    }
+
     private float SpeedReward(){
         float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
 
@@ -366,13 +412,13 @@ public class RaceAgent : Agent
     {
         HandleHeuristics(actionBuffers);
 
-        if(Mathf.Abs(imu.SideSlip)-45f > 40f){
-            SetReward(0.0f);
-            EndEpisode();
-            return;
-        }
+        // if(Mathf.Abs(imu.SideSlip)-45f > 40f){
+        //     SetReward(0.0f);
+        //     EndEpisode();
+        //     return;
+        // }
        
-        float speedReward = SpeedReward();
+        // float speedReward = SpeedReward();
 
         float runofPenalty = RunofPenalty();
         if(runofPenalty == -1.0f){
@@ -388,9 +434,11 @@ public class RaceAgent : Agent
         //     return;
         // }
 
-        if(speedReward < 0.5f){
-            speedReward = 0.0f;
-        }
+        float checkpointReward = CheckpointReward();
+
+        // if(speedReward < 0.5f){
+        //     speedReward = 0.0f;
+        // }
 
         //drift reward
         // float driftReward = DriftReward();
@@ -398,13 +446,12 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = (7*driftReward + 3*speedReward)/10;
-        float reward = speedReward;
+        float reward = checkpointReward;
 
-
-        SetReward(reward);
-
-        // rewardEvent(reward, carDirection);
+        AddReward(reward);
         rewardEvent(reward, carDirection);
+        // rewardEvent(reward, carDirection);
+        // Debug.Log("reward: " + GetCumulativeReward().ToString());
         cumulativeRewardEvent(GetCumulativeReward());
     }
 
