@@ -81,7 +81,8 @@ public class RaceAgent : Agent
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
 
-        startDistanceOnPath = getMostStraightDistOnPath();
+        // startDistanceOnPath = getMostStraightDistOnPath();
+        startDistanceOnPath = Random.Range(0.0f, pathCreator.path.length);
         prevDistanceOnPath = startDistanceOnPath;
 
         //initPos 
@@ -449,7 +450,7 @@ public class RaceAgent : Agent
         float reward = checkpointReward;
 
         AddReward(reward);
-        rewardEvent(reward, carDirection);
+        rewardEvent(reward, carDirection, reward == 1.0f);
         // rewardEvent(reward, carDirection);
         // Debug.Log("reward: " + GetCumulativeReward().ToString());
         cumulativeRewardEvent(GetCumulativeReward());
@@ -546,7 +547,7 @@ public class RaceAgent : Agent
         totalDistanceText.text = Math.Round(reward).ToString();
     }
 
-    private void rewardEvent(float reward, int direction) {
+    private void rewardEvent(float reward, int direction, bool checkpointPassed) {
         int maxStepsVisible = 100;
         for(int i = 0; i < rewardCanvasList.Count; i++){
             Tuple<int, Canvas> rewardCanvasTuple = rewardCanvasList[i];
@@ -563,7 +564,7 @@ public class RaceAgent : Agent
                 rewardCanvasList[i] = Tuple.Create(stepsLeft-1, canvas);
             }
         }
-        if(StepCount % 50 != 0 && reward != -1.0f){
+        if(StepCount % 50 != 0 && reward != -1.0f && !checkpointPassed){
             return;
         }
         //max of 2 digits after decimal point
