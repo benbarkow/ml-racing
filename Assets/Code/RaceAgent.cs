@@ -367,7 +367,7 @@ public class RaceAgent : Agent
         HandleHeuristics(actionBuffers);
 
         if(Mathf.Abs(imu.SideSlip)-45f > 40f){
-            SetReward(-1.0f);
+            SetReward(0.0f);
             EndEpisode();
             return;
         }
@@ -376,7 +376,7 @@ public class RaceAgent : Agent
 
         float runofPenalty = RunofPenalty();
         if(runofPenalty == -1.0f){
-            SetReward(-1.0f);
+            SetReward(0.0f);
             EndEpisode();
             return;
         }
