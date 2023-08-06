@@ -388,6 +388,10 @@ public class RaceAgent : Agent
             return;
         }
 
+        if(speedReward < 0.5f){
+            speedReward = 0.0f;
+        }
+
         //drift reward
         // float driftReward = DriftReward();
 
@@ -395,6 +399,7 @@ public class RaceAgent : Agent
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = (7*driftReward + 3*speedReward)/10;
         float reward = speedReward;
+
 
         SetReward(reward);
 
