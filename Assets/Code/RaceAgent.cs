@@ -71,7 +71,7 @@ public class RaceAgent : Agent
             Destroy(sphere);
         }
 
-        racetrackGenerator.generateNew();
+        racetrackGenerator.pickRandom();
 
         //init curves
         // InitCurves();
@@ -346,9 +346,9 @@ public class RaceAgent : Agent
         float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
         angleReward = angleReward * velocityReward;
         // Debug.Log("angle reward: " + angleReward.ToString());
-        if(angle > maxVelAngle && StepCount > 20){
-            return -1.0f;
-        }
+        // if(angle > maxVelAngle && StepCount > 20){
+        //     return -1.0f;
+        // }
         return angleReward;
     }
 
@@ -419,7 +419,7 @@ public class RaceAgent : Agent
         //     return;
         // }
        
-        // float speedReward = SpeedReward();
+        float speedReward = SpeedReward();
 
         float runofPenalty = RunofPenalty();
         if(runofPenalty == -1.0f){
@@ -428,14 +428,14 @@ public class RaceAgent : Agent
             return;
         }
 
-        // float angleReward = VelAngleReward();
-        // if(angleReward == -1.0f){
-        //     SetReward(0.0f);
-        //     EndEpisode();
-        //     return;
-        // }
+        float angleReward = VelAngleReward();
+        if(angleReward == -1.0f){
+            SetReward(0.0f);
+            EndEpisode();
+            return;
+        }
 
-        float checkpointReward = CheckpointReward();
+        // float checkpointReward = CheckpointReward();
 
         // if(speedReward < 0.5f){
         //     speedReward = 0.0f;
@@ -446,10 +446,12 @@ public class RaceAgent : Agent
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
+        // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
+        float reward = speedReward * angleReward;
         // float reward = (7*driftReward + 3*speedReward)/10;
-        float reward = checkpointReward;
+        // float reward = checkpointReward;
 
-        AddReward(reward);
+        SetReward(reward);
         rewardEvent(reward, carDirection, reward == 1.0f);
         // rewardEvent(reward, carDirection);
         // Debug.Log("reward: " + GetCumulativeReward().ToString());
