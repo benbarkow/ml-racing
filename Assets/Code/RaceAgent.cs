@@ -401,7 +401,7 @@ public class RaceAgent : Agent
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
         // Debug.Log("distance to road center: " + distanceToCenter.ToString());
         //if car runs off the road
-        float centerDistRewardNegative = (1-Mathf.Pow(distanceToCenter/3, 4));
+        float centerDistRewardNegative = (1-Mathf.Pow(distanceToCenter/1.5f, 2));
         // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
         if(distanceToCenter > 3.0 && StepCount > 20){
             return -1.0f;
@@ -427,6 +427,7 @@ public class RaceAgent : Agent
             EndEpisode();
             return;
         }
+        Debug.Log("run of penalty: " + runofPenalty.ToString());
 
         float angleReward = VelAngleReward();
         if(angleReward == -1.0f){
@@ -447,7 +448,7 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
-        float reward = speedReward * angleReward;
+        float reward = speedReward * runofPenalty;
         // float reward = (7*driftReward + 3*speedReward)/10;
         // float reward = checkpointReward;
 
