@@ -71,7 +71,7 @@ public class RaceAgent : Agent
             Destroy(sphere);
         }
 
-        racetrackGenerator.pickRandom();
+        racetrackGenerator.generateNew();
 
         //init curves
         // InitCurves();
