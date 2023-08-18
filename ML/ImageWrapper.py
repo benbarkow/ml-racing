@@ -56,26 +56,26 @@ class ImageWrapper(gym.ObservationWrapper):
 		# self.observation_space = Box(shape=(60,80,), low=0, high=255, dtype=np.uint8)
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Dict({
-			"image": Box(shape=(256,342, 1), low=0, high=255, dtype=np.uint8),
+			"image": Box(shape=(60,80, 3), low=0, high=255, dtype=np.uint8),
 		})
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
 		#obs[0] is image rgb
 		image = obs[0]
-		#to uint8
-		image = (image * 255).astype(np.uint8)
+		# #to uint8
+		# image = (image * 255).astype(np.uint8)
 
-		thresh = otsu_thresholding(image)
-		canny_img = canny(image)
-		warped, Minv = warp(image)
-		thresh, Minv = warp(thresh)
-		canny_img, Minv = warp(canny_img)
-		kernel = np.ones((15,15), np.uint8)
-		canny_img = cv2.dilate(canny_img, kernel, iterations=1)
-		intersection = cv2.bitwise_and(thresh, canny_img)
-		#print datatype of image
-		#convert to (256, 342, 1)
-		intersection = np.expand_dims(intersection, axis=2)
+		# thresh = otsu_thresholding(image)
+		# canny_img = canny(image)
+		# warped, Minv = warp(image)
+		# thresh, Minv = warp(thresh)
+		# canny_img, Minv = warp(canny_img)
+		# kernel = np.ones((15,15), np.uint8)
+		# canny_img = cv2.dilate(canny_img, kernel, iterations=1)
+		# intersection = cv2.bitwise_and(thresh, canny_img)
+		# #print datatype of image
+		# #convert to (256, 342, 1)
+		# intersection = np.expand_dims(intersection, axis=2)
 
 		#display intersection
 		# cv2.imshow("intersection", intersection)
@@ -95,6 +95,6 @@ class ImageWrapper(gym.ObservationWrapper):
 		# cv2.waitKey(1)
 		# print(is_image_space(self.observation_space["image"], check_channels=False))
 
-		return {"image": intersection}
+		return {"image": image}
 
 	
