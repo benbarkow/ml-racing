@@ -57,11 +57,13 @@ class ImageWrapper(gym.ObservationWrapper):
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Dict({
 			"image": Box(shape=(60,80, 3), low=0, high=255, dtype=np.uint8),
+			"vector": Box(shape=(5,), low=-1, high=1, dtype=np.float32)
 		})
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 	def observation(self, obs):
 		#obs[0] is image rgb
-		image = obs[0]
+		image = obs[0] * 255
+		image = image.astype(np.uint8)
 		# #to uint8
 		# image = (image * 255).astype(np.uint8)
 
@@ -95,6 +97,6 @@ class ImageWrapper(gym.ObservationWrapper):
 		# cv2.waitKey(1)
 		# print(is_image_space(self.observation_space["image"], check_channels=False))
 
-		return {"image": image}
+		return {"image": image, "vector": obs[1]}
 
 	
