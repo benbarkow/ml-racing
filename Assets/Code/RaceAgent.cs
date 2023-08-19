@@ -111,14 +111,14 @@ public class RaceAgent : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        // sensor.AddObservation(imu.LocalVelocity.x / 300f);
-        // sensor.AddObservation(imu.LocalVelocity.z / 300f);
+        sensor.AddObservation(imu.LocalVelocity.x / 300f);
+        sensor.AddObservation(imu.LocalVelocity.z / 300f);
 
-        // sensor.AddObservation(-rb.angularVelocity.y / 10f);
+        sensor.AddObservation(-rb.angularVelocity.y / 10f);
 
-        // sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
+        sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
 
-        // sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
+        sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
@@ -427,7 +427,7 @@ public class RaceAgent : Agent
             EndEpisode();
             return;
         }
-        Debug.Log("run of penalty: " + runofPenalty.ToString());
+        // Debug.Log("run of penalty: " + runofPenalty.ToString());
 
         float angleReward = VelAngleReward();
         if(angleReward == -1.0f){
@@ -448,7 +448,7 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
-        float reward = speedReward * runofPenalty;
+        float reward = speedReward;
         // float reward = (7*driftReward + 3*speedReward)/10;
         // float reward = checkpointReward;
 
@@ -567,7 +567,7 @@ public class RaceAgent : Agent
                 rewardCanvasList[i] = Tuple.Create(stepsLeft-1, canvas);
             }
         }
-        if(StepCount % 50 != 0 && reward != -1.0f && !checkpointPassed){
+        if(StepCount % 50 != 0 && reward != -1.0f){
             return;
         }
         //max of 2 digits after decimal point
