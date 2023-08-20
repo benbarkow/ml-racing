@@ -79,7 +79,7 @@ public class RaceAgent : Agent
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
-        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
+        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, false);
 
         // startDistanceOnPath = getMostStraightDistOnPath();
         startDistanceOnPath = Random.Range(0.0f, pathCreator.path.length);
@@ -106,6 +106,10 @@ public class RaceAgent : Agent
         // this.transform.localPosition = startPosition;
         rb.isKinematic = false;
         imu.rBody.isKinematic = false;
+
+        //start velocity of 20
+        rb.velocity = 0.0f * this.transform.forward;
+        rb.velocity = this.transform.forward * 6.0f;
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
     }
@@ -436,7 +440,7 @@ public class RaceAgent : Agent
             return;
         }
 
-        float steerSpeedReward = SteerSpeedReward();
+        // float steerSpeedReward = SteerSpeedReward();
 
         // float checkpointReward = CheckpointReward();
 
@@ -450,7 +454,8 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
-        float reward = (speedReward*7 + angleReward*3)/10;
+        // float reward = (speedReward*7 + angleReward*3)/10;
+        float reward = speedReward;
         // float reward = (7*driftReward + 3*speedReward)/10;
         // float reward = checkpointReward;
 
