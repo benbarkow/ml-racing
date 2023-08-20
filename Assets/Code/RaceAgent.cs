@@ -26,7 +26,7 @@ public class RaceAgent : Agent
     private Canvas distanceCoveredCanvas;
     TMPro.TextMeshProUGUI totalDistanceText;
     private List<Tuple<int, Canvas>> rewardCanvasList = new List<Tuple<int, Canvas>>();
-    private float PreviousSteerDirection;
+    private float previousSteeringAgle;
     private List<GameObject> curveSpheres = new List<GameObject>();
     private List<Vector3> trackPoints;
     private int carDirection = 1;
@@ -436,6 +436,8 @@ public class RaceAgent : Agent
             return;
         }
 
+        float steerSpeedReward = SteerSpeedReward();
+
         // float checkpointReward = CheckpointReward();
 
         // if(speedReward < 0.5f){
@@ -448,7 +450,7 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
-        float reward = speedReward;
+        float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = (7*driftReward + 3*speedReward)/10;
         // float reward = checkpointReward;
 
@@ -457,6 +459,15 @@ public class RaceAgent : Agent
         // rewardEvent(reward, carDirection);
         // Debug.Log("reward: " + GetCumulativeReward().ToString());
         cumulativeRewardEvent(GetCumulativeReward());
+    }
+
+    private float SteerSpeedReward(){
+        float maxSteerDiff = 0.16f;
+        float currentSteeringAngle = VPinput.externalSteer;
+        float steeringAngleDiff = Mathf.Abs(currentSteeringAngle - previousSteeringAgle);
+        float steerSpeedReward = Mathf.Max(0.0f, 1.0f - (steeringAngleDiff / maxSteerDiff));
+        previousSteeringAgle = VPinput.externalSteer;
+        return steerSpeedReward;
     }
 
      private float DriftReward() {
