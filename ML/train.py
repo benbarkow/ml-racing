@@ -53,8 +53,13 @@ if __name__ == '__main__':
 	#model = PPO.load(config.models_dir + "archive/stack.zip", env=env, device="cuda")
 
 	callback = SaveOnBestTrainingRewardCallback(check_freq=(config.n_steps*2)+5, log_dir=config.log_dir, save_path=config.models_dir)
-	model.learn(total_timesteps=50000000, callback=callback)
-	print("Training complete.")
+	try: 
+		model.learn(total_timesteps=50000000, callback=callback)
+		print("Training complete.")
+	except KeyboardInterrupt:
+		print("Training interrupted.")
+		#save last model
+		model.save(config.models_dir + "interrupt/last_model")
 
 	#save to disk
 	model.save(config.models_dir + "")
