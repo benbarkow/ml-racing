@@ -1156,8 +1156,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSpaceType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201320299388767851, guid: ac489c2a4106b214087d7887404645c8, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[1]
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Width

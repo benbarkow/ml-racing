@@ -89,7 +89,7 @@ public class RaceAgent : Agent
         }
 
         racetrackGenerator.generateRandomCircle();
-
+        // racetrackGenerator.generateNew();
         //init curves
         // InitCurves();
         InitCheckpoints();
@@ -131,14 +131,14 @@ public class RaceAgent : Agent
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
-        if (actionBuffers.ContinuousActions[0] == 0f){
+        if (actionBuffers.DiscreteActions[0] == 5){
             //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
             VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
         }
         else{
-            VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
+            VPinput.externalSteer = SmoothSteering(PathMathSupports.Remap(actionBuffers.DiscreteActions[0], 0, 10, -1, 1));
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 0, 1);
     }
 
     
@@ -612,16 +612,16 @@ public class RaceAgent : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        var continuousActionsOut = actionsOut.ContinuousActions;
+        var discreteActionsOut = actionsOut.DiscreteActions;
 
         //steer
-        continuousActionsOut[0] = 0f;
-        if( Input.GetKey(KeyCode.D) ) continuousActionsOut[0] = 1f;
-        if( Input.GetKey(KeyCode.A) ) continuousActionsOut[0] = -1f;
+        discreteActionsOut[0] = 5;
+        if( Input.GetKey(KeyCode.D) ) discreteActionsOut[0] = 11;
+        if( Input.GetKey(KeyCode.A) ) discreteActionsOut[0] = 0;
         
         //throttle
-        continuousActionsOut[1] = 0.0f;
-        if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
+        discreteActionsOut[1] = 0;
+        if( Input.GetKey(KeyCode.W) ) discreteActionsOut[1] = 5;
         // if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = -1f;
     }
 

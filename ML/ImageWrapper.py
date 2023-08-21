@@ -60,6 +60,7 @@ class ImageWrapper(gym.ObservationWrapper):
 			"vector": Box(shape=(5,), low=-1, high=1, dtype=np.float32)
 		})
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
+
 	def observation(self, obs):
 		#obs[0] is image rgb
 		image = obs[0] * 255
