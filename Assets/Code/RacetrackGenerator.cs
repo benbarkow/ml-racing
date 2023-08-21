@@ -36,6 +36,41 @@ public class RacetrackGenerator : MonoBehaviour
         roadMeshFilter.mesh = pathCollider.sharedMesh;
     }
 
+    public void generateRandomCircle()
+    {
+        //clear shared mesh and mesh filter from mem
+        if (pathCollider.sharedMesh != null)
+        {
+            Destroy(pathCollider.sharedMesh);
+        }
+        if (roadMeshFilter.mesh != null)
+        {
+            Destroy(roadMeshFilter.mesh);
+        }
+
+        Random.InitState(System.DateTime.Now.Millisecond);
+
+        float radius = Random.Range(20.0f, 30.0f);
+        List<Vector2> racetrack = GenerateCircle(radius, 20);
+
+        //convert to 3d
+        List<Vector3> racetrack3d = new List<Vector3>();
+        for (int i = 0; i < racetrack.Count; i++)
+        {
+            racetrack3d.Add(new Vector3(racetrack[i].x, 0.0f, racetrack[i].y));
+        }
+
+        BezierPath bezierPath = new BezierPath(racetrack3d, true, PathSpace.xyz);
+        pathCreator.bezierPath = bezierPath;
+        pathCreator.TriggerPathUpdate();
+
+        //get mesh collider
+        pathCollider.sharedMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
+
+        //get mesh filter
+        roadMeshFilter.mesh = pathCollider.sharedMesh;
+    }
+
     // Start is called before the first frame update
     public void generateNew()
     {
@@ -68,6 +103,22 @@ public class RacetrackGenerator : MonoBehaviour
 
         //get mesh filter
         roadMeshFilter.mesh = pathCollider.sharedMesh;
+    }
+
+    public List<Vector2> GenerateCircle(float radius, int numPoints)
+    {
+        Vector2 center = new Vector2(33.0f, 26.0f);
+        List<Vector2> points = new List<Vector2>();
+
+        for (int i = 0; i < numPoints; i++)
+        {
+            float angle = i * Mathf.PI * 2.0f / numPoints;
+            float x = center.x + radius * Mathf.Cos(angle);
+            float y = center.y + radius * Mathf.Sin(angle);
+            points.Add(new Vector2(x, y));
+        }
+
+        return points;
     }
 
     public List<Vector2> GenerateTrack(float width, float height, int numPoints, float minAngle, float maxAngle, float minDistance)

@@ -64,6 +64,23 @@ public class RaceAgent : Agent
         totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
+    private void ResetVehicleOnPath(float distanceOnPath, int direction){
+        Quaternion initRotation = pathCreator.path.GetRotationAtDistance(distanceOnPath);
+        Vector3 initPosition = pathCreator.path.GetPointAtDistance(distanceOnPath);
+        this.transform.position = initPosition;
+        this.transform.rotation = initRotation;
+        this.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+        //random direction -1 or 1
+        if (direction == -1){
+            this.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            carDirection = -1;
+        }else {
+            carDirection = 1;
+        }
+        rb.velocity = 0.0f * this.transform.forward;
+        VPinput.externalSteer = 0.0f;
+    }
+
     public override void OnEpisodeBegin()
     {
         //remove all curve spheres
@@ -71,7 +88,7 @@ public class RaceAgent : Agent
             Destroy(sphere);
         }
 
-        racetrackGenerator.generateNew();
+        racetrackGenerator.generateRandomCircle();
 
         //init curves
         // InitCurves();
@@ -79,27 +96,15 @@ public class RaceAgent : Agent
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
-        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, false);
+        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
 
         // startDistanceOnPath = getMostStraightDistOnPath();
         startDistanceOnPath = Random.Range(0.0f, pathCreator.path.length);
         prevDistanceOnPath = startDistanceOnPath;
 
         //initPos 
-        Vector3 initPos = pathCreator.path.GetPointAtDistance(startDistanceOnPath);
-        this.transform.position = new Vector3(initPos.x, initPos.y + 0.2f, initPos.z);
-        //increase y position to avoid clipping into the ground
-        Quaternion initRotation = pathCreator.path.GetRotationAtDistance(startDistanceOnPath);
-        this.transform.rotation = initRotation;
-        this.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-        //random direction 0 or 1
-        int direction = Random.Range(0, 2);
-        if (direction == 0){
-            this.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
-            carDirection = -1;
-        }else {
-            carDirection = 1;
-        }
+        int direction = Random.Range(0, 2) * 2 - 1;
+        ResetVehicleOnPath(startDistanceOnPath, direction);
 
         startTransform = this.transform;
 
@@ -107,9 +112,9 @@ public class RaceAgent : Agent
         rb.isKinematic = false;
         imu.rBody.isKinematic = false;
 
-        //start velocity of 20
-        rb.velocity = 0.0f * this.transform.forward;
-        rb.velocity = this.transform.forward * 6.0f;
+        // //start velocity of 20
+        // rb.velocity = 0.0f * this.transform.forward;
+        // rb.velocity = this.transform.forward * 6.0f;
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
     }
@@ -405,9 +410,10 @@ public class RaceAgent : Agent
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
         // Debug.Log("distance to road center: " + distanceToCenter.ToString());
         //if car runs off the road
-        float centerDistRewardNegative = (1-Mathf.Pow(distanceToCenter/1.5f, 2));
+        float centerDistRewardNegative = (Mathf.Pow(distanceToCenter/3.0f, 2));
         // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
         if(distanceToCenter > 3.0 && StepCount > 20){
+            //reset car position
             return -1.0f;
         }
         return centerDistRewardNegative;
@@ -427,7 +433,7 @@ public class RaceAgent : Agent
 
         float runofPenalty = RunofPenalty();
         if(runofPenalty == -1.0f){
-            SetReward(0.0f);
+            SetReward(-0.1f);
             EndEpisode();
             return;
         }
@@ -435,7 +441,7 @@ public class RaceAgent : Agent
 
         float angleReward = VelAngleReward();
         if(angleReward == -1.0f){
-            SetReward(0.0f);
+            SetReward(-0.1f);
             EndEpisode();
             return;
         }
@@ -453,9 +459,9 @@ public class RaceAgent : Agent
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
-        // float reward = runofPenalty*((speedReward * 2 + 8*angleReward) / 10);
+        float reward = speedReward*(angleReward - runofPenalty);
         // float reward = (speedReward*7 + angleReward*3)/10;
-        float reward = speedReward;
+        // float reward = speedReward;
         // float reward = (7*driftReward + 3*speedReward)/10;
         // float reward = checkpointReward;
 
