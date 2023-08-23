@@ -56,7 +56,7 @@ class ImageWrapper(gym.ObservationWrapper):
 		# self.observation_space = Box(shape=(60,80,), low=0, high=255, dtype=np.uint8)
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Dict({
-			"image": Box(shape=(256,314, 3), low=0, high=255, dtype=np.uint8),
+			"image": Box(shape=(60,80, 3), low=0, high=255, dtype=np.uint8),
 			"vector": Box(shape=(5,), low=-1, high=1, dtype=np.float32)
 		})
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
