@@ -50,7 +50,7 @@ public class RacetrackGenerator : MonoBehaviour
 
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        float radius = Random.Range(20.0f, 30.0f);
+        float radius = Random.Range(10.0f, 20.0f);
         List<Vector2> racetrack = GenerateCircle(radius, 20);
 
         //convert to 3d

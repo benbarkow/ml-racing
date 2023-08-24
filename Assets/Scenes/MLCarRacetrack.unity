@@ -1073,15 +1073,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4680476038516590687, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.91
+      value: 2.62
       objectReference: {fileID: 0}
     - target: {fileID: 4680476038516590687, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9658354
+      value: 0.9650394
       objectReference: {fileID: 0}
     - target: {fileID: 4680476038516590687, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25915617
+      value: 0.26210496
       objectReference: {fileID: 0}
     - target: {fileID: 4680476038516590687, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1093,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680476038516590687, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 30.04
+      value: 30.39
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767842, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: unlockDrivelineOnHandbrake
@@ -1193,11 +1193,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Width
-      value: 314
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Height
-      value: 256
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767864, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: m_Grayscale
@@ -1213,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 1603832078}
     - target: {fileID: 8201320299388767865, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: MaxStep
-      value: 1024
+      value: 2056
       objectReference: {fileID: 0}
     - target: {fileID: 8201320299388767865, guid: ac489c2a4106b214087d7887404645c8, type: 3}
       propertyPath: pathCreator
@@ -2431,7 +2431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65fa8c9916ceb8b4788a9c16c400032c, type: 2}
+  - {fileID: 2100000, guid: dac99c8205ec41d4fbf4c14cc79e7074, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

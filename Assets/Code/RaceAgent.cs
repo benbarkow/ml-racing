@@ -455,11 +455,13 @@ public class RaceAgent : Agent
         // }
 
         //drift reward
-        // float driftReward = DriftReward();
+        float driftReward = DriftReward();
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
-        float reward = speedReward*(angleReward - runofPenalty);
+        // float reward = speedReward*(angleReward - runofPenalty);
+        float reward = driftReward*speedReward;
+        // float reward = speedReward;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
         // float reward = (7*driftReward + 3*speedReward)/10;
@@ -494,6 +496,11 @@ public class RaceAgent : Agent
 
         //curve points
         Vector3[] curvePoints = new Vector3[3];
+
+        //init curve Points one 10.0f before and one 10.0f after agent distance
+        curvePoints[0] = pathCreator.path.GetPointAtDistance(agentDistance - 10.0f);
+        curvePoints[1] = pathCreator.path.GetPointAtDistance(agentDistance);
+        curvePoints[2] = pathCreator.path.GetPointAtDistance(agentDistance + 10.0f);
 
 
         // for(int i = 0; i < curves.Count; i++){

@@ -68,6 +68,10 @@ class ImageWrapper(gym.ObservationWrapper):
 		# #to uint8
 		# image = (image * 255).astype(np.uint8)
 
+		#test empty vector
+		vector = obs[1]
+		# vector = np.zeros((5,), dtype=np.float32)
+
 		# thresh = otsu_thresholding(image)
 		# canny_img = canny(image)
 		# warped, Minv = warp(image)
@@ -98,6 +102,6 @@ class ImageWrapper(gym.ObservationWrapper):
 		# cv2.waitKey(1)
 		# print(is_image_space(self.observation_space["image"], check_channels=False))
 
-		return {"image": image, "vector": obs[1]}
+		return {"image": image, "vector": vector}
 
 	
