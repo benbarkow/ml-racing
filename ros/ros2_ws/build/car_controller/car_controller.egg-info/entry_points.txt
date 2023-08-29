@@ -1,0 +1,5 @@
+[console_scripts]
+car_camera_rcv = car_controller.receiver:main
+car_controller = car_controller.car_controller:main
+net = car_controller.net:main
+

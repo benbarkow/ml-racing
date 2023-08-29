@@ -2,28 +2,30 @@ import rclpy
 from rclpy.node import Node
 
 from std_msgs.msg import Float64
-
+from std_msgs.msg import Float32MultiArray
+from interfaces.srv import CarAction
 
 class Action(Node):
 
 	def __init__(self):
 		super().__init__('car_publisher')
-		self.publisher_steering = self.create_publisher(Float64, '/vesc/commands/servo/position', 10)
-		self.publisher_speed = self.create_publisher(Float64, '/vesc/commands/motor/speed', 10)
+		self.publisher_steering = self.create_publisher(Float64, '/vesc/commands/servo/unsmoothed_position', 10)
+		self.publisher_speed = self.create_publisher(Float64, '/vesc/commands/motor/unsmoothed_speed', 10)
 		self.actionService = self.create_service(
-			Float32MultiArray,
+			CarAction,
 			'action',
 			self.action_callback)
 		
 	def action_callback(self, request, response):
 		self.send(request.steer, request.speed)
+		return response
 	
 	def send(self,steering, speed):
 		msg = Float64()
 		msg.data = steering
 		self.publisher_steering.publish(msg)
 		msg.data = speed
-		self.publisher_speed(msg)
+		self.publisher_speed.publish(msg)
 
 def main(args=None):
 	rclpy.init(args=args)

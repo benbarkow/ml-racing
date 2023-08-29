@@ -1,0 +1,226 @@
+[0.000000] (-) TimerEvent: {}
+[0.000334] (car_camera) JobQueued: {'identifier': 'car_camera', 'dependencies': OrderedDict()}
+[0.000377] (car_controller) JobQueued: {'identifier': 'car_controller', 'dependencies': OrderedDict()}
+[0.000400] (interfaces) JobQueued: {'identifier': 'interfaces', 'dependencies': OrderedDict()}
+[0.001185] (tracking_sub) JobQueued: {'identifier': 'tracking_sub', 'dependencies': OrderedDict()}
+[0.001234] (car_camera) JobStarted: {'identifier': 'car_camera'}
+[0.015525] (car_controller) JobStarted: {'identifier': 'car_controller'}
+[0.027356] (interfaces) JobStarted: {'identifier': 'interfaces'}
+[0.035574] (tracking_sub) JobStarted: {'identifier': 'tracking_sub'}
+[0.100013] (-) TimerEvent: {}
+[0.200328] (-) TimerEvent: {}
+[0.300547] (-) TimerEvent: {}
+[0.400799] (-) TimerEvent: {}
+[0.501061] (-) TimerEvent: {}
+[0.507099] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'cmake'}
+[0.508416] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'build'}
+[0.508488] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/interfaces', '--', '-j12', '-l12'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'xps'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/ros2_ws/install/interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/ros2_ws/install/interfaces:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/ros2_ws/build/cv_basics:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:/ros2_ws/build/car_controller:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/car_camera:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/interfaces:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble')]), 'shell': False}
+[0.557769] (interfaces) StdoutLine: {'line': b'[  2%] Built target interfaces__cpp\n'}
+[0.563773] (interfaces) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_symlink_interfaces\n'}
+[0.578419] (interfaces) StdoutLine: {'line': b'[ 12%] Built target interfaces__rosidl_generator_c\n'}
+[0.601171] (-) TimerEvent: {}
+[0.602203] (interfaces) StdoutLine: {'line': b'[ 23%] Built target interfaces__rosidl_typesupport_cpp\n'}
+[0.604053] (interfaces) StdoutLine: {'line': b'[ 33%] Built target interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[0.604745] (interfaces) StdoutLine: {'line': b'[ 43%] Built target interfaces__rosidl_typesupport_introspection_cpp\n'}
+[0.608251] (interfaces) StdoutLine: {'line': b'[ 53%] Built target interfaces__rosidl_typesupport_c\n'}
+[0.609926] (interfaces) StdoutLine: {'line': b'[ 64%] Built target interfaces__rosidl_typesupport_introspection_c\n'}
+[0.613251] (interfaces) StdoutLine: {'line': b'[ 74%] Built target interfaces__rosidl_typesupport_fastrtps_c\n'}
+[0.634545] (interfaces) StdoutLine: {'line': b'[ 74%] Built target interfaces\n'}
+[0.650268] (interfaces) StdoutLine: {'line': b'[ 76%] Built target interfaces__py\n'}
+[0.686972] (interfaces) StdoutLine: {'line': b'[ 84%] Built target interfaces__rosidl_generator_py\n'}
+[0.701248] (-) TimerEvent: {}
+[0.711338] (interfaces) StdoutLine: {'line': b'[ 89%] Built target interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.711545] (interfaces) StdoutLine: {'line': b'[ 94%] Built target interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[0.711709] (interfaces) StdoutLine: {'line': b'[100%] Built target interfaces__rosidl_typesupport_c__pyext\n'}
+[0.779073] (interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[0.779575] (interfaces) StdoutLine: {'line': b'writing interfaces.egg-info/PKG-INFO\n'}
+[0.786981] (interfaces) StdoutLine: {'line': b'writing dependency_links to interfaces.egg-info/dependency_links.txt\n'}
+[0.787793] (interfaces) StdoutLine: {'line': b'writing top-level names to interfaces.egg-info/top_level.txt\n'}
+[0.790230] (interfaces) StdoutLine: {'line': b"reading manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[0.793503] (interfaces) StdoutLine: {'line': b"writing manifest file 'interfaces.egg-info/SOURCES.txt'\n"}
+[0.801373] (-) TimerEvent: {}
+[0.817902] (interfaces) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_interfaces_egg\n'}
+[0.827762] (interfaces) CommandEnded: {'returncode': 0}
+[0.873761] (interfaces) JobProgress: {'identifier': 'interfaces', 'progress': 'install'}
+[0.880435] (interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/interfaces'], 'cwd': '/ros2_ws/build/interfaces', 'env': OrderedDict([('HOSTNAME', 'xps'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/ros2_ws/install/interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/ros2_ws/install/tracking_sub:/ros2_ws/install/interfaces:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble'), ('PWD', '/ros2_ws/build/interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/ros2_ws/build/cv_basics:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:/ros2_ws/build/car_controller:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/car_camera:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ros2_ws/install/interfaces:/ros2_ws/install/tracking_sub:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble')]), 'shell': False}
+[0.885957] (interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.886448] (interfaces) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.886692] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/rosidl_interfaces/interfaces\n'}
+[0.887164] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.887329] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/car_action.h\n'}
+[0.887489] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__functions.h\n'}
+[0.887650] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__struct.h\n'}
+[0.887808] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__type_support.h\n'}
+[0.887965] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__functions.h\n'}
+[0.888154] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.h\n'}
+[0.888300] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__type_support.h\n'}
+[0.888442] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.h\n'}
+[0.888658] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.sh\n'}
+[0.888859] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/library_path.dsv\n'}
+[0.889338] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.889508] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__rosidl_typesupport_fastrtps_c.h\n'}
+[0.889680] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_c.h\n'}
+[0.890053] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.890235] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__rosidl_typesupport_introspection_c.h\n'}
+[0.890377] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_c.h\n'}
+[0.890751] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/car_action.hpp\n'}
+[0.890908] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__builder.hpp\n'}
+[0.891074] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__struct.hpp\n'}
+[0.891246] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__traits.hpp\n'}
+[0.891402] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__builder.hpp\n'}
+[0.891565] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__struct.hpp\n'}
+[0.891726] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__traits.hpp\n'}
+[0.891882] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/tracking_data.hpp\n'}
+[0.892384] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.892564] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.892709] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.893074] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/car_action__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.893232] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/include/interfaces/interfaces/srv/detail/tracking_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.893474] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.sh\n'}
+[0.893662] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/pythonpath.dsv\n'}
+[0.893982] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[0.894136] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[0.894291] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[0.894445] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[0.895025] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/__init__.py\n'}
+[0.895189] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[0.895340] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[0.895499] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[0.895651] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.895803] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.895954] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.896105] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/libinterfaces__rosidl_generator_py.so\n'}
+[0.896264] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/__init__.py\n'}
+[0.896415] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_car_action.py\n'}
+[0.896576] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_car_action_s.c\n'}
+[0.896717] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data.py\n'}
+[0.896867] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv/_tracking_data_s.c\n'}
+[0.897154] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.897429] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.897708] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.897909] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.idl\n'}
+[0.898103] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/CarAction.idl\n'}
+[0.898299] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData.srv\n'}
+[0.898521] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Request.msg\n'}
+[0.898710] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/TrackingData_Response.msg\n'}
+[0.898895] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/CarAction.srv\n'}
+[0.899102] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/CarAction_Request.msg\n'}
+[0.899467] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/srv/CarAction_Response.msg\n'}
+[0.899608] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/package_run_dependencies/interfaces\n'}
+[0.899816] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/parent_prefix_path/interfaces\n'}
+[0.900018] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.sh\n'}
+[0.900209] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/ament_prefix_path.dsv\n'}
+[0.900411] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/path.sh\n'}
+[0.900605] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/environment/path.dsv\n'}
+[0.900800] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.bash\n'}
+[0.900985] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.sh\n'}
+[0.901173] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.zsh\n'}
+[0.901362] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/local_setup.dsv\n'}
+[0.901506] (-) TimerEvent: {}
+[0.901663] (interfaces) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/interfaces/share/interfaces/package.dsv\n'}
+[0.908614] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/ament_index/resource_index/packages/interfaces\n'}
+[0.908841] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[0.908997] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.909196] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.909393] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.909599] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.909805] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.909996] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.910207] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig.cmake\n'}
+[0.910379] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/cmake/interfacesConfig-version.cmake\n'}
+[0.911496] (interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ros2_ws/install/interfaces/share/interfaces/package.xml\n'}
+[0.911673] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_c.so\n'}
+[0.911794] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[0.911922] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_c.so\n'}
+[0.912072] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_c.so\n'}
+[0.912292] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.912677] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[0.913013] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_typesupport_cpp.so\n'}
+[0.947866] (interfaces) StdoutLine: {'line': b"Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces'...\n"}
+[0.948021] (interfaces) StdoutLine: {'line': b"Listing '/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages/interfaces/srv'...\n"}
+[0.951723] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/lib/libinterfaces__rosidl_generator_py.so\n'}
+[0.951933] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport.cmake\n'}
+[0.952111] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.952191] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[0.952425] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[0.952543] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.952644] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.952710] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport.cmake\n'}
+[0.952775] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.952839] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_cppExport.cmake\n'}
+[0.952902] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[0.953004] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[0.953093] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.953179] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.953269] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[0.953365] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.953457] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport.cmake\n'}
+[0.953538] (interfaces) StdoutLine: {'line': b'-- Up-to-date: /ros2_ws/install/interfaces/share/interfaces/cmake/export_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[0.954668] (interfaces) CommandEnded: {'returncode': 0}
+[1.001617] (-) TimerEvent: {}
+[1.058514] (interfaces) JobEnded: {'identifier': 'interfaces', 'rc': 0}
+[1.067442] (car_camera) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--editable', '--build-directory', '/ros2_ws/build/car_camera/build', '--no-deps', 'install_data'], 'cwd': '/ros2_ws/build/car_camera', 'env': {'HOSTNAME': 'xps', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/ros2_ws/install/interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/ros2_ws/install/interfaces:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble', 'PWD': '/ros2_ws/build/car_camera', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/car_camera/prefix_override:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/ros2_ws/build/cv_basics:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:/ros2_ws/build/car_controller:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/car_camera:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/ros2_ws/install/interfaces'}, 'shell': False}
+[1.073929] (tracking_sub) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--editable', '--build-directory', '/ros2_ws/build/tracking_sub/build', '--no-deps', 'install_data'], 'cwd': '/ros2_ws/build/tracking_sub', 'env': {'HOSTNAME': 'xps', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/ros2_ws/install/interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/ros2_ws/install/interfaces:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble', 'PWD': '/ros2_ws/build/tracking_sub', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/ros2_ws/build/cv_basics:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:/ros2_ws/build/car_controller:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/car_camera:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/ros2_ws/install/interfaces'}, 'shell': False}
+[1.085520] (car_controller) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--editable', '--build-directory', '/ros2_ws/build/car_controller/build', '--no-deps', 'install_data'], 'cwd': '/ros2_ws/build/car_controller', 'env': {'HOSTNAME': 'xps', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/ros2_ws/install/interfaces/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/ros2_ws/install', 'ROS_DISTRO': 'humble', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/ros2_ws/install/tracking_sub:/ros2_ws/install/interfaces:/ros2_ws/install/cv_basics:/ros2_ws/install/car_controller:/ros2_ws/install/car_camera:/opt/ros/humble', 'PWD': '/ros2_ws/build/car_controller', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/ros2_ws/build/car_controller/prefix_override:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/tracking_sub:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/ros2_ws/build/cv_basics:/ros2_ws/install/cv_basics/lib/python3.10/site-packages:/ros2_ws/build/car_controller:/ros2_ws/install/car_controller/lib/python3.10/site-packages:/ros2_ws/build/car_camera:/ros2_ws/install/car_camera/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/ros2_ws/install/interfaces'}, 'shell': False}
+[1.101816] (-) TimerEvent: {}
+[1.202107] (-) TimerEvent: {}
+[1.302409] (-) TimerEvent: {}
+[1.318896] (tracking_sub) StdoutLine: {'line': b'running develop\n'}
+[1.323791] (car_camera) StdoutLine: {'line': b'running develop\n'}
+[1.333957] (car_controller) StdoutLine: {'line': b'running develop\n'}
+[1.402518] (-) TimerEvent: {}
+[1.423332] (tracking_sub) StdoutLine: {'line': b'running egg_info\n'}
+[1.423502] (tracking_sub) StdoutLine: {'line': b'writing tracking_sub.egg-info/PKG-INFO\n'}
+[1.423609] (tracking_sub) StdoutLine: {'line': b'writing dependency_links to tracking_sub.egg-info/dependency_links.txt\n'}
+[1.427845] (car_camera) StdoutLine: {'line': b'running egg_info\n'}
+[1.428063] (car_camera) StdoutLine: {'line': b'writing car_camera.egg-info/PKG-INFO\n'}
+[1.428153] (car_controller) StdoutLine: {'line': b'running egg_info\n'}
+[1.428222] (car_controller) StdoutLine: {'line': b'writing car_controller.egg-info/PKG-INFO\n'}
+[1.434081] (tracking_sub) StdoutLine: {'line': b'writing entry points to tracking_sub.egg-info/entry_points.txt\n'}
+[1.434643] (car_camera) StdoutLine: {'line': b'writing dependency_links to car_camera.egg-info/dependency_links.txt\n'}
+[1.435538] (car_controller) StdoutLine: {'line': b'writing dependency_links to car_controller.egg-info/dependency_links.txt\n'}
+[1.436156] (tracking_sub) StdoutLine: {'line': b'writing requirements to tracking_sub.egg-info/requires.txt\n'}
+[1.437027] (car_camera) StdoutLine: {'line': b'writing entry points to car_camera.egg-info/entry_points.txt\n'}
+[1.437645] (tracking_sub) StdoutLine: {'line': b'writing top-level names to tracking_sub.egg-info/top_level.txt\n'}
+[1.438515] (car_camera) StdoutLine: {'line': b'writing requirements to car_camera.egg-info/requires.txt\n'}
+[1.440324] (car_controller) StdoutLine: {'line': b'writing entry points to car_controller.egg-info/entry_points.txt\n'}
+[1.440601] (car_controller) StdoutLine: {'line': b'writing requirements to car_controller.egg-info/requires.txt\n'}
+[1.441236] (car_controller) StdoutLine: {'line': b'writing top-level names to car_controller.egg-info/top_level.txt\n'}
+[1.441341] (tracking_sub) StdoutLine: {'line': b"reading manifest file 'tracking_sub.egg-info/SOURCES.txt'\n"}
+[1.441957] (tracking_sub) StdoutLine: {'line': b"writing manifest file 'tracking_sub.egg-info/SOURCES.txt'\n"}
+[1.442025] (car_camera) StdoutLine: {'line': b'writing top-level names to car_camera.egg-info/top_level.txt\n'}
+[1.444052] (car_controller) StdoutLine: {'line': b"reading manifest file 'car_controller.egg-info/SOURCES.txt'\n"}
+[1.444765] (car_camera) StdoutLine: {'line': b"reading manifest file 'car_camera.egg-info/SOURCES.txt'\n"}
+[1.445316] (tracking_sub) StdoutLine: {'line': b'running build_ext\n'}
+[1.445432] (car_camera) StdoutLine: {'line': b"writing manifest file 'car_camera.egg-info/SOURCES.txt'\n"}
+[1.445527] (tracking_sub) StdoutLine: {'line': b'Creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)\n'}
+[1.446142] (tracking_sub) StdoutLine: {'line': b'Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[1.446288] (tracking_sub) StdoutLine: {'line': b'Installing servo_test script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[1.446402] (tracking_sub) StdoutLine: {'line': b'Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub\n'}
+[1.446588] (tracking_sub) StdoutLine: {'line': b'\n'}
+[1.446707] (tracking_sub) StdoutLine: {'line': b'Installed /ros2_ws/build/tracking_sub\n'}
+[1.446769] (tracking_sub) StdoutLine: {'line': b'running install_data\n'}
+[1.446829] (car_controller) StdoutLine: {'line': b"writing manifest file 'car_controller.egg-info/SOURCES.txt'\n"}
+[1.449632] (car_camera) StdoutLine: {'line': b'running build_ext\n'}
+[1.449790] (car_camera) StdoutLine: {'line': b'Creating /ros2_ws/install/car_camera/lib/python3.10/site-packages/car-camera.egg-link (link to .)\n'}
+[1.450934] (car_controller) StdoutLine: {'line': b'running build_ext\n'}
+[1.451048] (car_camera) StdoutLine: {'line': b'Installing camera_pub script to /ros2_ws/install/car_camera/lib/car_camera\n'}
+[1.451157] (car_controller) StdoutLine: {'line': b'Creating /ros2_ws/install/car_controller/lib/python3.10/site-packages/car-controller.egg-link (link to .)\n'}
+[1.451245] (car_camera) StdoutLine: {'line': b'Installing camera_rcv script to /ros2_ws/install/car_camera/lib/car_camera\n'}
+[1.451379] (car_camera) StdoutLine: {'line': b'\n'}
+[1.451456] (car_camera) StdoutLine: {'line': b'Installed /ros2_ws/build/car_camera\n'}
+[1.451516] (car_camera) StdoutLine: {'line': b'running install_data\n'}
+[1.457899] (car_controller) StdoutLine: {'line': b'Installing car_camera_rcv script to /ros2_ws/install/car_controller/lib/car_controller\n'}
+[1.458075] (car_controller) StdoutLine: {'line': b'Installing car_controller script to /ros2_ws/install/car_controller/lib/car_controller\n'}
+[1.458183] (car_controller) StdoutLine: {'line': b'Installing net script to /ros2_ws/install/car_controller/lib/car_controller\n'}
+[1.458388] (car_controller) StdoutLine: {'line': b'\n'}
+[1.458490] (car_controller) StdoutLine: {'line': b'Installed /ros2_ws/build/car_controller\n'}
+[1.458556] (car_controller) StdoutLine: {'line': b'running install_data\n'}
+[1.474363] (tracking_sub) CommandEnded: {'returncode': 0}
+[1.495664] (tracking_sub) JobEnded: {'identifier': 'tracking_sub', 'rc': 0}
+[1.498146] (car_controller) CommandEnded: {'returncode': 0}
+[1.502589] (-) TimerEvent: {}
+[1.513258] (car_controller) JobEnded: {'identifier': 'car_controller', 'rc': 0}
+[1.515939] (car_camera) CommandEnded: {'returncode': 0}
+[1.539691] (car_camera) JobEnded: {'identifier': 'car_camera', 'rc': 0}
+[1.540834] (-) EventReactorShutdown: {}

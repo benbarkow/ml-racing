@@ -12,7 +12,7 @@ import cv2
 # action, value = ort_sess.run(None, {"input": observation})
 # print(action)
 
-onnx_path = "models/weights/resnet18-avgpool.onnx"
+onnx_path = "models/weights/working_model.onnx"
 resnet = onnx.load(onnx_path)
 
 resnet = onnx.version_converter.convert_version(resnet, 18)
@@ -42,8 +42,9 @@ def preprocess(img):
 
 
 def predict(path):
-    img = get_image(path, show=True)
-    img = preprocess(img)
+    # img = get_image(path, show=True)
+    # img = preprocess(img)
+    img = np.zeros((1, 4800)).astype(np.float32)
     ort_inputs = {session.get_inputs()[0].name: img}
     preds = session.run(None, ort_inputs)[0]
     return preds

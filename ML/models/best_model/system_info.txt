@@ -1,0 +1,7 @@
+- OS: Linux-5.19.0-43-generic-x86_64-with-glibc2.17 # 44~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon May 22 13:39:36 UTC 2
+- Python: 3.8.13
+- Stable-Baselines3: 1.8.0
+- PyTorch: 2.0.1+cu118
+- GPU Enabled: True
+- Numpy: 1.21.2
+- Gym: 0.21.0
