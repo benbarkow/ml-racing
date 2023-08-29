@@ -25,7 +25,7 @@ class OnnxablePolicy(th.nn.Module):
 
 
 # Example: model = PPO("MlpPolicy", "Pendulum-v1")
-model = PPO.load("models/archive/working_normal_drive.zip", device="cpu")
+model = PPO.load("models/archive/working_drive_circle.zip", device="cpu")
 onnxable_model = OnnxablePolicy(
 	model.policy.mlp_extractor, model.policy.action_net, model.policy.value_net
 )
@@ -39,7 +39,7 @@ dict_input_tensor = {"image": dummy_img_input}
 th.onnx.export(
 	onnxable_model,
 	dummy_img_input,
-	"working_model.onnx",
+	"working_drive_circle.onnx",
 	opset_version=9,
 	input_names=["input"],
 )
