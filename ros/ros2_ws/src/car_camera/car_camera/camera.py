@@ -3,7 +3,7 @@ from rclpy.node import Node # Handles the creation of nodes
 from sensor_msgs.msg import Image # Image is the message type
 #float multi array
 from std_msgs.msg import Float32MultiArray
-from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
+# from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
 import cv2 # OpenCV library
  
 class CarCameraPublisher(Node):
@@ -20,19 +20,25 @@ class CarCameraPublisher(Node):
 		#resize image to 320x240
 		frame = cv2.resize(frame, (80, 60))
 		if ret == True:
-			image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+			#read image as rgb
+			image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 			# image = cv2.GaussianBlur(frame, (5,5), 0)
 			#apply threshold
 			# _, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
 			#convert to grayscale
 			# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 			#resize
-			image = cv2.resize(image, (80,60))
+			image = cv2.resize(image, (80,60, 3))
 			#convert to float32
 			image = image.astype('float32')
+			#convert to float32 multy array
+			image_r = image[:,:,0]
+			image_g = image[:,:,1]
+			image_b = image[:,:,2]
+
+			image_array = image_r.flatten().tolist() + image_g.flatten().tolist() + image_b.flatten().tolist()
 			#publish image
 			msg = Float32MultiArray()
-			image_array = image.flatten().tolist()
 			msg.data = image_array
 			self.publisher_.publish(msg)
 		else:

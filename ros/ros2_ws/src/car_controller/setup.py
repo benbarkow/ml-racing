@@ -22,7 +22,8 @@ setup(
         'console_scripts': [
             'car_camera_rcv = car_controller.receiver:main',
             'net = car_controller.net:main',
-            'car_controller = car_controller.car_controller:main'
+            'car_controller = car_controller.car_controller:main',
+            'net_sb3 = car_controller.net_sb3:main' 
         ],
     },
 )

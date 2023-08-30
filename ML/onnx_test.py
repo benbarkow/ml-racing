@@ -26,7 +26,6 @@ def get_image(path, show=False):
         img = np.array(img.convert('RGB'))
     return img
 
-
 def preprocess(img):
     img = img / 255.
     img = cv2.resize(img, (256, 256))
@@ -39,7 +38,6 @@ def preprocess(img):
     img = img.astype(np.float32)
     img = np.expand_dims(img, axis=0)
     return img
-
 
 def predict(path):
     # img = get_image(path, show=True)
