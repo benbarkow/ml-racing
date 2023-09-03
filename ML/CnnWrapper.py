@@ -43,6 +43,8 @@ class CnnWrapper(gym.ObservationWrapper):
 			output = self.model(image_tensor)
 			output = output.cpu().numpy()
 
+		output = output.reshape(3,)
+
 		return output
 
 	

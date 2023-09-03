@@ -31,7 +31,7 @@ public class RaceAgent : Agent
     private List<Vector3> trackPoints;
     private int carDirection = 1;
     //reward parameters
-    public float maxVelAngle = 60.0f;
+    public float maxVelAngle = 45.0f;
     public float maxSpeed = 0.2f;
     public float curveAngleDriftThreshold = 40.0f;
     public float targetDriftAngle = 45.0f;
@@ -355,9 +355,9 @@ public class RaceAgent : Agent
         float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
         angleReward = angleReward * velocityReward;
         // Debug.Log("angle reward: " + angleReward.ToString());
-        // if(angle > maxVelAngle && StepCount > 20){
-        //     return -1.0f;
-        // }
+        if(angle > maxVelAngle && StepCount > 20){
+            return -1.0f;
+        }
         return angleReward;
     }
 
