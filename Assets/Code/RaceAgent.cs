@@ -45,6 +45,8 @@ public class RaceAgent : Agent
     public Camera cam;
     public RacetrackGenerator racetrackGenerator;
 
+    private float spawnPadding;
+
     void Start()
     {
         //cache all later requiered components
@@ -62,6 +64,7 @@ public class RaceAgent : Agent
         Random.InitState(System.DateTime.Now.Millisecond);
         trackPoints = new List<Vector3>();
         totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        spawnPadding = 200.0f;
     }
 
     private void ResetVehicleOnPath(float distanceOnPath, int direction){
@@ -84,22 +87,23 @@ public class RaceAgent : Agent
     public override void OnEpisodeBegin()
     {
         //remove all curve spheres
-        foreach(GameObject sphere in curveSpheres){
-            Destroy(sphere);
-        }
+        // foreach(GameObject sphere in curveSpheres){
+        //     Destroy(sphere);
+        // }
 
-        racetrackGenerator.generateRandomCircle();
+        // racetrackGenerator.generateRandomCircle();
+        // racetrackGenerator.pickRandom();
         // racetrackGenerator.generateNew();
         //init curves
         // InitCurves();
-        InitCheckpoints();
+        // InitCheckpoints();
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
 
         // startDistanceOnPath = getMostStraightDistOnPath();
-        startDistanceOnPath = Random.Range(0.0f, pathCreator.path.length);
+        startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length - spawnPadding);
         prevDistanceOnPath = startDistanceOnPath;
 
         //initPos 
@@ -120,14 +124,14 @@ public class RaceAgent : Agent
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(imu.LocalVelocity.x / 300f);
-        sensor.AddObservation(imu.LocalVelocity.z / 300f);
+        // sensor.AddObservation(imu.LocalVelocity.x / 300f);
+        // sensor.AddObservation(imu.LocalVelocity.z / 300f);
 
-        sensor.AddObservation(-rb.angularVelocity.y / 10f);
+        // sensor.AddObservation(-rb.angularVelocity.y / 10f);
 
-        sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
+        // sensor.AddObservation(Mathf.Abs(imu.SideSlip) / 180f);
 
-        sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
+        // sensor.AddObservation(VPcontrol.data.Get(Channel.Vehicle, VehicleData.EngineRpm) / (1000.0f * VPcontrol.engine.maxRpm ));
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
@@ -328,14 +332,13 @@ public class RaceAgent : Agent
 
     
 
-    private float VelAngleReward(){
+    private float VelAngleReward(float distanceOnPath){
          //get direction of travel
         Vector3 direction = rb.velocity.normalized;
         Vector2 direction2D = new Vector2(direction.x, direction.z);
         // Debug.Log("direction: " + direction2D.ToString());
         //get angle between direction and path tangent
-        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
-        Vector3 tangent = pathCreator.path.GetDirectionAtDistance(distanceOnPath);
+        Vector3 tangent = pathCreator.path.GetDirectionAtDistance(distanceOnPath) * carDirection;
         Vector2 tangent2D = new Vector2(tangent.x, tangent.z);
         //angle as value between 0 and 90
         float velocityValue = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
@@ -343,22 +346,22 @@ public class RaceAgent : Agent
         if(velocityValue < 1.0f){
             angle = 0.0f;
         }
-        if(angle > 90.0f){
-            angle = 180.0f - angle;
-        }
+        // if(angle > 90.0f){
+        //     angle = 180.0f - angle;
+        // }
 
-        float b = -1/8;
-        float a = (1 - 4*b) / 16;
-        float velocityReward = Mathf.Min(a * Mathf.Pow(velocityValue, 2) + b * velocityValue, 1.0f);
+        // float b = -1/8;
+        // float a = (1 - 4*b) / 16;
+        // float velocityReward = Mathf.Min(a * Mathf.Pow(velocityValue, 2) + b * velocityValue, 1.0f);
 
-        //set negative reward proportional to angle and scale with velocity value
-        float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
-        angleReward = angleReward * velocityReward;
+        // //set negative reward proportional to angle and scale with velocity value
+        // float angleReward = Mathf.Max(1-(angle / maxVelAngle), 0.0f);
+        // angleReward = angleReward * velocityReward;
         // Debug.Log("angle reward: " + angleReward.ToString());
         if(angle > maxVelAngle && StepCount > 20){
             return -1.0f;
         }
-        return angleReward;
+        return 1.0f;
     }
 
     private float CheckpointReward(){
@@ -387,8 +390,7 @@ public class RaceAgent : Agent
         return reward;
     }
 
-    private float SpeedReward(){
-        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+    private float SpeedReward(float distanceOnPath){
 
         float speed = (Mathf.Abs(distanceOnPath - prevDistanceOnPath));
 
@@ -403,25 +405,27 @@ public class RaceAgent : Agent
         return distReward;
     }
 
-    private float RunofPenalty(){
+    private float RunofPenalty(float distanceOnPath){
         //calculate distance to center of the road
-        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
         Vector3 closestPointOnPath = pathCreator.path.GetPointAtDistance(distanceOnPath);
         float distanceToCenter = Vector3.Distance(this.transform.position, closestPointOnPath);
-        // Debug.Log("distance to road center: " + distanceToCenter.ToString());
-        //if car runs off the road
-        float centerDistRewardNegative = (Mathf.Pow(distanceToCenter/3.0f, 2));
-        // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
+        // // Debug.Log("distance to road center: " + distanceToCenter.ToString());
+        // //if car runs off the road
+        // float centerDistRewardNegative = (Mathf.Pow(distanceToCenter/3.0f, 2));
+        // // Debug.Log("center distance reward: " + centerDistRewardNegative.ToString());
         if(distanceToCenter > 3.0 && StepCount > 20){
             //reset car position
             return -1.0f;
         }
-        return centerDistRewardNegative;
+        return 1.0f;
+        // return centerDistRewardNegative;
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         HandleHeuristics(actionBuffers);
+
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
 
         // if(Mathf.Abs(imu.SideSlip)-45f > 40f){
         //     SetReward(0.0f);
@@ -429,17 +433,17 @@ public class RaceAgent : Agent
         //     return;
         // }
        
-        float speedReward = SpeedReward();
+        float speedReward = SpeedReward(distanceOnPath);
 
-        float runofPenalty = RunofPenalty();
+        float runofPenalty = RunofPenalty(distanceOnPath);
         if(runofPenalty == -1.0f){
             SetReward(-0.1f);
             EndEpisode();
             return;
         }
-        // Debug.Log("run of penalty: " + runofPenalty.ToString());
+        // // Debug.Log("run of penalty: " + runofPenalty.ToString());
 
-        float angleReward = VelAngleReward();
+        float angleReward = VelAngleReward(distanceOnPath);
         if(angleReward == -1.0f){
             SetReward(-0.1f);
             EndEpisode();
@@ -455,13 +459,14 @@ public class RaceAgent : Agent
         // }
 
         //drift reward
-        float driftReward = DriftReward();
+        // float driftReward = DriftReward();
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
-        float reward = driftReward*speedReward;
-        // float reward = speedReward;
+        // float reward = driftReward*speedReward;
+        float reward = speedReward;
+        // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
         // float reward = (7*driftReward + 3*speedReward)/10;

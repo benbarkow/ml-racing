@@ -6,6 +6,7 @@ from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 from ImageWrapper import ImageWrapper
 from CnnWrapper import CnnWrapper
+from StackCnnWrapper import StackCnnWrapper
 from FeatureExtractionWrapper import FeatureExtractionWrapper
 
 from stable_baselines3.common.vec_env.subproc_vec_env import SubprocVecEnv
@@ -101,7 +102,8 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
             # env = FeatureExtractionWrapper(env)
             # env = FeatureExtractionWrapperOnnx(env)
             # env = ImageWrapper(env)
-            env = CnnWrapper(env)
+            # env = CnnWrapper(env)
+            env = StackCnnWrapper(env)
             env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env
         return _thunk
