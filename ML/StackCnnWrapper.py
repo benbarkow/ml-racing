@@ -29,8 +29,6 @@ class StackCnnWrapper(gym.ObservationWrapper):
 		#obs[0] is image stack (80, 60, 9)
 		images = obs[0] * 255
 		images = images.astype(np.uint8)
-		print(images.shape)
-
 
 		preprocess = transforms.Compose([
 			transforms.ToTensor(),
