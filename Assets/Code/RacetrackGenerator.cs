@@ -78,7 +78,7 @@ public class RacetrackGenerator : MonoBehaviour
 
             Vector3 currentPoint = new Vector3(0.0f, 0.0f, 0.0f);
             Vector3 currentDirection = Vector3.right;
-            int direction = 1;
+            int direction = Random.Range(0, 2) * 2 - 1;
             int thisDirCount = 0;
 
             int curveCount = 7;
@@ -116,7 +116,7 @@ public class RacetrackGenerator : MonoBehaviour
                 //generate connector
                 float length = -1.0f;
                 if(i == curveCount - 1){
-                    length = 80.0f;
+                    length = 60.0f;
                 }
                 List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
                 currentPoint = connector[connector.Count - 1];

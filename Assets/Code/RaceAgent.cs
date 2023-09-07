@@ -481,8 +481,8 @@ public class RaceAgent : Agent
         rewardEvent(reward, carDirection, reward == 1.0f);
         // rewardEvent(reward, carDirection);
         // Debug.Log("reward: " + GetCumulativeReward().ToString());
-        // cumulativeRewardEvent(GetCumulativeReward());
-        totalDistanceText.text = (driftReward).ToString();
+        cumulativeRewardEvent(GetCumulativeReward());
+        // totalDistanceText.text = (driftReward).ToString();
     }
 
     private float SteerSpeedReward(){
