@@ -116,23 +116,17 @@ public class RacetrackGenerator : MonoBehaviour
                 //generate connector
                 float length = -1.0f;
                 if(i == curveCount - 1){
-                    length = 60.0f;
+                    length = 30.0f;
                 }
                 List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
                 currentPoint = connector[connector.Count - 1];
 
-                connector.RemoveAt(connector.Count - 1);
+                if(i != curveCount - 1){
+                    connector.RemoveAt(connector.Count - 1);
+                }
 
                 racetrack.AddRange(connector);
                 direction *= -1;
-                float changeDirection = Random.Range(0.0f, 1.0f);
-                if(changeDirection > 0.8f && thisDirCount < 2){
-                    direction *= -1;
-                    thisDirCount = 1;
-                }
-                else{
-                    thisDirCount = 0;
-                }
             }
 
             BezierPath bezierPath = new BezierPath(racetrack, false, PathSpace.xyz);
