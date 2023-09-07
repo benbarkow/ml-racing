@@ -32,7 +32,7 @@ public class RaceAgent : Agent
     private int carDirection = 1;
     //reward parameters
     public float maxVelAngle = 45.0f;
-    public float maxSpeed = 0.2f;
+    public float maxSpeed = 0.18f;
     public float curveAngleDriftThreshold = 40.0f;
     public float targetDriftAngle = 45.0f;
     public List<float[]> curves = new List<float[]>();
@@ -64,7 +64,7 @@ public class RaceAgent : Agent
         Random.InitState(System.DateTime.Now.Millisecond);
         trackPoints = new List<Vector3>();
         totalDistanceText = distanceCoveredCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        spawnPadding = 200.0f;
+        spawnPadding = 10.0f;
     }
 
     private void ResetVehicleOnPath(float distanceOnPath, int direction){
@@ -94,6 +94,7 @@ public class RaceAgent : Agent
         // racetrackGenerator.generateRandomCircle();
         // racetrackGenerator.pickRandom();
         // racetrackGenerator.generateNew();
+        racetrackGenerator.generateRandomTrack();
         //init curves
         // InitCurves();
         // InitCheckpoints();
@@ -103,11 +104,15 @@ public class RaceAgent : Agent
         VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
 
         // startDistanceOnPath = getMostStraightDistOnPath();
-        startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length - spawnPadding);
+        // startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length - spawnPadding);
+        //random selection from beginning and end of track
+        startDistanceOnPath = spawnPadding;
+        int direction = -1;
+        startDistanceOnPath = pathCreator.path.length - spawnPadding;
         prevDistanceOnPath = startDistanceOnPath;
 
         //initPos 
-        int direction = Random.Range(0, 2) * 2 - 1;
+        // int direction = Random.Range(0, 2) * 2 - 1;
         ResetVehicleOnPath(startDistanceOnPath, direction);
 
         startTransform = this.transform;
@@ -459,13 +464,13 @@ public class RaceAgent : Agent
         // }
 
         //drift reward
-        // float driftReward = DriftReward();
+        float driftReward = DriftReward();
 
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
         // float reward = driftReward*speedReward;
-        float reward = speedReward;
+        float reward = speedReward/2 + driftReward/2;
         // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
@@ -476,7 +481,8 @@ public class RaceAgent : Agent
         rewardEvent(reward, carDirection, reward == 1.0f);
         // rewardEvent(reward, carDirection);
         // Debug.Log("reward: " + GetCumulativeReward().ToString());
-        cumulativeRewardEvent(GetCumulativeReward());
+        // cumulativeRewardEvent(GetCumulativeReward());
+        totalDistanceText.text = (driftReward).ToString();
     }
 
     private float SteerSpeedReward(){
@@ -559,23 +565,24 @@ public class RaceAgent : Agent
         //     }
         // }
         inCurve = true;
-        driftScale = 0.8f;
+        driftScale = 1f;
 
-        if(!inCurve){
-            return 1.0f;
-        }
+        // if(!inCurve){
+        //     return 1.0f;
+        // }
 
         // //get curve direction from the curve points (-1 for right, 1 for left)
-        int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[1] - curvePoints[0], curvePoints[2] - curvePoints[1]).y);
-        curveAngleSign = carDirection;
-        float carAngleSign = (int)Math.Sign(imu.SideSlip);
+        // int curveAngleSign = -(int)Math.Sign(Vector3.Cross(curvePoints[1] - curvePoints[0], curvePoints[2] - curvePoints[1]).y);
+        // float carAngleSign = (int)Math.Sign(imu.SideSlip);
 
         // //convert to -1 or 1
-        if(carAngleSign != curveAngleSign){
-            return -0.01f;
-        }
+        // if(carAngleSign != curveAngleSign){
+        //     return 0.0f;
+        // }
         float rew = Math.Min(1f, (((110f)*(1-driftScale) + 1) / (1f + Mathf.Pow(Mathf.Abs((Mathf.Abs(imu.SideSlip)-45f) / 25f),(2f*4f)))));
 
+        // Factor in the driftScale
+        rew *= driftScale;
 
         return rew;
     }

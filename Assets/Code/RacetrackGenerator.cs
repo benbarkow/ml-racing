@@ -36,6 +36,180 @@ public class RacetrackGenerator : MonoBehaviour
         roadMeshFilter.mesh = pathCollider.sharedMesh;
     }
 
+// public List<Vector3> GenerateWavySection(float length, int pointCount, float amplitude = 0.5f, float frequency = 1.0f, Vector3 direction = default, Vector3 startAt = default)
+// {
+//     if(direction == default)
+//         direction = Vector3.right; 
+
+//     List<Vector3> wavySection = new List<Vector3>();
+//     float dx = length / pointCount;
+//     for (int i = 0; i <= pointCount; i++)
+//     {
+//         float x = i * dx;
+//         float z = amplitude * Mathf.Sin(frequency * x);
+//         Vector3 point = new Vector3(x, 0.0f, z);
+
+//         // Rotate point to match direction
+//         Quaternion rotation = Quaternion.FromToRotation(Vector3.right, direction);
+//         point = rotation * point;
+        
+//         // Offset the point to start at the correct position
+//         point += startAt;
+
+//         wavySection.Add(point);
+//     }
+//     return wavySection;
+// }
+
+    public void generateRandomTrack(){
+        // Clear shared mesh and mesh filter from memory
+        if (pathCollider.sharedMesh != null)
+        {
+            Destroy(pathCollider.sharedMesh);
+        }
+        if (roadMeshFilter.mesh != null)
+        {
+            Destroy(roadMeshFilter.mesh);
+        }
+        bool trackFound = false;
+        while(!trackFound){
+
+            List<Vector3> racetrack = new List<Vector3>();
+
+            Vector3 currentPoint = new Vector3(0.0f, 0.0f, 0.0f);
+            Vector3 currentDirection = Vector3.right;
+            int direction = 1;
+            int thisDirCount = 0;
+
+            int curveCount = 7;
+
+            for(int i = 0; i < curveCount; i++)
+            {
+                //direction = 1;
+                List<Vector3> curve = generateCurve(currentPoint, direction);
+
+                float directionAngle = Mathf.Atan2(currentDirection.z, currentDirection.x) + Mathf.PI;
+                // if(direction == -1){
+                //     directionAngle += Mathf.PI;
+                // }
+
+                //rotate all points on curve around currentPoint by directionAngle
+                for(int j = 0; j < curve.Count; j++)
+                {
+                    Vector3 point = curve[j];
+                    Vector3 rotatedPoint = new Vector3();
+                    rotatedPoint.x = Mathf.Cos(directionAngle) * (point.x - currentPoint.x) - Mathf.Sin(directionAngle) * (point.z - currentPoint.z) + currentPoint.x;
+                    rotatedPoint.z = Mathf.Sin(directionAngle) * (point.x - currentPoint.x) + Mathf.Cos(directionAngle) * (point.z - currentPoint.z) + currentPoint.z;
+                    rotatedPoint.y = point.y;
+                    curve[j] = rotatedPoint;
+                }
+                currentPoint = curve[curve.Count - 1];
+                Vector3 currDirForw = curve[curve.Count - 1] - curve[curve.Count - 2];
+                //currDir perpendicular to currDirForw
+                currentDirection = new Vector3(currDirForw.z, 0.0f, -currDirForw.x);
+
+                curve.RemoveAt(curve.Count - 1);
+
+                // currentDirection = -currentDirection;
+                racetrack.AddRange(curve);
+
+                //generate connector
+                float length = -1.0f;
+                if(i == curveCount - 1){
+                    length = 80.0f;
+                }
+                List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
+                currentPoint = connector[connector.Count - 1];
+
+                connector.RemoveAt(connector.Count - 1);
+
+                racetrack.AddRange(connector);
+                direction *= -1;
+                float changeDirection = Random.Range(0.0f, 1.0f);
+                if(changeDirection > 0.8f && thisDirCount < 2){
+                    direction *= -1;
+                    thisDirCount = 1;
+                }
+                else{
+                    thisDirCount = 0;
+                }
+            }
+
+            BezierPath bezierPath = new BezierPath(racetrack, false, PathSpace.xyz);
+            try{
+                pathCollider.sharedMesh = CreateRoadMesh(new VertexPath(bezierPath, transform));
+                trackFound = true;
+
+                pathCreator.bezierPath = bezierPath;
+                pathCreator.TriggerPathUpdate();
+
+                //get mesh collider
+
+                //get mesh filter
+                roadMeshFilter.mesh = pathCollider.sharedMesh;
+            }
+            catch{
+                Debug.Log("Track not found");
+            }
+        }
+    }
+
+    public List<Vector3> generateCurveConnector(Vector3 startPos, Vector3 direction, float lengthOverride = -1.0f){
+        float length = Random.Range(15.0f, 25.0f);
+        if(lengthOverride != -1.0f){
+            length = lengthOverride;
+        }
+        float perpOffsetCenterPoint = Random.Range(-length/22.0f, length/22.0f);
+
+        List<Vector3> connector = new List<Vector3>();
+
+        Vector3 centerPoint = startPos + direction * length/2.0f;
+        centerPoint += new Vector3(-direction.z, 0.0f, direction.x) * perpOffsetCenterPoint;
+        Vector3 lastPoint = startPos + direction * length;
+
+        connector.Add(startPos);
+        connector.Add(centerPoint);
+        connector.Add(lastPoint);
+
+        return connector;
+    }
+
+    public List<Vector3> generateCurve(Vector3 startPos, int direction = 1)
+    {
+        // Generate a random angle between 65 and 110 degrees which determines the angle between the curve start tangent and the curve end tangent
+        float curveRadius = Random.Range(7.0f, 13.0f);
+        float curveAngle = Random.Range(80f, 130f) * Mathf.Deg2Rad; // Convert to radians
+        // float angle = Mathf.PI - curveAngle; // Angle between the curve start tangent and the curve end tangent
+        // angle = 160.0f * Mathf.Deg2Rad;
+        float angle = curveAngle;
+
+        int curvePointCount = 20; // Number of points in the curve
+        float curvePointAngle = angle / curvePointCount; // Angle between each point in the curve
+        List<Vector2> curve = new List<Vector2>(); // List of points in the curve
+
+       // Compute the center using the perpendicular direction.
+        Vector2 center = new Vector2(startPos.x, startPos.z) + curveRadius * direction * new Vector2(1.0f, 0.0f);
+
+         float initialAngle = (direction == 1) ? Mathf.PI : 0;
+
+        // Generate the curve points
+        for (int i = 0; i <= curvePointCount; i++)
+        {
+            float x = center.x + curveRadius * Mathf.Cos(initialAngle + direction * i * curvePointAngle);
+            float y = center.y + curveRadius * Mathf.Sin(initialAngle + direction * i * curvePointAngle);
+            curve.Add(new Vector2(x, y));
+        }
+
+        // Convert the curve's points to 3D space
+        List<Vector3> curve3d = new List<Vector3>();
+        for (int i = 0; i < curve.Count; i++)
+        {
+            curve3d.Add(new Vector3(curve[i].x, 0.0f, curve[i].y));
+        }
+
+        return curve3d;
+    }
+
     public void generateRandomCircle()
     {
         //clear shared mesh and mesh filter from mem
@@ -290,6 +464,7 @@ public class RacetrackGenerator : MonoBehaviour
             Vector2[] uvs = new Vector2[verts.Length];
             Vector3[] normals = new Vector3[verts.Length];
 
+
             int numTris = 2 * (path.NumPoints - 1) + ((path.isClosedLoop) ? 2 : 0);
             int[] roadTriangles = new int[numTris * 3];
             int[] underRoadTriangles = new int[numTris * 3];
@@ -315,9 +490,11 @@ public class RacetrackGenerator : MonoBehaviour
                 Vector3 vertSideA = path.GetPoint (i) - localRight * Mathf.Abs (roadWidth);
                 Vector3 vertSideB = path.GetPoint (i) + localRight * Mathf.Abs (roadWidth);
 
+
                 // Add top of road vertices
                 verts[vertIndex + 0] = vertSideA;
                 verts[vertIndex + 1] = vertSideB;
+
                 // Add bottom of road vertices
                 verts[vertIndex + 2] = vertSideA - localUp * thickness;
                 verts[vertIndex + 3] = vertSideB - localUp * thickness;
@@ -359,6 +536,11 @@ public class RacetrackGenerator : MonoBehaviour
 
                 vertIndex += 8;
                 triIndex += 6;
+            }
+            foreach (var v in verts) {
+                if (!float.IsFinite(v.x) || !float.IsFinite(v.y) || !float.IsFinite(v.z)) {
+                    throw new System.Exception("Non-finite vertex detected");
+                }
             }
 
             Mesh mesh = new Mesh ();
