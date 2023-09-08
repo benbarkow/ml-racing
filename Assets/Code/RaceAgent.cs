@@ -470,7 +470,7 @@ public class RaceAgent : Agent
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
         // float reward = driftReward*speedReward;
-        float reward = speedReward/2 + driftReward/2;
+        float reward = (speedReward*2 + driftReward*8) / 10;
         // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
