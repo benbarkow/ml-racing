@@ -81,7 +81,7 @@ public class RacetrackGenerator : MonoBehaviour
             int direction = Random.Range(0, 2) * 2 - 1;
             int thisDirCount = 0;
 
-            int curveCount = 7;
+            int curveCount = 10;
 
             for(int i = 0; i < curveCount; i++)
             {
@@ -113,19 +113,19 @@ public class RacetrackGenerator : MonoBehaviour
                 // currentDirection = -currentDirection;
                 racetrack.AddRange(curve);
 
-                //generate connector
-                float length = -1.0f;
-                if(i == curveCount - 1){
-                    length = 30.0f;
-                }
-                List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
-                currentPoint = connector[connector.Count - 1];
+                // //generate connector
+                // float length = -1.0f;
+                // if(i == curveCount - 1){
+                //     length = 30.0f;
+                // }
+                // List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
+                // currentPoint = connector[connector.Count - 1];
 
-                if(i != curveCount - 1){
-                    connector.RemoveAt(connector.Count - 1);
-                }
+                // if(i != curveCount - 1){
+                //     connector.RemoveAt(connector.Count - 1);
+                // }
 
-                racetrack.AddRange(connector);
+                // racetrack.AddRange(connector);
                 direction *= -1;
             }
 
