@@ -503,7 +503,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!43 &737037091
+--- !u!43 &1063485716
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,7 +772,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074353129}
-  m_Mesh: {fileID: 737037091}
+  m_Mesh: {fileID: 1063485716}
 --- !u!64 &1074353133
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4136,7 +4136,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2048
+  MaxStep: 1024
   maxVelAngle: 60
   maxSpeed: 0.18
   curveAngleDriftThreshold: 40

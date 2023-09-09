@@ -81,7 +81,7 @@ public class RacetrackGenerator : MonoBehaviour
             int direction = Random.Range(0, 2) * 2 - 1;
             int thisDirCount = 0;
 
-            int curveCount = 10;
+            int curveCount = 2;
 
             for(int i = 0; i < curveCount; i++)
             {
@@ -111,21 +111,23 @@ public class RacetrackGenerator : MonoBehaviour
                 curve.RemoveAt(curve.Count - 1);
 
                 // currentDirection = -currentDirection;
-                racetrack.AddRange(curve);
+                if(i != 0){
+                    racetrack.AddRange(curve);
+                }
 
                 // //generate connector
-                // float length = -1.0f;
-                // if(i == curveCount - 1){
-                //     length = 30.0f;
-                // }
-                // List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
-                // currentPoint = connector[connector.Count - 1];
+                float length = -1.0f;
+                if(i == curveCount - 1){
+                    length = 30.0f;
+                }
+                List<Vector3> connector = generateCurveConnector(currentPoint, currDirForw, length);
+                currentPoint = connector[connector.Count - 1];
 
-                // if(i != curveCount - 1){
-                //     connector.RemoveAt(connector.Count - 1);
-                // }
+                if(i != curveCount - 1){
+                    connector.RemoveAt(connector.Count - 1);
+                }
 
-                // racetrack.AddRange(connector);
+                racetrack.AddRange(connector);
                 direction *= -1;
             }
 
@@ -149,7 +151,8 @@ public class RacetrackGenerator : MonoBehaviour
     }
 
     public List<Vector3> generateCurveConnector(Vector3 startPos, Vector3 direction, float lengthOverride = -1.0f){
-        float length = Random.Range(15.0f, 25.0f);
+        direction = direction.normalized;
+        float length = Random.Range(40.0f, 50.0f);
         if(lengthOverride != -1.0f){
             length = lengthOverride;
         }
@@ -157,7 +160,7 @@ public class RacetrackGenerator : MonoBehaviour
 
         List<Vector3> connector = new List<Vector3>();
 
-        Vector3 centerPoint = startPos + direction * length/2.0f;
+        Vector3 centerPoint = startPos + direction * length / 2.0f;
         centerPoint += new Vector3(-direction.z, 0.0f, direction.x) * perpOffsetCenterPoint;
         Vector3 lastPoint = startPos + direction * length;
 
