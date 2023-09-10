@@ -10,6 +10,9 @@ from mlagents_envs.side_channel.engine_configuration_channel import \
     EngineConfigurationChannel
 
 from common import make_unity_env, SaveOnBestTrainingRewardCallback, linear_schedule
+from stable_baselines3 import BehavioralCloning
+from torch.utils.data.dataset import Dataset, random_split
+
 
 from PIL import Image
 from stable_baselines3 import PPO
@@ -24,6 +27,17 @@ parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of par
 parser.add_argument('-st', '--sim_timescale', type=float, default=1.0, help='Timescale of the simulation')
 parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
 argus = parser.parse_args()
+
+class ExpertDataSet(Dataset):
+    def __init__(self, expert_observations, expert_actions):
+        self.observations = expert_observations
+        self.actions = expert_actions
+
+    def __getitem__(self, index):
+        return (self.observations[index], self.actions[index])
+
+    def __len__(self):
+        return len(self.observations)
 
 if __name__ == '__main__':
 
@@ -45,9 +59,10 @@ if __name__ == '__main__':
 	# model = PPO('MlpPolicy', env, verbose=1)
 	env = make_unity_env(argus.executable, argus.num_envs, visual=argus.visualize, sim_timescale=argus.sim_timescale, log_dir=config.log_dir)
 	#print action space
-	print("Action space: ", env.action_space)
+
 
 	model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
+
 	#model = PPO(config.models_dir + "archive/only_speed.zip", env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
 	#model = PPO.load(config.models_dir + "archive/stack.zip", env=env, device="cuda")
