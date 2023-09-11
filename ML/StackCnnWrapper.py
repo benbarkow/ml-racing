@@ -23,6 +23,7 @@ class StackCnnWrapper(gym.ObservationWrapper):
 		checkpoint = {k.replace('module.', ''): v for k, v in checkpoint.items()}
 		self.model.load_state_dict(checkpoint)
 		self.model.eval()
+		self.steps = 0
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 
 	def observation(self, obs):
@@ -45,6 +46,8 @@ class StackCnnWrapper(gym.ObservationWrapper):
 			output = output.cpu().numpy()
 
 		output = output.reshape(8,)
+		self.steps += 1 
+		print(self.steps)
 
 		return output
 

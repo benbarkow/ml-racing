@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
 
 	# Initialize the PPO learner
-	learner = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
+	learner = PPO('MlpPolicy', env, tensorboard_log=config.tb_logs, n_epochs=1 , learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
 	# Initialize the reward network for GAIL
 	reward_net = BasicShapedRewardNet(
@@ -74,10 +74,10 @@ if __name__ == '__main__':
 	)
 
 	# Callback for saving best model
-	callback = SaveOnBestTrainingRewardCallback(check_freq=1000, log_dir="logs/", save_path="models/")
+	# callback = SaveOnBestTrainingRewardCallback(check_freq=1000, log_dir="logs/", save_path="models/")
 
 	# Train using GAIL
-	gail_trainer.train(20000, callback=callback)
+	gail_trainer.train(20000)
 
 	# Evaluate the policy
 	mean_reward, _ = evaluate_policy(learner, env, n_eval_episodes=10)

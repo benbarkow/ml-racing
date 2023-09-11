@@ -83,8 +83,8 @@ def collect_human_data(env, num_episodes=100, datafile=None):
 	else:
 		expert_trajectories = []
 
-	print(expert_trajectories)
 	for _ in range(num_episodes):
+		step_count = 0
 		obs = env.reset()
 		done = False
 		trajectory = {"observations": [], "actions": []}
@@ -97,12 +97,13 @@ def collect_human_data(env, num_episodes=100, datafile=None):
 				trajectory["observations"].append(obs.tolist())  # Convert numpy array to list
 				trajectory["actions"].append(action.tolist())  # Convert numpy array to list
 				obs, _, done, _ = env.step(action)
-
-			pygame.display.flip()  # Update the display
+				step_count += 1
 
 		# Check if the user wants to use the recorded data
+		print("Recorded {} steps.".format(step_count))
 		print("Press 'X' to use the recorded data or 'Circle' to discard.")
 		if wait_for_decision():
+			print(trajectory.shape)
 			expert_trajectories.append(trajectory)
 			if datafile:
 				np.savez(datafile, trajectories=expert_trajectories)
@@ -130,7 +131,7 @@ def wait_for_decision():
 
 channel = EngineConfigurationChannel()
 channel.set_configuration_parameters(time_scale=1.0)
-unity_env = UnityEnvironment(file_name=argus.executable, seed=1, side_channels=[channel])
+unity_env = UnityEnvironment(file_name=argus.executable, side_channels=[channel])
 env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 env = StackCnnWrapper(env)
 

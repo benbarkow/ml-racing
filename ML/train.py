@@ -10,7 +10,6 @@ from mlagents_envs.side_channel.engine_configuration_channel import \
     EngineConfigurationChannel
 
 from common import make_unity_env, SaveOnBestTrainingRewardCallback, linear_schedule
-from stable_baselines3 import BehavioralCloning
 from torch.utils.data.dataset import Dataset, random_split
 
 
