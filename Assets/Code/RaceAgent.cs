@@ -465,8 +465,8 @@ public class RaceAgent : Agent
 
         float goalReward = GoalReward(distanceOnPath, angleReward[1]);
         if(goalReward != -1.0f){
-            Debug.Log("goal reward: " + goalReward.ToString());
-            Debug.Log("step count: " + StepCount.ToString());
+            // Debug.Log("goal reward: " + goalReward.ToString());
+            // Debug.Log("step count: " + StepCount.ToString());
             SetReward(goalReward);
             EndEpisode();
             return;
@@ -486,7 +486,7 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
-        float reward = driftReward*speedReward;
+        float reward = (driftReward * 4 + speedReward) / 5;
         // float reward = (speedReward*2 + driftReward*8) / 10;
         // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
@@ -593,7 +593,7 @@ public class RaceAgent : Agent
             curveAngle = 180.0f - curveAngle;
         }
         if(curveAngle < 20.0f){
-            return 1.0f;
+            return 0.0f;
         }
 
         // //get curve direction from the curve points (-1 for right, 1 for left)

@@ -53,7 +53,9 @@ if __name__ == '__main__':
 
 
 	# Initialize the PPO learner
-	learner = PPO('MlpPolicy', env, tensorboard_log=config.tb_logs, n_epochs=1 , learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
+	# learner = PPO('MlpPolicy', env, tensorboard_log=config.tb_logs, n_epochs=1 , learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
+	learner = PPO.load(config.models_dir + "archive/curve_drift_cnn_25.zip", env, device="cuda" if argus.cuda else "cpu")
+	
 
 	# Initialize the reward network for GAIL
 	reward_net = BasicShapedRewardNet(
