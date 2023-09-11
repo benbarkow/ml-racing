@@ -70,7 +70,8 @@ if __name__ == '__main__':
 		n_disc_updates_per_round=4,
 		venv=env,
 		gen_algo=learner,
-		reward_net=reward_net
+		reward_net=reward_net,
+		allow_variable_horizon=True
 	)
 
 	# Callback for saving best model
