@@ -28,12 +28,12 @@ class Connection(Node):
 		self.subscription # prevent unused variable warning
 		self.reqActions = CarAction.Request()
 
-		self.clientActions = self.create_client(CarAction, 'action')
-		while not self.clientActions.wait_for_service(timeout_sec=1.0):
-			self.get_logger().info('service not available, waiting again...')
-		self.reqActions = CarAction.Request()
+		# self.clientActions = self.create_client(CarAction, 'action')
+		# while not self.clientActions.wait_for_service(timeout_sec=1.0):
+		# 	self.get_logger().info('service not available, waiting again...')
+		# self.reqActions = CarAction.Request()
 
-		self.name = "model/working_model.onnx"
+		self.name = "model/stack_cnn.onnx"
 		self.path = os.path.join(os.path.dirname(__file__), self.name)	
 		self.net = onnx.load(self.path)
 
@@ -41,31 +41,47 @@ class Connection(Node):
 		self.net.ir_version = 8
 		checker.check_model(self.net)
 		self.session = ort.InferenceSession(self.net.SerializeToString())
-		self.curr_frame = np.zeros((1, 4800)).astype(np.float32)
+
+		self.curr_frame_stack = np.zeros((1, 9, 80, 60), dtype=np.float32)
+		self.frame_stack_buffer = []
 
 		self.img_threshold = 150
 
 		self.net_timer = self.create_timer(0.1, self.net_callback)
 
 	def car_frame_callback(self, msg):
-		self.car_frame = np.array(msg.data)
-		msg_frame = self.car_frame.reshape((60,80))
-		image = msg_frame.astype(np.uint8)
+		car_frame_array = np.array(msg.data)
+		car_frame = car_frame_array.reshape(60,80,3)
+		#normalize image
+		# transforms.Normalize(mean=[0.485, 0.456, 0.406, 0.485, 0.456, 0.406, 0.485, 0.456, 0.406],
+		# 						std=[0.229, 0.224, 0.225, 0.229, 0.224, 0.225, 0.229, 0.224, 0.225])	
+
+		mean = np.array([0.485, 0.456, 0.406])
+		std = np.array([0.229, 0.224, 0.225])
+		image_normalized = (car_frame - mean) / std
+		image_normalized = image_normalized.astype(np.float32)
 
 
-		image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-		image = cv2.GaussianBlur(image, (5,5), 0)
-		_, image = cv2.threshold(image, self.img_threshold, 255, cv2.THRESH_BINARY)
-		image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-		image = cv2.resize(image, (80,60))
+		#add image to buffer
+		self.frame_stack_buffer.append(image_normalized)
+		if(len(self.frame_stack_buffer) == 3):
+			#construct (1, 9, 60, 80) from buffer (3, 3, 60, 80)
+			self.curr_frame_stack = np.stack(self.frame_stack_buffer, axis=0).reshape(1, 9, 80, 60)
+			# first_image = self.curr_frame_stack[0][0:3]
+			# #rearrage channels (3, 60, 80) -> (60, 80, 3)
+			# first_image = first_image.reshape(60, 80, 3)
 
-		cv2.imshow('frame', image.astype('uint8'))
-		cv2.waitKey(1)
+			# second_image = self.curr_frame_stack[0][3:6]
+			# second_image = second_image.reshape(60, 80, 3)
 
-		image = image.astype(np.float32)
-		image = image.reshape((1, 4800))
-		#show image
-		self.curr_frame = image
+			# #show image
+			# cv2.imshow('frame', second_image.astype('uint8'))
+			# cv2.waitKey(1)
+
+			self.frame_stack_buffer = []
+
+		#show first image in buffer
+
 	
 	# def get_observations(self):
 	# 	self.future = self.clientTracking.call_async(self.reqTracking)
@@ -81,16 +97,17 @@ class Connection(Node):
 		return self.future.result()
 
 	def net_callback(self):
-		ort_inputs = {self.session.get_inputs()[0].name: self.curr_frame}
+		ort_inputs = {self.session.get_inputs()[0].name: self.curr_frame_stack}
 		act = self.session.run(None, ort_inputs)[0][0]
 		print(act)
 
-		self.send_actions(act[0].item(), act[1].item())
+		# self.send_actions(act[0].item(), act[1].item())
 		
 
 	def data_transform(self):
 		#Todo get_observations aufrufen und transformieren		
 		pass
+
 def main(args=None):
 	rclpy.init(args=args)
 

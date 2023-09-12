@@ -13,30 +13,17 @@ class CarCameraPublisher(Node):
 		timer_period = 0.03  # seconds
 		self.timer = self.create_timer(timer_period, self.timer_callback)
 		self.cap = cv2.VideoCapture(0)
-		self.br = CvBridge()
 	
 	def timer_callback(self):
 		ret, frame = self.cap.read()
 		#resize image to 320x240
-		frame = cv2.resize(frame, (80, 60))
 		if ret == True:
 			#read image as rgb
-			image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-			# image = cv2.GaussianBlur(frame, (5,5), 0)
-			#apply threshold
-			# _, image = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
-			#convert to grayscale
-			# image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-			#resize
-			image = cv2.resize(image, (80,60, 3))
+			image = cv2.resize(frame, (80,60))
 			#convert to float32
 			image = image.astype('float32')
-			#convert to float32 multy array
-			image_r = image[:,:,0]
-			image_g = image[:,:,1]
-			image_b = image[:,:,2]
 
-			image_array = image_r.flatten().tolist() + image_g.flatten().tolist() + image_b.flatten().tolist()
+			image_array = image.reshape(-1).tolist()
 			#publish image
 			msg = Float32MultiArray()
 			msg.data = image_array

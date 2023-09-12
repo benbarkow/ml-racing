@@ -17,8 +17,16 @@ class CarCameraReciever(Node):
 		self.subscription # prevent unused variable warning
    
 	def listener_callback(self, data):
-		current_frame = np.array(data.data)
-		current_frame = current_frame.reshape((60,80))
+		image_array = np.array(data.data)
+		image_matrix = image_array.reshape(60,80,3)
+
+		print(image_matrix.shape)
+
+		#convert to uint8
+		current_frame = image_matrix.astype('uint8')
+
+		
+
 		#show image
 		cv2.imshow('frame', current_frame.astype('uint8'))
 		cv2.waitKey(1)

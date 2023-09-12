@@ -17,8 +17,8 @@ COPY ./install install
 COPY ./src src
 COPY ./log log
 
-RUN apt-get update
 RUN rosdep install -y --from-paths src
+RUN apt-get update && apt-get install -y v4l-utils
 
 RUN echo "source /ros2_ws/install/setup.bash" >> /root/.bashrc
 
