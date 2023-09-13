@@ -4,6 +4,7 @@ setup.py
 car_controller/__init__.py
 car_controller/car_controller.py
 car_controller/net.py
+car_controller/net_sb3.py
 car_controller/receiver.py
 car_controller/tracking.py
 car_controller.egg-info/PKG-INFO

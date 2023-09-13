@@ -22,16 +22,16 @@ class Connection(Node):
 		# self.reqTracking = TrackingData.Request()
 		self.subscription = self.create_subscription(
 			Float32MultiArray, 
-			'car_video_frames', 
+			'car_video_features', 
 			self.car_frame_callback, 
 			10)
 		self.subscription # prevent unused variable warning
 		self.reqActions = CarAction.Request()
 
-		# self.clientActions = self.create_client(CarAction, 'action')
-		# while not self.clientActions.wait_for_service(timeout_sec=1.0):
-		# 	self.get_logger().info('service not available, waiting again...')
-		# self.reqActions = CarAction.Request()
+		self.clientActions = self.create_client(CarAction, 'action')
+		while not self.clientActions.wait_for_service(timeout_sec=1.0):
+			self.get_logger().info('service not available, waiting again...')
+		self.reqActions = CarAction.Request()
 
 		#load rnn
 		self.rnn_name = "model/track_drive_cnn_44.onnx"
@@ -92,7 +92,7 @@ class Connection(Node):
 		# self.send_actions(act[0].item(), act[1].item() 
 		print("steering: ", steering, "speed: ", speed)
 
-		# self.send_actions(steering, speed)
+		self.send_actions(steering, speed)
 		
 
 	def data_transform(self):
