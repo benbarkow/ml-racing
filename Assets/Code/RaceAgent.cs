@@ -91,10 +91,10 @@ public class RaceAgent : Agent
             Destroy(sphere);
         }
 
-        // racetrackGenerator.generateRandomCircle();
+        racetrackGenerator.generateRandomCircle();
         // racetrackGenerator.pickRandom();
         // racetrackGenerator.generateNew();
-        racetrackGenerator.generateRandomTrack();
+        // racetrackGenerator.generateRandomTrack();
         //init curves
         // InitCurves();
         // InitCheckpoints();
@@ -463,14 +463,14 @@ public class RaceAgent : Agent
             return;
         }
 
-        float goalReward = GoalReward(distanceOnPath, angleReward[1]);
-        if(goalReward != -1.0f){
-            // Debug.Log("goal reward: " + goalReward.ToString());
-            // Debug.Log("step count: " + StepCount.ToString());
-            SetReward(goalReward);
-            EndEpisode();
-            return;
-        }
+        // float goalReward = GoalReward(distanceOnPath, angleReward[1]);
+        // if(goalReward != -1.0f){
+        //     // Debug.Log("goal reward: " + goalReward.ToString());
+        //     // Debug.Log("step count: " + StepCount.ToString());
+        //     SetReward(goalReward);
+        //     EndEpisode();
+        //     return;
+        // }
 
         // float steerSpeedReward = SteerSpeedReward();
 
@@ -486,8 +486,8 @@ public class RaceAgent : Agent
         //calculate total reward
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
-        float reward = (driftReward * 4 + speedReward) / 5;
-        // float reward = (speedReward*2 + driftReward*8) / 10;
+        // float reward = (driftReward * 4 + speedReward) / 5;
+        float reward = (speedReward*2 + driftReward*8) / 10;
         // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
