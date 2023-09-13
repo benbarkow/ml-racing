@@ -33,60 +33,27 @@ class Connection(Node):
 		# 	self.get_logger().info('service not available, waiting again...')
 		# self.reqActions = CarAction.Request()
 
-		self.name = "model/stack_cnn.onnx"
-		self.path = os.path.join(os.path.dirname(__file__), self.name)	
-		self.net = onnx.load(self.path)
+		#load rnn
+		self.rnn_name = "model/track_drive_cnn_44.onnx"
+		self.rnn_path = os.path.join(os.path.dirname(__file__), self.rnn_name)
+		self.rnn_net = onnx.load(self.rnn_path)
 
-		self.net = onnx.version_converter.convert_version(self.net, 18)
-		self.net.ir_version = 8
-		checker.check_model(self.net)
-		self.session = ort.InferenceSession(self.net.SerializeToString())
+		self.rnn_net = onnx.version_converter.convert_version(self.rnn_net, 18)
+		self.rnn_net.ir_version = 8
+		checker.check_model(self.rnn_net)
+		self.rnn_session = ort.InferenceSession(self.rnn_net.SerializeToString())
 
 		self.curr_frame_stack = np.zeros((1, 9, 80, 60), dtype=np.float32)
 		self.frame_stack_buffer = []
 
 		self.img_threshold = 150
 
-		self.net_timer = self.create_timer(0.1, self.net_callback)
+		# self.net_timer = self.create_timer(0.1, self.net_callback)
 
 	def car_frame_callback(self, msg):
-		car_frame_array = np.array(msg.data)
-		car_frame = car_frame_array.reshape(60,80,3)
-		#normalize image
-		# transforms.Normalize(mean=[0.485, 0.456, 0.406, 0.485, 0.456, 0.406, 0.485, 0.456, 0.406],
-		# 						std=[0.229, 0.224, 0.225, 0.229, 0.224, 0.225, 0.229, 0.224, 0.225])	
+		car_feature_array = np.array(msg.data)
+		self.net(car_feature_array)
 
-		mean = np.array([0.485, 0.456, 0.406])
-		std = np.array([0.229, 0.224, 0.225])
-		image_normalized = (car_frame - mean) / std
-		image_normalized = image_normalized.astype(np.float32)
-
-
-		#add image to buffer
-		self.frame_stack_buffer.append(image_normalized)
-		if(len(self.frame_stack_buffer) == 3):
-			#construct (1, 9, 60, 80) from buffer (3, 3, 60, 80)
-			self.curr_frame_stack = np.stack(self.frame_stack_buffer, axis=0).reshape(1, 9, 80, 60)
-			# first_image = self.curr_frame_stack[0][0:3]
-			# #rearrage channels (3, 60, 80) -> (60, 80, 3)
-			# first_image = first_image.reshape(60, 80, 3)
-
-			# second_image = self.curr_frame_stack[0][3:6]
-			# second_image = second_image.reshape(60, 80, 3)
-
-			# #show image
-			# cv2.imshow('frame', second_image.astype('uint8'))
-			# cv2.waitKey(1)
-
-			self.frame_stack_buffer = []
-
-		#show first image in buffer
-
-	
-	# def get_observations(self):
-	# 	self.future = self.clientTracking.call_async(self.reqTracking)
-	# 	rclpy.spin_until_future_complete(self, self.future)
-	# 	return self.future.result()
 
 	def send_actions(self, steer, speed):
 		self.reqActions.steer = steer + 0.075
@@ -96,12 +63,36 @@ class Connection(Node):
 		# rclpy.spin_until_future_complete(self, self.future)
 		return self.future.result()
 
-	def net_callback(self):
-		ort_inputs = {self.session.get_inputs()[0].name: self.curr_frame_stack}
-		act = self.session.run(None, ort_inputs)[0][0]
-		print(act)
+	def net(self, image_features):
 
-		# self.send_actions(act[0].item(), act[1].item())
+		image_features = image_features.reshape(1, 8)
+		ort_inputs = {self.rnn_session.get_inputs()[0].name: image_features}
+		preds = self.rnn_session.run(None, ort_inputs)[0]
+
+		action_dims = [11, 6]
+
+		def softmax(x):
+			"""Compute softmax values for each sets of scores in x."""
+			e_x = np.exp(x - np.max(x, axis=-1, keepdims=True))
+			return e_x / e_x.sum(axis=-1, keepdims=True)
+
+		def split_and_get_argmax(logits, action_dims):
+			"""Split logits based on dimensions and get argmax for each."""
+			split_logits = np.split(logits, np.cumsum(action_dims)[:-1], axis=1)
+			return [np.argmax(softmax(s), axis=1) for s in split_logits]
+
+
+		argmax_values = split_and_get_argmax(preds, action_dims)
+		actions = np.stack(argmax_values, axis=1)[0]
+
+
+		print(actions)
+		steering = np.interp(actions[0], [0, 10], [-1, 1])
+		speed = np.interp(actions[1], [0, 5], [0, 1])
+		# self.send_actions(act[0].item(), act[1].item() 
+		print("steering: ", steering, "speed: ", speed)
+
+		# self.send_actions(steering, speed)
 		
 
 	def data_transform(self):

@@ -20,7 +20,7 @@ class CarCameraReciever(Node):
 		image_array = np.array(data.data)
 		image_matrix = image_array.reshape(60,80,3)
 
-		print(image_matrix.shape)
+		# print(image_matrix.shape)
 
 		#convert to uint8
 		current_frame = image_matrix.astype('uint8')
