@@ -20,7 +20,7 @@ class CarCameraPublisher(Node):
 		self.cap = cv2.VideoCapture(0)
 		self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
-		self.cnn_name = "model/stack_cnn.onnx"
+		self.cnn_name = "model/stack_cnn_v2.onnx"
 		self.cnn_path = os.path.join(os.path.dirname(__file__), self.cnn_name)	
 		self.cnn_net = onnx.load(self.cnn_path)
 
@@ -57,6 +57,9 @@ class CarCameraPublisher(Node):
 				self.image_buffer.append(image)
 
 	def cnn_forward(self, stack):
+		mean = np.array([0.4635, 0.4754, 0.4603, 0.4639, 0.4757, 0.4607, 0.4644, 0.4762, 0.4611])
+		std = np.array([0.1301, 0.1243, 0.1246, 0.1297, 0.1239, 0.1242, 0.1294, 0.1235, 0.1237])
+		stack = (stack - mean) / std
 		ort_inputs = {self.cnn_session.get_inputs()[0].name: stack}
 		image_features = self.cnn_session.run(None, ort_inputs)[0][0]
 		return image_features.astype('float32').tolist()
