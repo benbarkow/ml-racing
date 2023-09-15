@@ -25,6 +25,7 @@ parser.add_argument('-c', '--cuda', action='store_true', help='Whether to start 
 parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of parallel environments to use for training (max. ~number of CPU cores)')
 parser.add_argument('-st', '--sim_timescale', type=float, default=1.0, help='Timescale of the simulation')
 parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
+parser.add_argument('m', '--model', type=str, default="best_model.zip", help='Model to use')
 argus = parser.parse_args()
 
 class ExpertDataSet(Dataset):
@@ -59,8 +60,10 @@ if __name__ == '__main__':
 	env = make_unity_env(argus.executable, argus.num_envs, visual=argus.visualize, sim_timescale=argus.sim_timescale, log_dir=config.log_dir)
 	#print action space
 
-
-	model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
+	if argus.model:
+		model = PPO.load(config.models_dir + argus.model, env=env, device="cuda")
+	else:
+		model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
 	#model = PPO(config.models_dir + "archive/only_speed.zip", env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
