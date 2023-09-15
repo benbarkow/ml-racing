@@ -109,7 +109,7 @@ class Connection(Node):
 
 		print(actions)
 		steering = np.interp(actions[0], [0, 10], [0.2, 0.8])
-		speed = np.interp(actions[1], [0, 5], [0.1, 0.8])
+		speed = np.interp(actions[1], [0, 5], [0.1, 0.2])
 		# self.send_actions(act[0].item(), act[1].item() 
 		print("steering: ", steering, "speed: ", speed)
 
