@@ -13,6 +13,7 @@ import argparse
 from FeatureExtractionWrapper import FeatureExtractionWrapper
 from ImageWrapper import ImageWrapper
 from CnnWrapper import CnnWrapper
+from StackCnnWrapper import StackCnnWrapper
 
 import config
 
@@ -32,7 +33,8 @@ if __name__ == '__main__':
 	channel.set_configuration_parameters(time_scale=argus.timescale)
 	unity_env = UnityEnvironment(file_name=argus.executable, seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
-	env = CnnWrapper(env)
+	# env = CnnWrapper(env)
+	env = StackCnnWrapper(env)
 	env = Monitor(env, config.log_dir)
 
 	reward_list = []
