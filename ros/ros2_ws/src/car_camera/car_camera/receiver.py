@@ -1,7 +1,6 @@
 import rclpy # Python library for ROS 2
 from rclpy.node import Node # Handles the creation of nodes
 from sensor_msgs.msg import Image # Image is the message type
-from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
 from std_msgs.msg import Float32MultiArray
 import cv2 # OpenCV library
 import numpy as np

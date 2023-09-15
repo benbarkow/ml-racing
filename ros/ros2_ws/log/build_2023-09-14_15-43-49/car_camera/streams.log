@@ -1,0 +1,20 @@
+[1.023s] Invoking command in '/ros2_ws/build/car_camera': PYTHONPATH=/ros2_ws/build/car_camera/prefix_override:/ros2_ws/install/car_camera/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/car_camera/build --no-deps install_data
+[1.254s] running develop
+[1.355s] running egg_info
+[1.355s] writing car_camera.egg-info/PKG-INFO
+[1.355s] writing dependency_links to car_camera.egg-info/dependency_links.txt
+[1.355s] writing entry points to car_camera.egg-info/entry_points.txt
+[1.355s] writing requirements to car_camera.egg-info/requires.txt
+[1.356s] writing top-level names to car_camera.egg-info/top_level.txt
+[1.357s] reading manifest file 'car_camera.egg-info/SOURCES.txt'
+[1.358s] writing manifest file 'car_camera.egg-info/SOURCES.txt'
+[1.359s] running build_ext
+[1.359s] Creating /ros2_ws/install/car_camera/lib/python3.10/site-packages/car-camera.egg-link (link to .)
+[1.360s] Installing cam_features_pub script to /ros2_ws/install/car_camera/lib/car_camera
+[1.360s] Installing cam_features_pub_torch script to /ros2_ws/install/car_camera/lib/car_camera
+[1.360s] Installing camera_pub script to /ros2_ws/install/car_camera/lib/car_camera
+[1.360s] Installing camera_rcv script to /ros2_ws/install/car_camera/lib/car_camera
+[1.360s] 
+[1.361s] Installed /ros2_ws/build/car_camera
+[1.361s] running install_data
+[1.388s] Invoked command in '/ros2_ws/build/car_camera' returned '0': PYTHONPATH=/ros2_ws/build/car_camera/prefix_override:/ros2_ws/install/car_camera/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/car_camera/build --no-deps install_data

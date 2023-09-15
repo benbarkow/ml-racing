@@ -1,0 +1,17 @@
+running develop
+running egg_info
+writing tracking_sub.egg-info/PKG-INFO
+writing dependency_links to tracking_sub.egg-info/dependency_links.txt
+writing entry points to tracking_sub.egg-info/entry_points.txt
+writing requirements to tracking_sub.egg-info/requires.txt
+writing top-level names to tracking_sub.egg-info/top_level.txt
+reading manifest file 'tracking_sub.egg-info/SOURCES.txt'
+writing manifest file 'tracking_sub.egg-info/SOURCES.txt'
+running build_ext
+Creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)
+Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+Installing servo_test script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+
+Installed /ros2_ws/build/tracking_sub
+running install_data

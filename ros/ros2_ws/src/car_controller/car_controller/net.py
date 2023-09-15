@@ -31,7 +31,8 @@ class Connection(Node):
 		self.clientActions = self.create_client(CarAction, 'action')
 		while not self.clientActions.wait_for_service(timeout_sec=1.0):
 			self.get_logger().info('service not available, waiting again...')
-		self.reqActions = CarAction.Request()
+
+		self.car_action_pub = self.create_publisher(Float32MultiArray, 'car_actions', 10)
 
 		#load rnn
 		self.rnn_name = "model/track_drive_cnn_44.onnx"
@@ -48,6 +49,15 @@ class Connection(Node):
 
 		self.img_threshold = 150
 
+		self.pub_counter = 0
+		self.pub_rate_timer = self.create_timer(5, self.pub_rate_callback)
+
+	def pub_rate_callback(self):
+		self.get_logger().info('Publish Rate: {} Hz'.format(self.pub_counter/5))
+		self.pub_counter = 0
+
+	def get_client_actions(self):
+		return self.clientActions
 		# self.net_timer = self.create_timer(0.1, self.net_callback)
 
 	def car_frame_callback(self, msg):
@@ -56,14 +66,21 @@ class Connection(Node):
 
 
 	def send_actions(self, steer, speed):
-		self.reqActions.steer = steer + 0.075
+
+		self.reqActions.steer = steer + 0.07
 		self.reqActions.speed = np.interp(speed, [0, 1], [0, 23000])
 
 		self.future = self.clientActions.call_async(self.reqActions)
 		# rclpy.spin_until_future_complete(self, self.future)
+		self.pub_counter += 1
 		return self.future.result()
 
+	def modify_image_features(self, image_features):
+		image_features[6] = image_features[6]
+		return image_features
+
 	def net(self, image_features):
+		image_features = self.modify_image_features(image_features)
 
 		image_features = image_features.reshape(1, 8)
 		ort_inputs = {self.rnn_session.get_inputs()[0].name: image_features}
@@ -85,10 +102,14 @@ class Connection(Node):
 		argmax_values = split_and_get_argmax(preds, action_dims)
 		actions = np.stack(argmax_values, axis=1)[0]
 
+		msg = Float32MultiArray()
+		array = [np.interp(actions, [0, 10], [0, 1]), np.interp(actions, [0, 5], [0, 1])]
+		msg.data = np.array(array).astype(np.float32).flatten().tolist()
+		self.car_action_pub.publish(msg)
 
 		print(actions)
-		steering = np.interp(actions[0], [0, 10], [-1, 1])
-		speed = np.interp(actions[1], [0, 5], [0, 1])
+		steering = np.interp(actions[0], [0, 10], [0.2, 0.8])
+		speed = np.interp(actions[1], [0, 5], [0.1, 0.8])
 		# self.send_actions(act[0].item(), act[1].item() 
 		print("steering: ", steering, "speed: ", speed)
 
@@ -104,7 +125,16 @@ def main(args=None):
 
 	connection_node = Connection()
 
-	rclpy.spin(connection_node)
+	try:
+		rclpy.spin(connection_node)
+	except KeyboardInterrupt:
+		#get client actions and send 0,0
+		cl_actions = connection_node.get_client_actions()
+		req_actions = CarAction.Request()
+		req_actions.steer = 0.5
+		req_actions.speed = 0.0
+		future = cl_actions.call_async(req_actions)
+		rclpy.spin_until_future_complete(connection_node, future)
 	
 	connection_node.destroy_node()
 	rclpy.shutdown()

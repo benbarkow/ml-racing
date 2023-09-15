@@ -8,6 +8,8 @@ services:
     environment:
       - ROS_MASTER_URI=http://192.168.0.104:11311/
       - ROS_IP=192.168.0.102
+    volumes:
+      - /dev/shm:/dev/shm
     network_mode: "host"
 
 

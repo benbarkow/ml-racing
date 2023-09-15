@@ -4,6 +4,8 @@ setup.py
 car_camera/__init__.py
 car_camera/camera.py
 car_camera/camera_features.py
+car_camera/camera_features_pth.py
+car_camera/model.py
 car_camera/receiver.py
 car_camera.egg-info/PKG-INFO
 car_camera.egg-info/SOURCES.txt

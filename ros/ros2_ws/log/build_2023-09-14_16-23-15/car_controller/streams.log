@@ -1,0 +1,20 @@
+[1.045s] Invoking command in '/ros2_ws/build/car_controller': PYTHONPATH=/ros2_ws/build/car_controller/prefix_override:/ros2_ws/install/car_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/car_controller/build --no-deps install_data
+[1.276s] running develop
+[1.379s] running egg_info
+[1.380s] writing car_controller.egg-info/PKG-INFO
+[1.380s] writing dependency_links to car_controller.egg-info/dependency_links.txt
+[1.380s] writing entry points to car_controller.egg-info/entry_points.txt
+[1.380s] writing requirements to car_controller.egg-info/requires.txt
+[1.380s] writing top-level names to car_controller.egg-info/top_level.txt
+[1.382s] reading manifest file 'car_controller.egg-info/SOURCES.txt'
+[1.382s] writing manifest file 'car_controller.egg-info/SOURCES.txt'
+[1.384s] running build_ext
+[1.384s] Creating /ros2_ws/install/car_controller/lib/python3.10/site-packages/car-controller.egg-link (link to .)
+[1.384s] Installing car_camera_rcv script to /ros2_ws/install/car_controller/lib/car_controller
+[1.385s] Installing car_controller script to /ros2_ws/install/car_controller/lib/car_controller
+[1.385s] Installing net script to /ros2_ws/install/car_controller/lib/car_controller
+[1.385s] Installing net_sb3 script to /ros2_ws/install/car_controller/lib/car_controller
+[1.385s] 
+[1.385s] Installed /ros2_ws/build/car_controller
+[1.385s] running install_data
+[1.424s] Invoked command in '/ros2_ws/build/car_controller' returned '0': PYTHONPATH=/ros2_ws/build/car_controller/prefix_override:/ros2_ws/install/car_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/car_controller/build --no-deps install_data

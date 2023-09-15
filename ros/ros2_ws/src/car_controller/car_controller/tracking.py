@@ -8,43 +8,25 @@ import time
 class Tracking(Node):
 	def __init__(self):
 		super().__init__('tracking_node')
-		self.subscriptionPosition = self.create_subscription(
+		self.position_sub = self.create_subscription(
 			PoseStamped,
-			'vrpn_client_node/cf_jp_ma/pose',
+			'/BaCar/pose',
 			self.listener_callback,
 			10)
 		
-		self.subscriptionPosition  # prevent unused variable warning
-		self.trackingService = self.create_service(
-			Float32MultiArray,
-			'tracking',
-			self.tracking_callback)
+		self.position_sub  # prevent unused variable warning
 	
 		self.prevPose = None
 		self.lastListen = time.time()
-		self.speedX = 0.0
-		self.speedY = 0.0
 		self.position = [0.0,0.0]
 	
-	def tracking_callback(self, request, response):
-		response.speedx = self.speedX
-		response.speedy = self.speedY
-		response.positioncar = self.position
-
 	def listener_callback(self, msg):
-		if(time.time() - self.lastListen < 0.1):
-			#return
-			pass
-		# Hier anstatt z y nehmen?
-		self.speedX, self.speedY = self.speed_from_positions(self.prevPose, msg)
 		x = msg.pose.position.x
 		y = msg.pose.position.y
 		self.position = [x,y]
 
-		forward_vector_car = self.quaternion_to_forward_vector(msg)
-
-		self.prevPose = msg
-		self.lastListen = time.time()
+		# forward_vector_car = self.quaternion_to_forward_vector(msg)
+		print(self.position)
 
 	def speed_from_positions(self, firstPose, secondPose):
 		if(firstPose == None):
@@ -90,7 +72,7 @@ class Tracking(Node):
 def main(args=None):
 	rclpy.init(args=args)
 
-	tracking_node= Tracking()
+	tracking_node = Tracking()
 	
 	rclpy.spin(tracking_node)
 

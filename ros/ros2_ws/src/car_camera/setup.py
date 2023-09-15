@@ -22,7 +22,8 @@ setup(
         'console_scripts': [
             'camera_pub = car_camera.camera:main',
             'camera_rcv = car_camera.receiver:main',
-            'cam_features_pub = car_camera.camera_features:main'
+            'cam_features_pub = car_camera.camera_features:main',
+            'cam_features_pub_torch = car_camera.camera_features_pth:main',
         ],
     },
 )
