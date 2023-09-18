@@ -25,7 +25,7 @@ parser.add_argument('-c', '--cuda', action='store_true', help='Whether to start 
 parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of parallel environments to use for training (max. ~number of CPU cores)')
 parser.add_argument('-st', '--sim_timescale', type=float, default=1.0, help='Timescale of the simulation')
 parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
-parser.add_argument('m', '--model', type=str, default="best_model.zip", help='Model to use')
+parser.add_argument('-m', '--model', type=str, default="best_model.zip", help='Model to use')
 argus = parser.parse_args()
 
 class ExpertDataSet(Dataset):
