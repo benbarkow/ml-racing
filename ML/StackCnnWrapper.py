@@ -19,7 +19,7 @@ class StackCnnWrapper(gym.ObservationWrapper):
 		self.observation_space = Box(shape=(8,), low=0, high=1, dtype=np.float32)
 		self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 		self.model = CNN().to(self.device)
-		checkpoint = torch.load('models/cnn_weights/stack_cnn.pth')
+		checkpoint = torch.load('models/cnn_weights/stack_cnn_mse.pth')
 		checkpoint = {k.replace('module.', ''): v for k, v in checkpoint.items()}
 		self.model.load_state_dict(checkpoint)
 		self.model.eval()
@@ -32,8 +32,8 @@ class StackCnnWrapper(gym.ObservationWrapper):
 
 		preprocess = transforms.Compose([
 			transforms.ToTensor(),
-			transforms.Normalize(mean=[0.485, 0.456, 0.406, 0.485, 0.456, 0.406, 0.485, 0.456, 0.406],
-								std=[0.229, 0.224, 0.225, 0.229, 0.224, 0.225, 0.229, 0.224, 0.225])		
+			transforms.Normalize(mean=[0.2780, 0.2813, 0.2733, 0.2788, 0.2823, 0.2744, 0.2801, 0.2840, 0.276],
+							std=[0.1518, 0.1828, 0.1830, 0.1524, 0.1838, 0.1840, 0.1534, 0.1855, 0.1858])		
 		])
 
 		image_tensor = preprocess(images)

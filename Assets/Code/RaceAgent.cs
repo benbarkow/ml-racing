@@ -45,6 +45,8 @@ public class RaceAgent : Agent
     public Camera cam;
     public RacetrackGenerator racetrackGenerator;
 
+    public float initZ = 0.0f;
+
     private float spawnPadding;
 
     void Start()
@@ -70,9 +72,19 @@ public class RaceAgent : Agent
     private void ResetVehicleOnPath(float distanceOnPath, int direction){
         Quaternion initRotation = pathCreator.path.GetRotationAtDistance(distanceOnPath);
         Vector3 initPosition = pathCreator.path.GetPointAtDistance(distanceOnPath);
-        this.transform.position = initPosition;
+        //set x and z of transform to init position
+        this.transform.position = new Vector3(initPosition.x, this.transform.position.y, initPosition.z);
         this.transform.rotation = initRotation;
         this.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+
+        rb.velocity = 0.0f * this.transform.forward
+            + 0.0f * this.transform.up
+            + 0.0f * this.transform.right;
+
+        rb.angularVelocity = 0.0f * this.transform.forward
+            + 0.0f * this.transform.up
+            + 0.0f * this.transform.right;
+
         //random direction -1 or 1
         if (direction == -1){
             this.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
@@ -90,6 +102,7 @@ public class RaceAgent : Agent
         foreach(GameObject sphere in curveSpheres){
             Destroy(sphere);
         }
+        Debug.Log(CompletedEpisodes.ToString() + " steps taken");
 
         racetrackGenerator.generateRandomCircle();
         // racetrackGenerator.pickRandom();
@@ -101,7 +114,16 @@ public class RaceAgent : Agent
     
         //reset to start position
         // This resets the vehicle and 'drops' it from a height of 0.5m (so that it does not clip into the ground and get stuck)
-        VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, 0, true);
+        // VehiclePhysics.VPResetVehicle.ResetVehicle(VPbase, initZ, false);
+
+        //reset vehicle velocity
+        // rb.velocity = 0.0f * this.transform.forward 
+        //     + 0.0f * this.transform.up 
+        //     + 0.0f * this.transform.right;
+        // rb.angularVelocity = 0.0f * this.transform.forward 
+        //     + 0.0f * this.transform.up 
+        //     + 0.0f * this.transform.right;
+
 
         // startDistanceOnPath = getMostStraightDistOnPath();
         // startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length - spawnPadding);
@@ -115,15 +137,13 @@ public class RaceAgent : Agent
         // int direction = Random.Range(0, 2) * 2 - 1;
         ResetVehicleOnPath(startDistanceOnPath, direction);
 
-        startTransform = this.transform;
-
         // this.transform.localPosition = startPosition;
         rb.isKinematic = false;
         imu.rBody.isKinematic = false;
 
         // //start velocity of 20
-        // rb.velocity = 0.0f * this.transform.forward;
-        // rb.velocity = this.transform.forward * 6.0f;
+        rb.velocity = 0.0f * this.transform.forward;
+        rb.velocity = this.transform.forward * 6.0f;
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
     }
@@ -140,15 +160,16 @@ public class RaceAgent : Agent
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
-        if (actionBuffers.DiscreteActions[0] == 5){
+        if (actionBuffers.ContinuousActions[0] == 0f){
             //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
             VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
         }
         else{
-            VPinput.externalSteer = SmoothSteering(PathMathSupports.Remap(actionBuffers.DiscreteActions[0], 0, 10, -1, 1));
+            VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 0, 1);
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
     }
+
 
     
 
@@ -487,7 +508,7 @@ public class RaceAgent : Agent
         // float reward = driftReward*(runofPenalty*((speedReward * 6 + 4*angleReward) / 10));
         // float reward = speedReward*(angleReward - runofPenalty);
         // float reward = (driftReward * 4 + speedReward) / 5;
-        float reward = (speedReward*2 + driftReward*8) / 10;
+        float reward = (speedReward + driftReward*9) / 10;
         // float reward = 1.0f;
         // float reward = (speedReward*7 + angleReward*3)/10;
         // float reward = speedReward;
@@ -656,17 +677,16 @@ public class RaceAgent : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        var discreteActionsOut = actionsOut.DiscreteActions;
+        var continuousActionsOut = actionsOut.ContinuousActions;
 
         //steer
-        discreteActionsOut[0] = 5;
-        if( Input.GetKey(KeyCode.D) ) discreteActionsOut[0] = 11;
-        if( Input.GetKey(KeyCode.A) ) discreteActionsOut[0] = 0;
+        continuousActionsOut[0] = 0f;
+        if( Input.GetKey(KeyCode.D) ) continuousActionsOut[0] = 1f;
+        if( Input.GetKey(KeyCode.A) ) continuousActionsOut[0] = -1f;
         
         //throttle
-        discreteActionsOut[1] = 0;
-        if( Input.GetKey(KeyCode.W) ) discreteActionsOut[1] = 5;
-        // if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = -1f;
+        continuousActionsOut[1] = 0.0f;
+        if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
     }
 
 	private float SmoothSteering(float steerInput) {

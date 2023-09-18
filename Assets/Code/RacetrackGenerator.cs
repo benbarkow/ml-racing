@@ -221,7 +221,7 @@ public class RacetrackGenerator : MonoBehaviour
 
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        float radius = Random.Range(6.0f, 10.0f);
+        float radius = Random.Range(7.0f, 13.0f);
         List<Vector2> racetrack = GenerateCircle(radius, 20);
 
         //convert to 3d
