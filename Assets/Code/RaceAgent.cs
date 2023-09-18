@@ -102,7 +102,11 @@ public class RaceAgent : Agent
         foreach(GameObject sphere in curveSpheres){
             Destroy(sphere);
         }
-        Debug.Log(CompletedEpisodes.ToString() + " steps taken");
+        //remove reward canvas list
+        foreach(Tuple<int, Canvas> rewardCanvasTuple in rewardCanvasList){
+            Destroy(rewardCanvasTuple.Item2.gameObject);
+        }
+        rewardCanvasList = new List<Tuple<int, Canvas>>();
 
         racetrackGenerator.generateRandomCircle();
         // racetrackGenerator.pickRandom();
@@ -126,12 +130,11 @@ public class RaceAgent : Agent
 
 
         // startDistanceOnPath = getMostStraightDistOnPath();
-        // startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length - spawnPadding);
+        startDistanceOnPath = Random.Range(0, pathCreator.path.length);
         //random selection from beginning and end of track
-        startDistanceOnPath = spawnPadding;
-        int direction = -1;
-        startDistanceOnPath = pathCreator.path.length - spawnPadding;
-        prevDistanceOnPath = startDistanceOnPath;
+        // startDistanceOnPath = spawnPadding;
+        int direction = Random.Range(0, 2) * 2 - 1;
+        // startDistanceOnPath = pathCreator.path.length - spawnPadding;
 
         //initPos 
         // int direction = Random.Range(0, 2) * 2 - 1;
@@ -146,6 +149,7 @@ public class RaceAgent : Agent
         rb.velocity = this.transform.forward * 6.0f;
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
+        prevDistanceOnPath = startDistanceOnPath;
     }
     public override void CollectObservations(VectorSensor sensor)
     {
