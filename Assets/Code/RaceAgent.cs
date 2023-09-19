@@ -108,10 +108,10 @@ public class RaceAgent : Agent
         }
         rewardCanvasList = new List<Tuple<int, Canvas>>();
 
-        racetrackGenerator.generateRandomCircle();
+        // racetrackGenerator.generateRandomCircle();
         // racetrackGenerator.pickRandom();
         // racetrackGenerator.generateNew();
-        // racetrackGenerator.generateRandomTrack();
+        racetrackGenerator.generateRandomTrack();
         //init curves
         // InitCurves();
         // InitCheckpoints();
@@ -130,14 +130,16 @@ public class RaceAgent : Agent
 
 
         // startDistanceOnPath = getMostStraightDistOnPath();
-        startDistanceOnPath = Random.Range(0, pathCreator.path.length);
+        startDistanceOnPath = pathCreator.path.length - spawnPadding;
+        // startDistanceOnPath = Random.Range(spawnPadding, pathCreator.path.length);
         //random selection from beginning and end of track
         // startDistanceOnPath = spawnPadding;
-        int direction = Random.Range(0, 2) * 2 - 1;
+        // int direction = Random.Range(0, 2) * 2 - 1;
         // startDistanceOnPath = pathCreator.path.length - spawnPadding;
 
         //initPos 
         // int direction = Random.Range(0, 2) * 2 - 1;
+        int direction = -1;
         ResetVehicleOnPath(startDistanceOnPath, direction);
 
         // this.transform.localPosition = startPosition;
@@ -145,8 +147,8 @@ public class RaceAgent : Agent
         imu.rBody.isKinematic = false;
 
         // //start velocity of 20
-        rb.velocity = 0.0f * this.transform.forward;
-        rb.velocity = this.transform.forward * 6.0f;
+        // rb.velocity = 0.0f * this.transform.forward;
+        // rb.velocity = this.transform.forward * 6.0f;
 
         VPcontrol.data.Set(Channel.Input, InputData.ManualGear, 1);
         prevDistanceOnPath = startDistanceOnPath;

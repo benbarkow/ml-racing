@@ -81,7 +81,7 @@ public class RacetrackGenerator : MonoBehaviour
             int direction = Random.Range(0, 2) * 2 - 1;
             int thisDirCount = 0;
 
-            int curveCount = 2;
+            int curveCount = 6;
 
             for(int i = 0; i < curveCount; i++)
             {
@@ -152,7 +152,7 @@ public class RacetrackGenerator : MonoBehaviour
 
     public List<Vector3> generateCurveConnector(Vector3 startPos, Vector3 direction, float lengthOverride = -1.0f){
         direction = direction.normalized;
-        float length = Random.Range(40.0f, 50.0f);
+        float length = Random.Range(15.0f, 25.0f);
         if(lengthOverride != -1.0f){
             length = lengthOverride;
         }
@@ -175,7 +175,7 @@ public class RacetrackGenerator : MonoBehaviour
     {
         // Generate a random angle between 65 and 110 degrees which determines the angle between the curve start tangent and the curve end tangent
         float curveRadius = Random.Range(7.0f, 13.0f);
-        float curveAngle = Random.Range(80f, 130f) * Mathf.Deg2Rad; // Convert to radians
+        float curveAngle = Random.Range(100f, 150f) * Mathf.Deg2Rad; // Convert to radians
         // float angle = Mathf.PI - curveAngle; // Angle between the curve start tangent and the curve end tangent
         // angle = 160.0f * Mathf.Deg2Rad;
         float angle = curveAngle;
