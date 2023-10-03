@@ -9,7 +9,7 @@ from PIL import Image
 import time 
 import cv2
 from stable_baselines3.common.preprocessing import is_image_space, is_image_space_channels_first
-from stack_model import CNN
+from models.cnn_models.cnn_model_4conv_d import CNN_4LayersDrop
 
 class StackCnnWrapper(gym.ObservationWrapper):
 	def __init__(self, env):
@@ -18,8 +18,8 @@ class StackCnnWrapper(gym.ObservationWrapper):
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Box(shape=(8,), low=0, high=1, dtype=np.float32)
 		self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-		self.model = CNN().to(self.device)
-		checkpoint = torch.load('models/cnn_weights/stack_cnn_mse.pth')
+		self.model = CNN_4LayersDrop().to(self.device)
+		checkpoint = torch.load('models/cnn_weights/cnn_green_4conv_d.pth')
 		checkpoint = {k.replace('module.', ''): v for k, v in checkpoint.items()}
 		self.model.load_state_dict(checkpoint)
 		self.model.eval()

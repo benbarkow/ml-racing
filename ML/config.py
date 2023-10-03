@@ -2,7 +2,7 @@
 
 
 # training parameters
-n_steps = 512 # number of steps to run environment for before updating NN params
+n_steps = 1024 # number of steps to run environment for before updating NN params
 lr = 0.0002 # learning rate
 gamma = 0.9 # discount factor
 policy_kwargs = policy_kwargs=dict(net_arch=[256, 256]) # network architecture (hidden layers and their sizes)

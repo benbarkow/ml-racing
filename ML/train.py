@@ -3,7 +3,6 @@ import numpy as np
 import torch
 import argparse
 import os
-from FeatureExtractionWrapper import FeatureExtractionWrapper
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.envs.unity_gym_env import UnityToGymWrapper
 from mlagents_envs.side_channel.engine_configuration_channel import \
@@ -11,7 +10,6 @@ from mlagents_envs.side_channel.engine_configuration_channel import \
 
 from common import make_unity_env, SaveOnBestTrainingRewardCallback, linear_schedule
 from torch.utils.data.dataset import Dataset, random_split
-
 
 from PIL import Image
 from stable_baselines3 import PPO
@@ -26,6 +24,7 @@ parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of par
 parser.add_argument('-st', '--sim_timescale', type=float, default=1.0, help='Timescale of the simulation')
 parser.add_argument('-ex', '--executable', type=str, default="build/ml-racing-project", help='Executable to train on')
 parser.add_argument('-m', '--model', type=str, default=None, help='Model to use')
+parser.add_argument('--test', action='store_true', help='Test model')
 argus = parser.parse_args()
 
 class ExpertDataSet(Dataset):
@@ -41,16 +40,16 @@ class ExpertDataSet(Dataset):
 
 if __name__ == '__main__':
 
-	os.makedirs(config.log_dir, exist_ok=True)
-	os.makedirs(config.tb_logs, exist_ok=True)
-	os.makedirs(config.models_dir, exist_ok=True)
+	if not argus.test:
+		os.makedirs(config.log_dir, exist_ok=True)
+		os.makedirs(config.tb_logs, exist_ok=True)
+		os.makedirs(config.models_dir, exist_ok=True)
 	# This is a non-blocking call that only loads the environment.
 	channel = EngineConfigurationChannel()
 	channel.set_configuration_parameters(time_scale=5.0)
 
-
 	#tensorboard
-	if argus.tensorboard:
+	if argus.tensorboard and not argus.test:
 		tb = program.TensorBoard()
 		tb.configure(argv=[None, '--logdir', config.tb_logs])
 		url = tb.launch()
@@ -74,6 +73,9 @@ if __name__ == '__main__':
 		model.learn(total_timesteps=50000000, callback=callback)
 		print("Training complete.")
 	except KeyboardInterrupt:
+		if argus.test:
+			print("Testing model complete")
+			exit()
 		print("Training interrupted.")
 		#save last model
 		model.save(config.models_dir + "interrupt/last_model")
