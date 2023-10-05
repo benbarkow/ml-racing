@@ -127,7 +127,7 @@ public class RaceAgent : Agent
     }
 
     private float OffsetReward(float offset){
-        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRange[1]), 8.0f);
+        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRange[1]), 2.0f);
         float centerRewClamped = Mathf.Clamp(centerRew, 0.0f, 1.0f);
         return centerRewClamped;
     }
