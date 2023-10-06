@@ -355,28 +355,75 @@ public class RaceAgent : Agent
     }
 
     private void HandleHeuristics(ActionBuffers actionBuffers) {
-        if (actionBuffers.ContinuousActions[0] == 0f){
+        // if (actionBuffers.ContinuousActions[0] == 0f){
+        //     //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
+        //     VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
+        // }
+        // else{
+        //     VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
+        // }
+        // if(actionBuffers.ContinuousActions[1] == 0.0f){
+        //     VPinput.externalThrottle = 0.0f;
+        //     VPinput.externalBrake = 0.0f;
+        // }
+        // else{
+        //     if(actionBuffers.ContinuousActions[1] > 0.0f){
+        //         VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+        //         VPinput.externalBrake = 0.0f;
+        //     }
+        //     else{
+        //         VPinput.externalThrottle = 0.0f;
+        //         Debug.Log(actionBuffers.ContinuousActions[1]);
+        //         VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0, -1f, 0f, 1f);
+        //     }
+        // }
+
+        //same but in discrete actions
+
+        if (actionBuffers.DiscreteActions[0] == 5){
             //VPinput.externalSteer = SmoothSteering(imu.SideSlip / VPcontrol.steering.maxSteerAngle); //Gyro
             VPinput.externalSteer = SmoothSteering(-rb.angularVelocity.y * 0.030516f);        //mapping to degrees per second);
         }
         else{
-            VPinput.externalSteer = SmoothSteering(actionBuffers.ContinuousActions[0]);
+            VPinput.externalSteer = SmoothSteering(PathMathSupports.Remap(actionBuffers.DiscreteActions[0], 0, 10, -1, 1));
         }
-        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.ContinuousActions[1], 0f, 1f, 0f, 1f);
+        if(actionBuffers.DiscreteActions[1] == 5){
+            VPinput.externalThrottle = 0.0f;
+            VPinput.externalBrake = 0.0f;
+        }
+        else{
+            VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 1, 0, true);
+            VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 5, 10, 0, 1, true);
+        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        var continuousActionsOut = actionsOut.ContinuousActions;
+        // var continuousActionsOut = actionsOut.ContinuousActions;
+
+        // //steer
+        // continuousActionsOut[0] = 0f;
+        // if( Input.GetKey(KeyCode.D) ) continuousActionsOut[0] = 1f;
+        // if( Input.GetKey(KeyCode.A) ) continuousActionsOut[0] = -1f;
+        
+        // //throttle
+        // continuousActionsOut[1] = 0.0f;
+        // if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
+        // if( Input.GetKey(KeyCode.S) ) continuousActionsOut[1] = -1f;
+
+        //same but with discrete actions [0-10, 0-10]
+        var discreteActionsOut = actionsOut.DiscreteActions;
 
         //steer
-        continuousActionsOut[0] = 0f;
-        if( Input.GetKey(KeyCode.D) ) continuousActionsOut[0] = 1f;
-        if( Input.GetKey(KeyCode.A) ) continuousActionsOut[0] = -1f;
-        
+        discreteActionsOut[0] = 5;
+        if( Input.GetKey(KeyCode.A) ) discreteActionsOut[0] = 0;
+        if( Input.GetKey(KeyCode.D) ) discreteActionsOut[0] = 10;
+
         //throttle
-        continuousActionsOut[1] = 0.0f;
-        if( Input.GetKey(KeyCode.W) ) continuousActionsOut[1] = 1f;
+        discreteActionsOut[1] = 5;
+        if( Input.GetKey(KeyCode.S) ) discreteActionsOut[1] = 0;
+        if( Input.GetKey(KeyCode.W) ) discreteActionsOut[1] = 10;
+
     }
 
 	private float SmoothSteering(float steerInput) {

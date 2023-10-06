@@ -91,7 +91,7 @@ public static class PathMathSupports
  }
 
 
-    public static float Remap(float value, float fromMin, float fromMax, float toMin, float toMax)
+    public static float Remap(float value, float fromMin, float fromMax, float toMin, float toMax, bool clamp = false)
     {
         var fromAbs = value - fromMin;
         var fromMaxAbs = fromMax - fromMin;
@@ -102,6 +102,20 @@ public static class PathMathSupports
         var toAbs = toMaxAbs * normal;
 
         var to = toAbs + toMin;
+
+        if (clamp)
+        {
+            if (toMax < toMin)
+            {
+                if (to < toMax) to = toMax;
+                else if (to > toMin) to = toMin;
+            }
+            else
+            {
+                if (to > toMax) to = toMax;
+                else if (to < toMin) to = toMin;
+            }
+        } 
 
         return to;
     }
