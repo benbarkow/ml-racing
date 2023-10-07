@@ -117,9 +117,36 @@ public class RaceAgent : Agent
     }
 
    
-    private float VelocityReward(float carVelocity){
-        float velocityRew = carVelocity / velocityRange[1];
-        if(velocityRew < -0.05f){
+    private float VelocityReward(float carVelocity, float[] curvatures)
+    {
+        float[] absCurvatures = new float[curvatures.Length];
+        for(int i = 0; i < curvatures.Length; i++)
+        {
+            absCurvatures[i] = Mathf.Abs(curvatures[i]);
+        }
+
+        float maxBaseVelocity = velocityRange[1];
+        
+        // absolute sum of curvatures
+        float curvatureSum = 0.0f;
+        foreach(float curvature in absCurvatures)
+        {
+            curvatureSum += curvature;
+        }
+
+        float curvatureMax = Mathf.Max(absCurvatures);
+        // Debug.Log(curvatureMax);
+        float k = 2.4f;
+        float maxVelocity = Mathf.Exp(-k * curvatureMax) * maxBaseVelocity;
+
+        float velocityRew = carVelocity / maxVelocity;
+        if (carVelocity > maxVelocity)
+        {
+            float velDiff = carVelocity - maxVelocity;
+            velocityRew = 1 - velDiff / maxVelocity;
+        }
+        if(velocityRew < -0.05f)
+        {
             return -1.0f;
         }
         float velocityReClamped = Mathf.Clamp(velocityRew, 0.0f, 1.0f);
@@ -186,6 +213,8 @@ public class RaceAgent : Agent
        
         float[] features = computeFeatures(distanceOnPath);
 
+        float[] trackCurvatures = features[3..];
+
         float offsetReward = OffsetReward(features[0]);
         if(offsetReward == 0.0f){
             SetReward(0.0f);
@@ -193,7 +222,7 @@ public class RaceAgent : Agent
             return;
         }
 
-        float velocityReward = VelocityReward(features[1]);
+        float velocityReward = VelocityReward(features[1], trackCurvatures);
         if(velocityReward == -1.0f){
             SetReward(0.0f);
             EndEpisode();
@@ -297,6 +326,16 @@ public class RaceAgent : Agent
 
         float sideSlipAngleDeg = Mathf.Atan2(carVelocity.y, carVelocity.x) * Mathf.Rad2Deg;
         //relative velocity in car coordinates
+        float[] trackCurvatures = getTrackCurvatures(distance);
+
+		// Debug.Log(speedRelativeToPath.x);
+		// Debug.Log(offset);
+        //normalize features
+        float[] normalCurvatures = new float[3] {
+            PathMathSupports.Remap(trackCurvatures[0], curvatureRange[0], curvatureRange[1], -1.0f, 1.0f, true),
+            PathMathSupports.Remap(trackCurvatures[1], curvatureRange[0], curvatureRange[1], -1.0f, 1.0f, true),
+            PathMathSupports.Remap(trackCurvatures[2], curvatureRange[0], curvatureRange[1], -1.0f, 1.0f, true)
+        };
 
         // float normalPosition = PathMathSupports.Remap(offset, positionRange[0], positionRange[1], 0.0f, 1.0f);
         // float normalRotation = PathMathSupports.Remap(theta, rotationAngleRange[0], rotationAngleRange[1], 0.0f, 1.0f);
@@ -304,12 +343,70 @@ public class RaceAgent : Agent
         // float normalVel = PathMathSupports.Remap(Math.Abs(carVelocity.x), minMaxVelX[0], minMaxVelX[1], 0.0f, 1.0f );
         // float normalVelPerpendicular = PathMathSupports.Remap(carVelocity.y, minMaxVelY[0], minMaxVelY[1], 0.0f, 1.0f );
 
-        float[] features = new float[3] {
+        float[] features = new float[6] {
             offset,
             carVelocityPath.x,
             sideSlipAngleDeg,
+            normalCurvatures[0],
+            normalCurvatures[1],
+            normalCurvatures[2]
         };
         return features;
+    }
+
+    float[] getTrackCurvatures(float currDistance)
+    {
+        //destroy old spheres
+        // foreach(GameObject sphere in spheres)
+        // {
+        //     Destroy(sphere);
+        // }
+        float pointDistance = 2.5f;
+        Vector3[] pathPoints = new Vector3[9];
+        for(int i = 0; i < 9; i++)
+        {
+            float nextDistance = currDistance + i * pointDistance * direction;
+            if(nextDistance > pathCreator.path.length)
+            {
+                nextDistance = nextDistance - pathCreator.path.length;
+            }
+            pathPoints[i] = pathCreator.path.GetPointAtDistance(nextDistance);
+            //sphere for debugging
+            // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // sphere.transform.position = pathPoints[i];
+            // spheres.Add(sphere);
+            }
+
+        float[] curvatures = new float[3];
+
+        for (int i = 0; i < 3; i++)
+        {
+            // Extract 3 points for each segment
+            Vector3 point1 = pathPoints[i * 3];
+            Vector3 point2 = pathPoints[i * 3 + 1];
+            Vector3 point3 = pathPoints[i * 3 + 2];
+
+            // Approximate the first and second derivatives using finite differences
+            Vector3 deltaY = point3 - point1;
+            Vector3 delta2Y = point3 - 2 * point2 + point1;
+
+            // Calculate curvature
+            float curvature = delta2Y.magnitude / Mathf.Pow(1 + deltaY.magnitude * deltaY.magnitude, 1.5f);
+
+            // Determine direction of the curve (left or right) using cross product
+            Vector3 crossProduct = Vector3.Cross(deltaY.normalized, delta2Y.normalized);
+            if (crossProduct.y < 0) // Assuming Z is the up direction
+            {
+                curvature = -curvature; // Curve is to the left
+            }
+
+            // Scale the curvature for better visualization (adjust the scaling factor as needed)
+            curvature *= 1000;
+
+            curvatures[i] = curvature;
+        }
+
+        return curvatures;
     }
 
     private void cumulativeRewardEvent(float reward){
