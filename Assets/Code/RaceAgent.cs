@@ -143,7 +143,7 @@ public class RaceAgent : Agent
         if (carVelocity > maxVelocity)
         {
             float velDiff = carVelocity - maxVelocity;
-            velocityRew = 1 - velDiff / maxVelocity;
+            velocityRew = Mathf.Clamp(1 - velDiff / maxVelocity, 0.0f, 1.0f);
         }
         if(velocityRew < -0.05f)
         {
@@ -218,6 +218,7 @@ public class RaceAgent : Agent
         float offsetReward = OffsetReward(features[0]);
         if(offsetReward == 0.0f){
             SetReward(0.0f);
+            Debug.Log("Offset end");
             EndEpisode();
             return;
         }
@@ -225,6 +226,7 @@ public class RaceAgent : Agent
         float velocityReward = VelocityReward(features[1], trackCurvatures);
         if(velocityReward == -1.0f){
             SetReward(0.0f);
+            Debug.Log("VelEnd");
             EndEpisode();
             return;
         }
