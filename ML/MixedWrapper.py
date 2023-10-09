@@ -17,19 +17,20 @@ class MixedWrapper(gym.ObservationWrapper):
 		# self.observation_space = Box(shape=(60,80,), low=0, high=255, dtype=np.uint8)
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 		self.observation_space = Box(shape=(8,), low=0, high=1, dtype=np.float32)
+		self.disable_image = disable_image
+		if self.disable_image:
+			return
 		self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 		self.model = CNN_4LayersDrop().to(self.device)
 		checkpoint = torch.load('models/cnn_weights/cnn_green_4conv_d.pth')
 		checkpoint = {k.replace('module.', ''): v for k, v in checkpoint.items()}
 		self.model.load_state_dict(checkpoint)
 		self.model.eval()
-		self.disable_image = disable_image
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 
 	def observation(self, obs):
 		#obs[0] is image stack (80, 60, 9)
 		if(self.disable_image):
-			print(obs[1])
 			return obs[1]
 
 		images = obs[0] * 255
@@ -54,7 +55,7 @@ class MixedWrapper(gym.ObservationWrapper):
 		velocities = obs[1]
 
 		#replace the last 2 values with the velocities
-		output[-2:] = velocities
+		output[-2:] = velocities[-2:]
 
 		return output
 
