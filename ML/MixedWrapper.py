@@ -12,7 +12,7 @@ from stable_baselines3.common.preprocessing import is_image_space, is_image_spac
 from models.cnn_models.cnn_model_4conv_d import CNN_4LayersDrop
 
 class MixedWrapper(gym.ObservationWrapper):
-	def __init__(self, env):
+	def __init__(self, env, disable_image=False):
 		super().__init__(env)
 		# self.observation_space = Box(shape=(60,80,), low=0, high=255, dtype=np.uint8)
 		# self.observation_space = Tuple((Box(shape=(60,80,), low=0, high=255, dtype=np.uint8), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
@@ -23,10 +23,15 @@ class MixedWrapper(gym.ObservationWrapper):
 		checkpoint = {k.replace('module.', ''): v for k, v in checkpoint.items()}
 		self.model.load_state_dict(checkpoint)
 		self.model.eval()
+		self.disable_image = disable_image
 		# self.observation_space = Tuple((Box(shape=(512,), low=0, high=1, dtype=np.float32), Box(shape=(2,), low=-1, high=1, dtype=np.float32)));
 
 	def observation(self, obs):
 		#obs[0] is image stack (80, 60, 9)
+		if(self.disable_image):
+			print(obs[1])
+			return obs[1]
+
 		images = obs[0] * 255
 		images = images.astype(np.uint8)
 

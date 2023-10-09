@@ -85,7 +85,7 @@ def linear_schedule(initial_value: float):
 
 
 #this creates the parallel simulations
-def make_unity_env(env_directory, num_env, render=True, visual=True, start_index=0, sim_timescale=1.0, log_dir="logs/"):
+def make_unity_env(env_directory, num_env, render=True, visual=True, start_index=0, sim_timescale=1.0, log_dir="logs/", no_image=False):
     """
     Create a wrapped, monitored Unity environment.
     """
@@ -98,7 +98,7 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
             unity_env = UnityEnvironment(env_directory, worker_id=rank, no_graphics=(not render), side_channels=[channel])
             env = UnityToGymWrapper(unity_env, rank, allow_multiple_obs=True)
             # env = StackCnnWrapper(env)
-            env = MixedWrapper(env)
+            env = MixedWrapper(env, disable_image=no_image)
             env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env
         return _thunk
