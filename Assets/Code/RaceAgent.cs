@@ -40,7 +40,7 @@ public class RaceAgent : Agent
     private float[] speedRange = new float[2] { 0.0f, 16.0f };
     private float[] rotationAngleRange = new float[2] { -60.0f, 60.0f };
     private float[] positionRange = new float[2] { -3f, 3f };
-    private float[] offsetRangeForReward = new float[2] { -3.5f, 3.5f };
+    private float[] offsetRangeForReward = new float[2] { -3.2f, 3.2f };
 
     private float[] angularVelocityRange = new float[2] { -170.0f, 170.0f };
     private float[] minMaxVelX = new float[2]{0.0f, 16.0f};
@@ -122,12 +122,27 @@ public class RaceAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        float distance = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
-        float[] features = computeFeaturesAll(distance);
-        foreach(float feature in features)
-        {
-            sensor.AddObservation(feature);
-        }
+         //car velocity in car coordinates
+        Vector2 carVelocityGlobal = new Vector2(rb.velocity.x, rb.velocity.z);
+        //car velocity in this.transform coordinates
+        Vector2 carForward = new Vector2(transform.forward.x, transform.forward.z);
+        float transformAngle = Mathf.Atan2(carForward.y, carForward.x);
+
+        float[][] rotationMatrix = new float[][] {
+            new float[] {Mathf.Cos(transformAngle), Mathf.Sin(transformAngle)},
+            new float[] {-Mathf.Sin(transformAngle), Mathf.Cos(transformAngle)},
+        };
+
+        Vector2 carVelocity = new Vector2(
+            rotationMatrix[0][0] * carVelocityGlobal.x + rotationMatrix[0][1] * carVelocityGlobal.y,
+            rotationMatrix[1][0] * carVelocityGlobal.x + rotationMatrix[1][1] * carVelocityGlobal.y
+        );
+
+        float normalVel = PathMathSupports.Remap(Math.Abs(carVelocity.x), minMaxVelX[0], minMaxVelX[1], 0.0f, 1.0f );
+        float normalVelPerpendicular = PathMathSupports.Remap(carVelocity.y, minMaxVelY[0], minMaxVelY[1], 0.0f, 1.0f );
+
+        sensor.AddObservation(normalVel);
+        sensor.AddObservation(normalVelPerpendicular);
     }
 
     float[] computeFeaturesAll(float distance){
@@ -290,6 +305,16 @@ public class RaceAgent : Agent
         return curvatures;
     }
 
+    private float VelocityRewardRegular(float carVelocity)
+    {
+        float maxBaseVelocity = speedRange[1];
+
+        float velocityRew = carVelocity / maxBaseVelocity;
+
+        float velocityReClamped = Mathf.Clamp(velocityRew, 0.0f, 1.0f);
+        return velocityReClamped;
+    }
+
     private float VelocityRewardLinear(float carVelocity)
     {
         float maxBaseVelocity = speedRange[1];
@@ -343,7 +368,7 @@ public class RaceAgent : Agent
     }
 
     private float OffsetReward(float offset){
-        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRangeForReward[1]), 2.0f);
+        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRangeForReward[1]), 6.0f);
         float centerRewClamped = Mathf.Clamp(centerRew, 0.0f, 1.0f);
         return centerRewClamped;
     }
@@ -413,7 +438,7 @@ public class RaceAgent : Agent
             return;
         }
 
-        float velocityReward = VelocityRewardLinear(features[1]);
+        float velocityReward = VelocityRewardRegular(features[1]);
         if(velocityReward == -1.0f){
             SetReward(0.0f);
             Debug.Log("VelEnd");
