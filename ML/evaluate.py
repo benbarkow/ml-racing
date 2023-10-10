@@ -9,7 +9,7 @@ from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3 import PPO
 import argparse
-from StackCnnWrapper import StackCnnWrapper
+from MixedWrapper import MixedWrapper
 
 import config
 
@@ -31,13 +31,13 @@ if __name__ == '__main__':
 	unity_env = UnityEnvironment(file_name=argus.executable, seed=1, side_channels=[channel])
 	env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 	# env = CnnWrapper(env)
-	env = StackCnnWrapper(env)
+	env = MixedWrapper(env)
 	env = Monitor(env, config.log_dir)
 
 	reward_list = []
 
 	if not argus.test:
-		model = PPO.load(config.models_dir + argus.model, env, device="cuda")
+		model = PPO.load(argus.model, env, device="cuda")
 
 	# Evaluate the agent
 	# mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=1)

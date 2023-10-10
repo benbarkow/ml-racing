@@ -33,7 +33,12 @@ public class RaceAgent : Agent
     private float SteerSpeedDegPerSec = 360f;
     //reward parameters
 
+
     public PathCreator[] paths;
+    public int fixedPathIndex;
+    public float[] fixedStartDistancesOnPaths; 
+    public int[] fixedDirections;
+
     private PathCreator pathCreator;
 
   private float[] curvatureRange = new float[2]{-18.2f, 18.2f};
@@ -97,6 +102,7 @@ public class RaceAgent : Agent
 
     public override void OnEpisodeBegin()
     {
+
         //remove reward canvas list
         foreach(Tuple<int, Canvas> rewardCanvasTuple in rewardCanvasList){
             Destroy(rewardCanvasTuple.Item2.gameObject);
@@ -105,11 +111,21 @@ public class RaceAgent : Agent
 
         //choose random path
         pathCreator = paths[Random.Range(0, paths.Length)];
+        if(fixedPathIndex != -1){
+            pathCreator = paths[fixedPathIndex];
+        }
 
         startDistanceOnPath = Random.Range(0, pathCreator.path.length);
+        if(fixedPathIndex != -1){
+            startDistanceOnPath = fixedStartDistancesOnPaths[fixedPathIndex];
+        }
 
         //initPos 
         direction = Random.Range(0, 2) * 2 - 1;
+        if(fixedPathIndex != -1){
+            direction = fixedDirections[fixedPathIndex];
+        }
+
         ResetVehicleOnPath(startDistanceOnPath, direction);
 
         // this.transform.localPosition = startPosition;
@@ -122,27 +138,32 @@ public class RaceAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-         //car velocity in car coordinates
-        Vector2 carVelocityGlobal = new Vector2(rb.velocity.x, rb.velocity.z);
-        //car velocity in this.transform coordinates
-        Vector2 carForward = new Vector2(transform.forward.x, transform.forward.z);
-        float transformAngle = Mathf.Atan2(carForward.y, carForward.x);
+        //  //car velocity in car coordinates
+        // Vector2 carVelocityGlobal = new Vector2(rb.velocity.x, rb.velocity.z);
+        // //car velocity in this.transform coordinates
+        // Vector2 carForward = new Vector2(transform.forward.x, transform.forward.z);
+        // float transformAngle = Mathf.Atan2(carForward.y, carForward.x);
 
-        float[][] rotationMatrix = new float[][] {
-            new float[] {Mathf.Cos(transformAngle), Mathf.Sin(transformAngle)},
-            new float[] {-Mathf.Sin(transformAngle), Mathf.Cos(transformAngle)},
-        };
+        // float[][] rotationMatrix = new float[][] {
+        //     new float[] {Mathf.Cos(transformAngle), Mathf.Sin(transformAngle)},
+        //     new float[] {-Mathf.Sin(transformAngle), Mathf.Cos(transformAngle)},
+        // };
 
-        Vector2 carVelocity = new Vector2(
-            rotationMatrix[0][0] * carVelocityGlobal.x + rotationMatrix[0][1] * carVelocityGlobal.y,
-            rotationMatrix[1][0] * carVelocityGlobal.x + rotationMatrix[1][1] * carVelocityGlobal.y
-        );
+        // Vector2 carVelocity = new Vector2(
+        //     rotationMatrix[0][0] * carVelocityGlobal.x + rotationMatrix[0][1] * carVelocityGlobal.y,
+        //     rotationMatrix[1][0] * carVelocityGlobal.x + rotationMatrix[1][1] * carVelocityGlobal.y
+        // );
 
-        float normalVel = PathMathSupports.Remap(Math.Abs(carVelocity.x), minMaxVelX[0], minMaxVelX[1], 0.0f, 1.0f );
-        float normalVelPerpendicular = PathMathSupports.Remap(carVelocity.y, minMaxVelY[0], minMaxVelY[1], 0.0f, 1.0f );
+        // float normalVel = PathMathSupports.Remap(Math.Abs(carVelocity.x), minMaxVelX[0], minMaxVelX[1], 0.0f, 1.0f );
+        // float normalVelPerpendicular = PathMathSupports.Remap(carVelocity.y, minMaxVelY[0], minMaxVelY[1], 0f, 1.0f );
 
-        sensor.AddObservation(normalVel);
-        sensor.AddObservation(normalVelPerpendicular);
+        // sensor.AddObservation(normalVel);
+        // sensor.AddObservation(normalVelPerpendicular);
+        float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+        float[] features = computeFeaturesAll(distanceOnPath);
+        foreach(float feature in features){
+            sensor.AddObservation(feature);
+        }
     }
 
     float[] computeFeaturesAll(float distance){
@@ -350,7 +371,7 @@ public class RaceAgent : Agent
 
         float curvatureMax = Mathf.Max(absCurvatures);
         // Debug.Log(curvatureMax);
-        float k = 2.4f;
+        float k = 2.0f;
         float maxVelocity = Mathf.Exp(-k * curvatureMax) * maxBaseVelocity;
 
         float velocityRew = carVelocity / maxVelocity;
@@ -359,7 +380,7 @@ public class RaceAgent : Agent
             float velDiff = carVelocity - maxVelocity;
             velocityRew = Mathf.Clamp(1 - velDiff / maxVelocity, 0.0f, 1.0f);
         }
-        if(velocityRew < -0.05f)
+        if(velocityRew < -0.05f && StepCount > 20)
         {
             return -1.0f;
         }
@@ -368,7 +389,7 @@ public class RaceAgent : Agent
     }
 
     private float OffsetReward(float offset){
-        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRangeForReward[1]), 6.0f);
+        float centerRew = 1.0f - Mathf.Pow((Mathf.Abs(offset) / offsetRangeForReward[1]), 2.0f);
         float centerRewClamped = Mathf.Clamp(centerRew, 0.0f, 1.0f);
         return centerRewClamped;
     }
@@ -428,16 +449,17 @@ public class RaceAgent : Agent
        
         float[] features = computeFeatures(distanceOnPath);
 
-        // float[] trackCurvatures = features[3..];
+        float[] trackCurvatures = features[3..];
 
         float offsetReward = OffsetReward(features[0]);
         if(offsetReward == 0.0f){
-            SetReward(-1f);
+            SetReward(0.0f);
             Debug.Log("Offset end");
             EndEpisode();
             return;
         }
 
+        // float velocityReward = VelocityRewardDynamic(features[1], trackCurvatures);
         float velocityReward = VelocityRewardRegular(features[1]);
         if(velocityReward == -1.0f){
             SetReward(0.0f);
