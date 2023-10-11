@@ -61,7 +61,7 @@ if __name__ == '__main__':
 	#print action space
 
 	if argus.model:
-		model = PPO.load(config.models_dir + argus.model, env=env, device="cuda")
+		model = PPO.load(argus.model, env=env, device="cuda")
 	else:
 		model = PPO('MlpPolicy', env, verbose=1, use_sde=False, tensorboard_log=config.tb_logs, n_steps=config.n_steps, learning_rate=linear_schedule(config.lr), gamma=config.gamma, policy_kwargs=config.policy_kwargs, device="cuda" if argus.cuda else "cpu")
 
