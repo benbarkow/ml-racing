@@ -30,7 +30,7 @@ public class DriftAgent : Agent
     private List<GameObject> curveSpheres = new List<GameObject>();
     private List<Vector3> trackPoints;
     private int carDirection = 1;
-    private float SteerSpeedDegPerSec = 360f;
+    private float SteerSpeedDegPerSec = 1800f;
     //reward parameters
 
 
@@ -55,6 +55,7 @@ public class DriftAgent : Agent
     private int direction;
 
     private int envStepCount;
+    private int currRewSteps;
 
     void Start()
     {
@@ -105,7 +106,7 @@ public class DriftAgent : Agent
     public override void OnEpisodeBegin()
     {
 
-        racetrackGenerator.generateRandomCircle();
+        // racetrackGenerator.generateRandomCircle();
 
         //remove reward canvas list
         foreach(Tuple<int, Canvas> rewardCanvasTuple in rewardCanvasList){
@@ -312,7 +313,7 @@ public class DriftAgent : Agent
             Vector3 delta2Y = point3 - 2 * point2 + point1;
 
             // Calculate curvature
-            float curvature = delta2Y.magnitude / Mathf.Pow(1 + deltaY.magnitude * deltaY.magnitude, 1.5f);
+            float curvature = delta2Y.magnitude / Mathf.Pow(deltaY.magnitude * deltaY.magnitude, 1f);
 
             // Determine direction of the curve (left or right) using cross product
             Vector3 crossProduct = Vector3.Cross(deltaY.normalized, delta2Y.normalized);
@@ -336,6 +337,10 @@ public class DriftAgent : Agent
 
         float velocityRew = carVelocity / maxBaseVelocity;
 
+        if(velocityRew < -0.05f && StepCount > 20)
+        {
+            return -1.0f;
+        }
         float velocityReClamped = Mathf.Clamp(velocityRew, 0.0f, 1.0f);
         return velocityReClamped;
     }
@@ -400,24 +405,25 @@ public class DriftAgent : Agent
 
     private float DriftReward(float distanceOnPath) {
         //car velocity in car coordinates
-        Vector2 carVelocityGlobal = new Vector2(rb.velocity.x, rb.velocity.z);
-        //car velocity in this.transform coordinates
-        Vector2 carForward = new Vector2(transform.forward.x, transform.forward.z);
-        float transformAngle = Mathf.Atan2(carForward.y, carForward.x);
+        // Vector2 carVelocityGlobal = new Vector2(rb.velocity.x, rb.velocity.z);
+        // //car velocity in this.transform coordinates
+        // Vector2 carForward = new Vector2(transform.forward.x, transform.forward.z);
+        // float transformAngle = Mathf.Atan2(carForward.y, carForward.x);
 
-        float[][] rotationMatrix = new float[][] {
-            new float[] {Mathf.Cos(transformAngle), Mathf.Sin(transformAngle)},
-            new float[] {-Mathf.Sin(transformAngle), Mathf.Cos(transformAngle)},
-        };
+        // float[][] rotationMatrix = new float[][] {
+        //     new float[] {Mathf.Cos(transformAngle), Mathf.Sin(transformAngle)},
+        //     new float[] {-Mathf.Sin(transformAngle), Mathf.Cos(transformAngle)},
+        // };
 
-        Vector2 carVelocity = new Vector2(
-            rotationMatrix[0][0] * carVelocityGlobal.x + rotationMatrix[0][1] * carVelocityGlobal.y,
-            rotationMatrix[1][0] * carVelocityGlobal.x + rotationMatrix[1][1] * carVelocityGlobal.y
-        );
+        // Vector2 carVelocity = new Vector2(
+        //     rotationMatrix[0][0] * carVelocityGlobal.x + rotationMatrix[0][1] * carVelocityGlobal.y,
+        //     rotationMatrix[1][0] * carVelocityGlobal.x + rotationMatrix[1][1] * carVelocityGlobal.y
+        // );
 
-        // Calculate slip angle in degrees
-        float slipAngle = Mathf.Atan2(carVelocity.y, Mathf.Abs(carVelocity.x)) * Mathf.Rad2Deg;
+        // // Calculate slip angle in degrees
+        // float slipAngle = Mathf.Atan2(carVelocity.y, Mathf.Abs(carVelocity.x)) * Mathf.Rad2Deg;
         // Debug.Log(slipAngle);
+        float slipAngle = imu.SideSlip;
         
         // Calculate drift reward based on slip angle
         float maxSlip = 90f;  // Max slip angle in degrees
@@ -645,7 +651,8 @@ public class DriftAgent : Agent
     }
 
     private void rewardEvent(float reward, int direction, bool checkpointPassed) {
-        int maxStepsVisible = 100;
+        currRewSteps++;
+        int maxStepsVisible = 20;
         for(int i = 0; i < rewardCanvasList.Count; i++){
             Tuple<int, Canvas> rewardCanvasTuple = rewardCanvasList[i];
             int stepsLeft = rewardCanvasTuple.Item1;
@@ -661,9 +668,10 @@ public class DriftAgent : Agent
                 rewardCanvasList[i] = Tuple.Create(stepsLeft-1, canvas);
             }
         }
-        if(StepCount % 50 != 0 && reward != -1.0f){
+        if(currRewSteps < 10){
             return;
         }
+        currRewSteps = 0;
         //max of 2 digits after decimal point
         float backOffset = direction * 6.0f;
         Vector3 targetPosition = pathCreator.path.GetPointAtDistance(pathCreator.path.GetClosestDistanceAlongPath(this.transform.position)-backOffset);
@@ -715,14 +723,15 @@ public class DriftAgent : Agent
         else{
             VPinput.externalSteer = SmoothSteering(PathMathSupports.Remap(actionBuffers.DiscreteActions[0], 0, 10, -1, 1));
         }
-        if(actionBuffers.DiscreteActions[1] == 5){
-            VPinput.externalThrottle = 0.0f;
-            VPinput.externalBrake = 0.0f;
-        }
-        else{
-            VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 1, 0, true);
-            VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 5, 10, 0, 1, true);
-        }
+        VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 0, 1, true);
+        // if(actionBuffers.DiscreteActions[1] == 5){
+        //     VPinput.externalThrottle = 0.0f;
+        //     VPinput.externalBrake = 0.0f;
+        // }
+        // else{
+        //     VPinput.externalBrake = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 0, 5, 1, 0, true);
+        //     VPinput.externalThrottle = PathMathSupports.Remap(actionBuffers.DiscreteActions[1], 5, 10, 0, 1, true);
+        // }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -748,10 +757,9 @@ public class DriftAgent : Agent
         if( Input.GetKey(KeyCode.D) ) discreteActionsOut[0] = 10;
 
         //throttle
-        discreteActionsOut[1] = 5;
-        if( Input.GetKey(KeyCode.S) ) discreteActionsOut[1] = 0;
-        if( Input.GetKey(KeyCode.W) ) discreteActionsOut[1] = 10;
-
+        discreteActionsOut[1] = 0;
+        // if( Input.GetKey(KeyCode.S) ) discreteActionsOut[1] = 5;
+        if( Input.GetKey(KeyCode.W) ) discreteActionsOut[1] = 5;
     }
 
 	private float SmoothSteering(float steerInput) {

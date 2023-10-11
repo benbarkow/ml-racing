@@ -40,29 +40,31 @@ if __name__ == '__main__':
 		model = PPO.load(argus.model, env, device="cuda")
 
 	# Evaluate the agent
-	# mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=1)
-	# print("mean_reward: ", mean_reward, "std_reward: ", std_reward)
+	mean_reward, std_reward = evaluate_policy(model, env, n_eval_episodes=10)
+	print("mean_reward: ", mean_reward, "std_reward: ", std_reward)
 
-
-	commulative_reward = 0
 	
-	observation = env.reset()
-	for i in range(30):
-		while True:
-			if not argus.test:
-				action, _states = model.predict(observation)
-			else:
-				action = np.array([5, 10])
-			observation, reward, done, info = env.step(action)	
-			commulative_reward += reward
-			# print("observation: ", observation)
-			# print("reward: ", reward)
-			if done:
-				print("Episode {} reward: ".format(i), commulative_reward)
-				observation = env.reset()
-				reward_list.append(commulative_reward)
-				commulative_reward = 0
-				break
+
+
+	# commulative_reward = 0
+	
+	# observation = env.reset()
+	# for i in range(30):
+	# 	while True:
+	# 		if not argus.test:
+	# 			action, _states = model.predict(observation)
+	# 		else:
+	# 			action = np.array([5, 10])
+	# 		observation, reward, done, info = env.step(action)	
+	# 		commulative_reward += reward
+	# 		# print("observation: ", observation)
+	# 		# print("reward: ", reward)
+	# 		if done:
+	# 			print("Episode {} reward: ".format(i), commulative_reward)
+	# 			observation = env.reset()
+	# 			reward_list.append(commulative_reward)
+	# 			commulative_reward = 0
+	# 			break
 
 	env.close()
 	print("Average reward: ", sum(reward_list)/len(reward_list))
