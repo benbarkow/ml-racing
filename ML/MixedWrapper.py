@@ -55,7 +55,7 @@ class MixedWrapper(gym.ObservationWrapper):
 		velocities = obs[1]
 
 		#replace the last 2 values with the velocities
-		output[-2:] = velocities[-2:0]
+		output[-2:] = velocities[-2:]
 
 		return output
 

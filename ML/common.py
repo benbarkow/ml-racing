@@ -85,7 +85,7 @@ def linear_schedule(initial_value: float):
 
 
 #this creates the parallel simulations
-def make_unity_env(env_directory, num_env, render=True, visual=True, start_index=0, sim_timescale=1.0, log_dir="logs/", no_image=False):
+def make_unity_env(env_directory, num_env, render=True, visual=True, start_index=0, sim_timescale=1.0, log_dir="logs/", no_image=False, test=False):
     """
     Create a wrapped, monitored Unity environment.
     """
