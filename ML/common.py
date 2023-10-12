@@ -99,7 +99,7 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
             env = UnityToGymWrapper(unity_env, rank, allow_multiple_obs=True)
             # env = StackCnnWrapper(env)
             env = MixedWrapper(env, disable_image=no_image)
-            #env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
+            env = Monitor(env, (log_dir + "_agentNo" + str(rank)))
             return env
         return _thunk
     if visual:
