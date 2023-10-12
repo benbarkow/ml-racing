@@ -103,7 +103,9 @@ def make_unity_env(env_directory, num_env, render=True, visual=True, start_index
             return env
         return _thunk
     if visual:
+        print("SubprocVecEnv")
         return SubprocVecEnv([make_env(i + start_index) for i in range(num_env)])
     else:
+        print("DummyVecEnv")
         rank = MPI.COMM_WORLD.Get_rank() if MPI else 0
         return DummyVecEnv([make_env(rank, use_visual=False)])

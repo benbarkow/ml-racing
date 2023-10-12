@@ -17,7 +17,6 @@ from stable_baselines3.common.monitor import Monitor
 from tensorboard import program
 
 parser = argparse.ArgumentParser(description='Train an RL agent. Can be used to train a new agent or to continue training an existing one.')
-parser.add_argument('-v', '--visualize', action='store_true', help='Whether to visualize the simulation')
 parser.add_argument('-tb', '--tensorboard', action='store_true', help='Whether to start Tensorboard')
 parser.add_argument('-c', '--cuda', action='store_true', help='Whether to start use Cuda or cpu')
 parser.add_argument('-n', '--num_envs', type=int, default=1, help='Number of parallel environments to use for training (max. ~number of CPU cores)')

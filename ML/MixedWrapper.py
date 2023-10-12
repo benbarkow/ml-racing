@@ -54,6 +54,11 @@ class MixedWrapper(gym.ObservationWrapper):
 
 		velocities = obs[1]
 
+		#calculate differences between output[2:5] and velocities [2:5]
+
+		# differences = output[4] - velocities[4]
+		# print( differences)
+
 		#replace the last 2 values with the velocities
 		output[-2:] = velocities[-2:]
 
