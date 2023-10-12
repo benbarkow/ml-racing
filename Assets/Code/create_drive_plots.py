@@ -1,24 +1,10 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import json
+import matplotlib.pyplot as plt
+import numpy as np
 
 def compute_path_length(points):
     """Compute the total length of a path given a list of points."""
     return np.sum(np.sqrt(np.diff(points[:, 0])**2 + np.diff(points[:, 1])**2))
-
-def find_point_at_distance(points, start_point, distance):
-    """Find a point on a path that is a given distance away from a start point."""
-    accumulated_distance = 0.0
-    for i in range(len(points) - 1):
-        p1, p2 = points[i], points[i+1]
-        segment_length = np.sqrt((p2[0] - p1[0])**2 + (p2[1] - p1[1])**2)
-        if accumulated_distance + segment_length > distance:
-            ratio = (distance - accumulated_distance) / segment_length
-            x = p1[0] + ratio * (p2[0] - p1[0])
-            y = p1[1] + ratio * (p2[1] - p1[1])
-            return [x, y]
-        accumulated_distance += segment_length
-    return None
 
 def compute_perpendicular_offset(points, offset_distance):
     """Compute a line that is offset from the given line by a perpendicular distance."""
@@ -38,37 +24,49 @@ def compute_perpendicular_offset(points, offset_distance):
     offset_points.append([offset_x, offset_y])
     return np.array(offset_points)
 
-def plot_drive_from_file(logfile, relOffsetCarPath):
+def find_nearest_point_on_path(point, path_points):
+    """Find the nearest point on a path to a given point."""
+    distances = np.sum((path_points - point)**2, axis=1)
+    return path_points[np.argmin(distances)]
+
+def compute_tangent_at_point(point, path_points):
+    """Compute the tangent direction at a point on a path."""
+    # Find the nearest point on the path
+    nearest_point = find_nearest_point_on_path(point, path_points)
+    idx = np.where((path_points == nearest_point).all(axis=1))[0][0]
+    if idx == 0:
+        next_point = path_points[idx + 1]
+        tangent = next_point - nearest_point
+    elif idx == len(path_points) - 1:
+        prev_point = path_points[idx - 1]
+        tangent = nearest_point - prev_point
+    else:
+        prev_point = path_points[idx - 1]
+        next_point = path_points[idx + 1]
+        tangent = next_point - prev_point
+    # Normalize the tangent
+    tangent /= np.linalg.norm(tangent)
+    return tangent
+
+def plot_drive(json_file):
     # Load the JSON data
-    with open(logfile, "r") as file:
+    with open(json_file, "r") as file:
         data = json.load(file)
     
-    # Extracting the target path and car positions
+    # Extracting the target path, car positions, and car orientations
     target_path_x, target_path_y = zip(*data['path'])
-    car_positions_x, car_positions_y = zip(*[point['car_pos'] for point in data['datapoints']])
-    
-    # Adjust car positions to align with the last point of the target path
-    delta_x_last = target_path_x[-1] - car_positions_x[0]
-    delta_y_last = target_path_y[-1] - car_positions_y[0]
-    adjusted_car_positions_x_last = [x + delta_x_last for x in car_positions_x]
-    adjusted_car_positions_y_last = [y + delta_y_last for y in car_positions_y]
+    car_positions = [point['car_pos'] for point in data['datapoints']]
+    car_orientations = [point['car_direction'] for point in data['datapoints']]
     
     # Convert target path to numpy array for processing
     path_np = np.array(data['path'])
     
-    # Calculate the total length of the target path
-    path_length = compute_path_length(path_np)
+    # Getting the initial car position
+    init_car_pos = np.array(car_positions[0])
     
-    # Find the point on the target path that is (path_length - relOffsetCarPath) units from the start
-    new_start_point = find_point_at_distance(path_np, path_np[0], path_length - relOffsetCarPath)
-    
-    # Compute the shift required to align the car's starting position with the new start point
-    shift_x = new_start_point[0] - adjusted_car_positions_x_last[0]
-    shift_y = new_start_point[1] - adjusted_car_positions_y_last[0]
-    
-    # Adjust car positions based on the new shift
-    further_adjusted_car_positions_x = [x + shift_x for x in adjusted_car_positions_x_last]
-    further_adjusted_car_positions_y = [y + shift_y for y in adjusted_car_positions_y_last]
+    # Adjust the path and car positions so that the initial car position becomes (0, 0)
+    path_np -= init_car_pos
+    car_positions = np.array(car_positions) - init_car_pos
     
     # Compute the offset lines for track boundaries
     outer_border_perp = compute_perpendicular_offset(path_np, 3)
@@ -78,19 +76,47 @@ def plot_drive_from_file(logfile, relOffsetCarPath):
     plt.figure(figsize=(12, 8))
 
     # Plotting the target path and its borders
-    plt.plot(target_path_x, target_path_y, color='gray', label='Track Path')
     plt.plot(outer_border_perp[:, 0], outer_border_perp[:, 1], color='gray', linestyle='--', alpha=0.7)
     plt.plot(inner_border_perp[:, 0], inner_border_perp[:, 1], color='gray', linestyle='--', alpha=0.7, label='Track Boundaries')
 
-    # Plotting the adjusted car positions as a continuous line
-    plt.plot(further_adjusted_car_positions_x, further_adjusted_car_positions_y, color='red', label='Car Path')
+    # Plot the car's path using a continuous line
+    car_positions_x, car_positions_y = zip(*car_positions)
+    plt.plot(car_positions_x, car_positions_y, color='red', label='Car Path')
+
+    # Use arrows to indicate the car's orientation with dynamic interval based on angle
+    i = 0
+    while i < len(car_positions):
+        pos = car_positions[i]
+        orientation = car_orientations[i]
+        tangent = compute_tangent_at_point(pos, path_np)
+        
+        # Compute angle between car's orientation and path's tangent (in degrees)
+        dot_product = np.dot(orientation, -tangent)
+        angle = np.arccos(np.clip(dot_product, -1.0, 1.0)) * (180 / np.pi)
+        
+        # Adjust the interval based on the angle
+        interval = max(1, int((90 - angle) / 90 * 10))
+        # plt.arrow(pos[0], pos[1], orientation[0], orientation[1], 
+        #           head_width=3, head_length=3, fc='blue', ec='blue')
+
+        # Compute the end point of the line segment
+        line_end_x = pos[0] + orientation[0]*5
+        line_end_y = pos[1] + orientation[1]*5
+
+        # Draw the line segment
+        plt.plot([pos[0], line_end_x], [pos[1], line_end_y], color='blue')
+
+        # Draw the arrow head at the end of the line segment
+        plt.arrow(line_end_x, line_end_y, orientation[0]*0.1, orientation[1]*0.1, 
+                    head_width=1, head_length=2, fc='blue', ec='blue')
+
+        i += interval
 
     plt.xlabel('X Coordinate')
     plt.ylabel('Y Coordinate')
-    plt.title(f'Track Path with Boundaries vs. Adjusted Car Path (Length - {relOffsetCarPath})')
+    plt.title('Track Path with Boundaries vs. Car Path and Orientations')
     plt.legend()
     plt.grid(True)
     plt.gca().set_aspect('equal', adjustable='box')  # Set aspect ratio to be equal
     plt.show()
 
-# Testing the function with the provided file and offset value of 2
