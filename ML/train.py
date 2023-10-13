@@ -56,7 +56,7 @@ if __name__ == '__main__':
 		print(f"Tensorflow listening on {url}")
 
 	# model = PPO('MlpPolicy', env, verbose=1)
-	env = make_unity_env(argus.executable, argus.num_envs, visual=argus.visualize, sim_timescale=argus.sim_timescale, log_dir=config.log_dir, no_image=argus.no_image, test=argus.test)
+	env = make_unity_env(argus.executable, argus.num_envs, visual=True, sim_timescale=argus.sim_timescale, log_dir=config.log_dir, no_image=argus.no_image, test=argus.test)
 	#print action space
 
 	if argus.model:
