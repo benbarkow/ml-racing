@@ -42,6 +42,8 @@ public class DriftAgent : Agent
     private PathCreator pathCreator;
     public RacetrackGenerator racetrackGenerator;
 
+    public float maxPathDistance = 0.0f;
+
   private float[] curvatureRange = new float[2]{-18.2f, 18.2f};
     private float[] speedRange = new float[2] { 0.0f, 16.0f };
     private float[] rotationAngleRange = new float[2] { -60.0f, 60.0f };
@@ -441,6 +443,12 @@ public class DriftAgent : Agent
         envStepCount++;
 
         float distanceOnPath = pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
+        if(maxPathDistance != 0.0f && distanceOnPath > maxPathDistance){
+            SetReward(2.0f);
+            Debug.Log("MaxPathDistance reached");
+            EndEpisode();
+            return;
+        }
        
         float[] features = computeFeatures(distanceOnPath);
 
@@ -466,7 +474,7 @@ public class DriftAgent : Agent
         float driftReward = DriftReward(distanceOnPath);
 
         // float reward = velocityReward * offsetReward;
-        float reward = (velocityReward *0.1f + driftReward * 0.9f) * offsetReward;
+        float reward = (velocityReward *0.4f + driftReward * 0.6f) * offsetReward;
        
         SetReward(reward);
         rewardEvent(reward, carDirection, reward == 1.0f);
