@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MLCarRacetrackTrainDriift.unity
     guid: c730294b4ad6792448051d89047d56cd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MLCarRacetrackTrain.unity
     guid: 836db3d4a89257b459d885a1c0bb65d2
+  - enabled: 1
+    path: Assets/Scenes/MLCarRacetrackTrainDriftTrack.unity
+    guid: 734633435db6c244ab35dfe1611b62d3
   m_configObjects: {}
