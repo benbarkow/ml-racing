@@ -12,18 +12,18 @@ the result on a real 1:10 scale car.
 ![ROS 2](https://img.shields.io/badge/ROS%202-Humble-22314E?logo=ros)
 
 <p align="center">
-  <img src="docs/media/sim_german_gp.gif" width="720" alt="The trained agent driving through the S-curves of the German Grand Prix circuit in the Unity simulator, seen from a chase camera, with the per-step reward floating next to the car and the onboard camera feed in the top-right corner">
+  <img src="docs/media/sim_german_gp.gif" width="600" alt="The trained agent driving through the S-curves of the German Grand Prix circuit in the Unity simulator, seen from a chase camera, with the per-step reward floating next to the car and the onboard camera feed in the top-right corner">
   <br>
-  <sub>The trained agent on the German GP circuit (real-time speed; onboard camera top-right). <a href="docs/media/sim_german_gp.mp4">Full 37-second run (MP4)</a></sub>
+  <sub>The trained agent on the German GP circuit, at real-time speed, with the onboard camera top-right. This 24-second section comes from a <a href="docs/media/sim_german_gp.mp4">61-second continuous run (MP4)</a>.</sub>
 </p>
 
 ## Highlights
 
-- 🏁 **Drives a full F1 circuit autonomously**: one lap of the 826 m German GP layout in 74 s. It never strays more than 2.2 m from the centre line on a 6 m wide road.
-- 👁️ **Learns to see the track**: a CNN reads curvature, heading and lateral position from three stacked 80×60 camera frames.
-- 🧠 **Two-stage design**: the policy learns driving from clean simulator state, and the CNN learns perception separately. At run time the CNN replaces the simulator.
-- 🌀 **Drifting experiments**: a separate agent is rewarded for side-slip while staying on the track.
-- 🚗 **Sim-to-real**: perception and policy run as ONNX models inside a ROS 2 stack on an F1TENTH-style car, with Vicon motion capture for evaluation.
+- **Drives a full F1 circuit autonomously**: one lap of the 826 m German GP layout in 74 s. It never strays more than 2.2 m from the centre line on a 6 m wide road.
+- **Learns to see the track**: a CNN reads curvature, heading and lateral position from three stacked 80×60 camera frames.
+- **Two-stage design**: the policy learns driving from clean simulator state, and the CNN learns perception separately. At run time the CNN replaces the simulator.
+- **Drifting experiments**: a separate agent is rewarded for side-slip while staying on the track.
+- **Sim-to-real**: perception and policy run as ONNX models inside a ROS 2 stack on an F1TENTH-style car, with Vicon motion capture for evaluation.
 
 ## The approach
 
@@ -32,7 +32,7 @@ final system splits the problem in two:
 
 ```mermaid
 flowchart LR
-    CAM["📷 3 stacked frames<br/>80×60 RGB"] --> CNN["Perception CNN<br/>4 conv layers"]
+    CAM["3 stacked frames<br/>80×60 RGB"] --> CNN["Perception CNN<br/>4 conv layers"]
     CNN --> F["8 state features<br/>c₁ c₂ c₃ · o · θ · ω · vₓ v_y"]
     VEL["vehicle velocity"] -. replaces vₓ, v_y .-> F
     F --> PI["PPO policy<br/>MLP 3×256"]
