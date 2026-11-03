@@ -1,1 +1,0 @@
-/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/car_action__traits.hpp

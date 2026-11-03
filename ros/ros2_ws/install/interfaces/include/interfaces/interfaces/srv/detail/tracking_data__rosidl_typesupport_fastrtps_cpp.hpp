@@ -1,1 +1,0 @@
-/ros2_ws/build/interfaces/rosidl_typesupport_fastrtps_cpp/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_cpp.hpp

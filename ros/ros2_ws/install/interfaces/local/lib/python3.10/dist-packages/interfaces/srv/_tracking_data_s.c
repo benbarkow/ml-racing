@@ -1,1 +1,0 @@
-/ros2_ws/build/interfaces/rosidl_generator_py/interfaces/srv/_tracking_data_s.c

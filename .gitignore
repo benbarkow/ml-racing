@@ -74,3 +74,47 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# ------------------------------------------------------------------
+# Project-specific
+# ------------------------------------------------------------------
+
+# byte compiled
+__pycache__/
+*.py[cod]
+
+# Unity player builds used for training
+/ML/*build*/
+/ML/*builds/
+
+# Training outputs and checkpoints (final models are whitelisted)
+/ML/logs/
+/ML/models/*
+!/ML/models/cnn_models/
+!/ML/models/cnn_weights/
+/ML/models/cnn_weights/*
+!/ML/models/cnn_weights/cnn_green_4conv_d.pth
+!/ML/models/last_archive/
+/ML/models/last_archive/*
+!/ML/models/last_archive/circle_drift_cnn_28.zip
+!/ML/models/last_archive/drift_circle_10_60.zip
+!/ML/models/last_archive/formula_drift_50.zip
+!/ML/models/last_archive/german_drive_cnn_230.zip
+!/ML/models/last_archive/german_drive_full_sim_info_190.zip
+mprofile_*.dat
+
+# Raw drive logs (processed versions live in analysis/compute_logs)
+/analysis/drive_logs/
+
+# ML-Agents runtime timers
+/[Aa]ssets/ML-Agents/
+
+# ROS 2 / colcon build outputs and raw recordings
+/ros/ros2_ws/build/
+/ros/ros2_ws/install/
+/ros/ros2_ws/log/
+**/recordings/
+
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/

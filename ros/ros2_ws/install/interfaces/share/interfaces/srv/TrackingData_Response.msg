@@ -1,1 +1,0 @@
-/ros2_ws/build/interfaces/rosidl_cmake/srv/TrackingData_Response.msg

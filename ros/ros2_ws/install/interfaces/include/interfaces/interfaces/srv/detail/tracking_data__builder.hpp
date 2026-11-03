@@ -1,1 +1,0 @@
-/ros2_ws/build/interfaces/rosidl_generator_cpp/interfaces/srv/detail/tracking_data__builder.hpp

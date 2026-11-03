@@ -1,7 +1,0 @@
-{
-  "package_name": "interfaces",
-  "non_idl_tuples": [
-    "/ros2_ws/src/interfaces:srv/TrackingData.srv",
-    "/ros2_ws/src/interfaces:srv/CarAction.srv"
-  ]
-}

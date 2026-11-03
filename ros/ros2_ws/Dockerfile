@@ -13,9 +13,7 @@ RUN rosdep init
 RUN rosdep update
 
 WORKDIR /ros2_ws
-COPY ./install install
 COPY ./src src
-COPY ./log log
 
 RUN rosdep install -y --from-paths src
 RUN apt-get update && apt-get install -y v4l-utils
