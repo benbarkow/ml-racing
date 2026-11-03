@@ -1,0 +1,19 @@
+[3.367s] Invoking command in '/ros2_ws/build/tracking_sub': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/tracking_sub/build --no-deps install_data
+[3.587s] running develop
+[3.684s] running egg_info
+[3.684s] writing tracking_sub.egg-info/PKG-INFO
+[3.708s] writing dependency_links to tracking_sub.egg-info/dependency_links.txt
+[3.714s] writing entry points to tracking_sub.egg-info/entry_points.txt
+[3.729s] writing requirements to tracking_sub.egg-info/requires.txt
+[3.732s] writing top-level names to tracking_sub.egg-info/top_level.txt
+[3.769s] reading manifest file 'tracking_sub.egg-info/SOURCES.txt'
+[3.770s] writing manifest file 'tracking_sub.egg-info/SOURCES.txt'
+[3.771s] running build_ext
+[3.771s] Creating /ros2_ws/install/tracking_sub/lib/python3.10/site-packages/tracking-sub.egg-link (link to .)
+[3.818s] Installing listener script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.818s] Installing servo_test script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.818s] Installing speed_pub script to /ros2_ws/install/tracking_sub/lib/tracking_sub
+[3.818s] 
+[3.818s] Installed /ros2_ws/build/tracking_sub
+[3.818s] running install_data
+[4.000s] Invoked command in '/ros2_ws/build/tracking_sub' returned '0': PYTHONPATH=/ros2_ws/build/tracking_sub/prefix_override:/ros2_ws/install/tracking_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /ros2_ws/build/tracking_sub/build --no-deps install_data

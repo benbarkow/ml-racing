@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing car_controller.egg-info/PKG-INFO
+writing dependency_links to car_controller.egg-info/dependency_links.txt
+writing entry points to car_controller.egg-info/entry_points.txt
+writing requirements to car_controller.egg-info/requires.txt
+writing top-level names to car_controller.egg-info/top_level.txt
+reading manifest file 'car_controller.egg-info/SOURCES.txt'
+writing manifest file 'car_controller.egg-info/SOURCES.txt'
+running build_ext
+Creating /ros2_ws/install/car_controller/lib/python3.10/site-packages/car-controller.egg-link (link to .)
+Installing car_camera_rcv script to /ros2_ws/install/car_controller/lib/car_controller
+Installing car_controller script to /ros2_ws/install/car_controller/lib/car_controller
+Installing net script to /ros2_ws/install/car_controller/lib/car_controller
+Installing net_sb3 script to /ros2_ws/install/car_controller/lib/car_controller
+
+Installed /ros2_ws/build/car_controller
+running install_data

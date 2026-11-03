@@ -361,6 +361,9 @@ include("/ros2_ws/build/interfaces/ament_cmake_symlink_install_targets_2_${CMAKE
 # install(FILES "/ros2_ws/build/interfaces/rosidl_adapter/interfaces/srv/TrackingData.idl" "DESTINATION" "share/interfaces/srv")
 ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/rosidl_adapter/interfaces/srv/TrackingData.idl" "DESTINATION" "share/interfaces/srv")
 
+# install(FILES "/ros2_ws/build/interfaces/rosidl_adapter/interfaces/srv/CarAction.idl" "DESTINATION" "share/interfaces/srv")
+ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/rosidl_adapter/interfaces/srv/CarAction.idl" "DESTINATION" "share/interfaces/srv")
+
 # install(FILES "/ros2_ws/src/interfaces/srv/TrackingData.srv" "DESTINATION" "share/interfaces/srv")
 ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/src/interfaces/srv/TrackingData.srv" "DESTINATION" "share/interfaces/srv")
 
@@ -369,6 +372,15 @@ ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/buil
 
 # install(FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/TrackingData_Response.msg" "DESTINATION" "share/interfaces/srv")
 ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/TrackingData_Response.msg" "DESTINATION" "share/interfaces/srv")
+
+# install(FILES "/ros2_ws/src/interfaces/srv/CarAction.srv" "DESTINATION" "share/interfaces/srv")
+ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/src/interfaces/srv/CarAction.srv" "DESTINATION" "share/interfaces/srv")
+
+# install(FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/CarAction_Request.msg" "DESTINATION" "share/interfaces/srv")
+ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/CarAction_Request.msg" "DESTINATION" "share/interfaces/srv")
+
+# install(FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/CarAction_Response.msg" "DESTINATION" "share/interfaces/srv")
+ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/rosidl_cmake/srv/CarAction_Response.msg" "DESTINATION" "share/interfaces/srv")
 
 # install(FILES "/ros2_ws/build/interfaces/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/interfaces" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/ros2_ws/src/interfaces" FILES "/ros2_ws/build/interfaces/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/interfaces" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

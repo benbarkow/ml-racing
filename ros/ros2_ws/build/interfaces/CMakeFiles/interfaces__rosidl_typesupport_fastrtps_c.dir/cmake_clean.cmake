@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/interfaces/srv/detail/car_action__type_support_c.cpp.o"
+  "CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/interfaces/srv/detail/car_action__type_support_c.cpp.o.d"
   "CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/interfaces/srv/detail/tracking_data__type_support_c.cpp.o"
   "CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/interfaces/srv/detail/tracking_data__type_support_c.cpp.o.d"
   "libinterfaces__rosidl_typesupport_fastrtps_c.pdb"
   "libinterfaces__rosidl_typesupport_fastrtps_c.so"
+  "rosidl_typesupport_fastrtps_c/interfaces/srv/detail/car_action__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/interfaces/srv/detail/car_action__type_support_c.cpp"
   "rosidl_typesupport_fastrtps_c/interfaces/srv/detail/tracking_data__rosidl_typesupport_fastrtps_c.h"
   "rosidl_typesupport_fastrtps_c/interfaces/srv/detail/tracking_data__type_support_c.cpp"
 )

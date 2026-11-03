@@ -9,10 +9,12 @@ services:
       - /dev/shm:/dev/shm
       - .:/ros2_ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # - /run/user/1000/:/run/user/1000/:rw
     environment:
       - DISPLAY=:0
     network_mode: "host"
     devices:
       - /dev/video0:/dev/video0
     stdin_open: true
+    privileged: true
     tty: true

@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/interfaces__cpp"
+  "rosidl_generator_cpp/interfaces/srv/car_action.hpp"
+  "rosidl_generator_cpp/interfaces/srv/detail/car_action__builder.hpp"
+  "rosidl_generator_cpp/interfaces/srv/detail/car_action__struct.hpp"
+  "rosidl_generator_cpp/interfaces/srv/detail/car_action__traits.hpp"
   "rosidl_generator_cpp/interfaces/srv/detail/tracking_data__builder.hpp"
   "rosidl_generator_cpp/interfaces/srv/detail/tracking_data__struct.hpp"
   "rosidl_generator_cpp/interfaces/srv/detail/tracking_data__traits.hpp"

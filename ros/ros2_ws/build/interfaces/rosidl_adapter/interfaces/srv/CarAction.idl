@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from interfaces/srv/CarAction.srv
+// generated code does not contain a copyright notice
+
+
+module interfaces {
+  module srv {
+    struct CarAction_Request {
+      float steer;
+
+      float speed;
+    };
+    struct CarAction_Response {
+      string x;
+    };
+  };
+};

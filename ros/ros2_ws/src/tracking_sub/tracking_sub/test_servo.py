@@ -14,7 +14,7 @@ class Action(Node):
 		self.publisher_speed = self.create_publisher(Float64, '/vesc/commands/motor/unsmoothed_speed', 10)
 		self.timer = self.create_timer(0.5, self.timer_callback)
 		self.i = 0.5
-		self.a = 0.05
+		self.a = 0.025
 
 	def timer_callback(self):
 		self.i += self.a
@@ -22,8 +22,8 @@ class Action(Node):
 			self.a = -self.a
 		print(self.i)
 		self.send(self.i, 0.0)
-		if self.i == 0.45:
-			time.sleep(10)
+		if self.i <= 0.425 and self.i >= 0.424:
+			time.sleep(5)
 	
 	def send(self,steering, speed):
 		msg = Float64()

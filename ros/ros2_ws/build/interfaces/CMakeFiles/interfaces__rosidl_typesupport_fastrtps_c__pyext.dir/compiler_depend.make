@@ -247,10 +247,17 @@ CMakeFiles/interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator
   rosidl_generator_c/interfaces/srv/detail/tracking_data__struct.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
   /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
-  rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.h
+  rosidl_generator_c/interfaces/srv/detail/tracking_data__functions.h \
+  rosidl_generator_c/interfaces/srv/detail/car_action__type_support.h \
+  rosidl_generator_c/interfaces/srv/detail/car_action__struct.h \
+  rosidl_generator_c/interfaces/srv/detail/car_action__functions.h
 
+
+rosidl_generator_c/interfaces/srv/detail/car_action__functions.h:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
+
+rosidl_generator_c/interfaces/srv/detail/car_action__type_support.h:
 
 rosidl_generator_c/interfaces/srv/detail/tracking_data__struct.h:
 
@@ -445,6 +452,8 @@ rosidl_generator_c/interfaces/msg/rosidl_generator_c__visibility_control.h:
 /usr/include/python3.10/cpython/pytime.h:
 
 /usr/include/features-time64.h:
+
+rosidl_generator_c/interfaces/srv/detail/car_action__struct.h:
 
 /usr/include/python3.10/setobject.h:
 

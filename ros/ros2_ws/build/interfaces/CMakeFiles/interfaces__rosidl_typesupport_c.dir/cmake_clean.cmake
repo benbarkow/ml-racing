@@ -1,8 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/interfaces/srv/car_action__type_support.cpp.o"
+  "CMakeFiles/interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/interfaces/srv/car_action__type_support.cpp.o.d"
   "CMakeFiles/interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/interfaces/srv/tracking_data__type_support.cpp.o"
   "CMakeFiles/interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/interfaces/srv/tracking_data__type_support.cpp.o.d"
   "libinterfaces__rosidl_typesupport_c.pdb"
   "libinterfaces__rosidl_typesupport_c.so"
+  "rosidl_typesupport_c/interfaces/srv/car_action__type_support.cpp"
   "rosidl_typesupport_c/interfaces/srv/tracking_data__type_support.cpp"
 )
 
